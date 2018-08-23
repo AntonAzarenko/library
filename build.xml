@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project name="library"
+         default="all"
+         xmlns:cs="antlib:com.puppycrawl.tools.checkstyle.ant">
+
+    <!-- ============ Properties ============ -->
+
+    <property environment="env" />
+
+    <property name="HOST" value="${env.COMPUTERNAME}" />
+
+    <property file="build_${HOST}.properties" />
+
+    <property file="build.properties" />
+
+    <!-- ============ Path ============ -->
+
+    <path id="cp">
+        <fileset dir="web/WEB-INF/lib">
+            <include name="*.jar" />
+        </fileset>
+    </path>
+
+    <path id="pmd">
+        <fileset dir="tools/pmd">
+            <include name="*.jar" />
+        </fileset>
+    </path>
+
+    <!-- ============ Task Definition ============ -->
+
+    <taskdef name="pmd"
+             classname="net.sourceforge.pmd.ant.PMDTask"
+             classpathref="pmd" />
+
+    <taskdef resource="com/puppycrawl/tools/checkstyle/ant/checkstyle-ant-task.properties"
+             classpath="tools/checkstyle-8.11-all.jar" />
+
+    <target name="all" depends="clean, war" />
+
+    <!-- ============ Init ============ -->
+
+    <target name="init">
+        <mkdir dir=".build" />
+        <copy todir=".build">
+            <fileset dir="web">
+                <exclude name="**/*.properties" />
+            </fileset>
+        </copy>
+        <copy todir=".build" filtering="true">
+            <fileset dir="web">
+                <include name="**/*.properties" />
+            </fileset>
+            <filterset begintoken="@{" endtoken="}">
+                <propertyset>
+                    <propertyref builtin="all" />
+                </propertyset>
+            </filterset>
+        </copy>
+    </target>
+
+    <!-- ============ Clean ============ -->
+
+    <target name="clean">
+        <delete dir=".report" />
+        <delete dir=".dist" />
+        <delete dir=".build" />
+    </target>
+
+    <!-- ============ Compile ============ -->
+
+    <target name="compile" depends="init">
+        <javac srcdir="src"
+               destdir=".build/WEB-INF/classes"
+               includeantruntime="false">
+            <classpath refid="cp" />
+        </javac>
+    </target>
+
+    <!-- ============ WAR ============ -->
+
+    <target name="war" depends="compile">
+        <mkdir dir=".dist" />
+        <war destfile=".dist/library.war" basedir=".build" />
+    </target>
+
+    <!-- ============ Reports ============ -->
+
+    <target name="checkstyle">
+        <mkdir dir=".report" />
+        <checkstyle config="docs/sun_checks.xml" failonviolation="false">
+            <fileset dir="src" />
+            <formatter type="xml" toFile=".report/checkstyle_report.xml" />
+        </checkstyle>
+
+        <xslt in=".report/checkstyle_report.xml"
+              out=".report/checkstyle_report.html"
+              style="docs/checkstyle.xsl" />
+
+    </target>
+
+    <target name="pmd">
+        <mkdir dir=".report" />
+        <pmd nocache="true"
+             rulesetfiles="category/java/design.xml,category/java/bestpractices.xml,category/java/errorprone.xml,category/java/codestyle.xml">
+            <formatter type="net.sourceforge.pmd.renderers.HTMLRenderer"
+                       toFile=".report/pmd.html" />
+            <fileset dir="src">
+                <include name="**/*.java" />
+            </fileset>
+        </pmd>
+    </target>
+
+</project>

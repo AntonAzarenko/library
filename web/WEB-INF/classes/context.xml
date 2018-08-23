@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer ">
+        <property name="locations" value="classpath:config.properties" />
+    </bean>
+
+    <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+        <property name="basename" value="messages" />
+    </bean>
+
+    <bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource">
+        <property name="username" value="${jdbc.username}"/>
+        <property name="password" value="${jdbc.password}"/>
+        <property name="url" value="${jdbc.url}"/>
+        <property name="driverClassName" value="${jdbc.driverClassName}"/>
+    </bean>
+
+    <bean class="liquibase.integration.spring.SpringLiquibase">
+        <property name="dataSource" ref="dataSource" />
+        <property name="changeLog" value="classpath:/changelog.xml" />
+        <property name="contexts" value="test" />
+    </bean>
+
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource" />
+        <property name="configLocation" value="classpath:/mybatis.xml" />
+        <property name="mapperLocations" value="classpath*:mapper/**/*.xml" />
+    </bean>
+
+    <!--bean id="dao" class="org.springframework.jdbc.core.support.JdbcDaoSupport" abstract="true">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+    <bean id="bookDao" class="library.dao.mem.BookMapDao" /-->
+
+    <!--bean id="mapper" class="org.mybatis.spring.mapper.MapperFactoryBean" abstract="true" >
+        <property name="sqlSessionFactory" ref="sqlSessionFactory" />
+    </bean>
+
+    <bean id="bookDao" parent="mapper">
+        <property name="mapperInterface" value="library.dao.BookDao" />
+    </bean-->
+
+    <bean id="mapper" class="org.mybatis.spring.support.SqlSessionDaoSupport" abstract="true" >
+        <property name="sqlSessionFactory" ref="sqlSessionFactory" />
+    </bean>
+
+    <bean id="bookDao" class="library.dao.mapper.BookDaoMapper" parent="mapper" />
+
+    <bean id="bookService" class="library.service.BookServiceImpl">
+        <property name="bookDao" ref="bookDao" />
+    </bean>
+
+</beans>
+

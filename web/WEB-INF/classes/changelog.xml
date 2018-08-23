@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd
+        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <changeSet id="1.1.0" author="crash">
+
+        <createTable tableName="authors">
+            <column name="id" autoIncrement="true" type="bigint">
+                <constraints primaryKey="true" nullable="false" primaryKeyName="author_pk" />
+            </column>
+            <column name="name" type="varchar(128)">
+                <constraints nullable="false" />
+            </column>
+        </createTable>
+
+        <createTable tableName="books">
+            <column name="id" autoIncrement="true" type="bigint">
+                <constraints primaryKey="true" nullable="false" primaryKeyName="book_pk" />
+            </column>
+            <column name="title" type="varchar(256)">
+                <constraints nullable="false" />
+            </column>
+            <column name="author_id" type="bigint">
+                <constraints
+                    foreignKeyName="books_authors_fk"
+                    referencedTableName="authors"
+                    referencedColumnNames="id" />
+            </column>
+        </createTable>
+        
+        <createTable tableName="authors_books">
+            <column name="author_id" type="bigint">
+                <constraints 
+                foreignKeyName="author_id"
+                referencedTableName="authors"
+                referencedColumnNames="id"
+                />
+            </column>
+            <column name="book_id" type="bigint">
+                <constraints 
+                foreignKeyName="book_id"
+                referencedTableName="books"
+                referencedColumnNames="id"
+                />
+            </column>
+        </createTable>
+
+    </changeSet>
+
+    <changeSet id="1.1.1" author="crash" context="test">
+        <insert tableName="authors">
+            <column name="name" value="Maxim Gorky" />
+        </insert>
+
+        <insert tableName="books">
+            <column name="title" value="Mother"/>
+            <column name="author_id" valueNumeric="1" />
+        </insert>
+
+        <insert tableName="books">
+            <column name="title" value="The Lower Depths"/>
+            <column name="author_id" valueNumeric="1" />
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>

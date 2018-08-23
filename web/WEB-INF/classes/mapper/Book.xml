@@ -1,0 +1,36 @@
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="library.dao.BookDao">
+
+	<resultMap type="Book" id="bookmap">
+		<id column="book_id" property="id" />
+		<result column="book_title" property="title" />
+		<association property="author" javaType="Author">
+			<id column="author_id" property="id" />
+			<result column="author_name" property="name" />
+		</association>
+	</resultMap>
+
+	<select id="find" resultMap="bookmap">
+		SELECT
+		b.id AS book_id,
+		b.title AS book_title,
+		a.id AS author_id,
+		a.name AS author_name
+		FROM books b
+		JOIN authors a ON a.id = b.author_id
+	</select>
+
+	<select id="findByAuthorId" parameterType="long" resultMap="bookmap">
+		SELECT
+		b.id AS book_id,
+		b.title AS book_title,
+		a.id AS author_id,
+		a.name AS author_name
+		FROM books b
+		JOIN authors a ON a.id = b.author_id 
+		WHERE
+		b.author_id = #{id}
+	</select>
+</mapper>
