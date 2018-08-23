@@ -17,6 +17,15 @@
             </column>
         </createTable>
 
+        <createTable tableName="publishers">
+            <column name="id" autoIncrement="true" type="bigint">
+                <constraints primaryKey="true" nullable="false" primaryKeyName="publisher_pk" />
+            </column>
+            <column name="name" type="varchar(256)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
         <createTable tableName="books">
             <column name="id" autoIncrement="true" type="bigint">
                 <constraints primaryKey="true" nullable="false" primaryKeyName="book_pk" />
@@ -24,31 +33,47 @@
             <column name="title" type="varchar(256)">
                 <constraints nullable="false" />
             </column>
-            <column name="author_id" type="bigint">
+            <column name="publisher_id" type="bigint">
                 <constraints
-                    foreignKeyName="books_authors_fk"
-                    referencedTableName="authors"
-                    referencedColumnNames="id" />
+                        foreignKeyName="book_publishers_fk"
+                        referencedTableName="publishers"
+                        referencedColumnNames="id" />
+            </column>
+        </createTable>
+        
+        <createTable tableName="metadata">
+            <column name="id" autoIncrement="true" type="bigint">
+                <constraints primaryKey="true" nullable="false" primaryKeyName="metadata_pk" />
+            </column>
+            <column name="url" type="varchar(256)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="book_id" type="bigint">
+                <constraints
+                        foreignKeyName="metadata_books_fk"
+                        referencedTableName="books"
+                        referencedColumnNames="id" />
             </column>
         </createTable>
         
         <createTable tableName="authors_books">
             <column name="author_id" type="bigint">
                 <constraints 
-                foreignKeyName="author_id"
+                foreignKeyName="authors_books_author_id_fk"
                 referencedTableName="authors"
                 referencedColumnNames="id"
                 />
             </column>
             <column name="book_id" type="bigint">
                 <constraints 
-                foreignKeyName="book_id"
+                foreignKeyName="authors_books_book_id_fk"
                 referencedTableName="books"
                 referencedColumnNames="id"
                 />
             </column>
         </createTable>
 
+        <addPrimaryKey tableName="authors_books" columnNames="author_id,book_id"/>
     </changeSet>
 
     <changeSet id="1.1.1" author="crash" context="test">
@@ -56,14 +81,28 @@
             <column name="name" value="Maxim Gorky" />
         </insert>
 
+        <insert tableName="publishers">
+            <column name="name" value="Open Book"/>
+        </insert>
+
         <insert tableName="books">
             <column name="title" value="Mother"/>
-            <column name="author_id" valueNumeric="1" />
+            <column name="publisher_id" value="1"/>
         </insert>
 
         <insert tableName="books">
             <column name="title" value="The Lower Depths"/>
-            <column name="author_id" valueNumeric="1" />
+            <column name="publisher_id" value="1"/>
+        </insert>
+
+        <insert tableName="authors_books">
+            <column name="author_id" value="1"/>
+            <column name="book_id" value="1"/>
+        </insert>
+
+        <insert tableName="authors_books">
+            <column name="author_id" value="1"/>
+            <column name="book_id" value="2"/>
         </insert>
     </changeSet>
 
