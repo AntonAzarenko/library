@@ -11,19 +11,22 @@ public class AuthorDaoMapper extends SqlSessionDaoSupport implements AuthorDao {
 
     @Override
     public void create(final Author o) {
+        getSqlSession().insert("library.dao.AuthorDao.insert");
     }
 
     @Override
     public Author read(final Long id) {
-        return null;
+        return getSqlSession().selectOne("library.dao.AuthorDao.read");
     }
 
     @Override
     public void update(final Author o) {
+        getSqlSession().update("library.dao.AuthorDao.update");
     }
 
     @Override
     public void delete(final Long id) {
+        getSqlSession().delete("library.dao.AuthorDao.delete");
     }
 
     @Override

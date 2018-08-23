@@ -12,6 +12,15 @@
         </association>
     </resultMap>
 
+    <resultMap id="author" type="Author">
+        <id column="author_id" property="id"/>
+        <result column="author_name" property="name"/>
+    </resultMap>
+
+    <select id="read" resultMap="author" parameterType="Long">
+        SELECT FROM authors WHERE id = #{id}
+    </select>
+
     <select id="find" resultMap="authormap">
         SELECT
             b.id AS book_id,
@@ -21,4 +30,20 @@
         FROM books b
         JOIN authors a ON a.id = b.author_id
     </select>
+    
+    <insert id="insert"
+            parameterType="Author"
+            useGeneratedKeys="true">
+        INSERT INTO authors (name) VALUES (#{name})
+    </insert>
+
+    <update id="update"
+            parameterType="Author">
+        UPDATE INTO authors name=#{name} WHERE id = #{id}
+    </update>
+
+    <delete id="delete"
+            parameterType="Long">
+        delete from authors where id = #{id}
+    </delete>
 </mapper>
