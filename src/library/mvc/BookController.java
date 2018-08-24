@@ -95,7 +95,7 @@ public class BookController {
      */
     @PostMapping(value = "remove.html")
     public String delete(@RequestParam("id")final  Long id){
-        srv.remove(id);
+        srv.delete(id);
         return "index";
     }
 
