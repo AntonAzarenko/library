@@ -105,11 +105,13 @@ public class BookController {
      * @param model
      * @return
      */
-    @GetMapping(value = "edit")
+    @GetMapping(value = "edit.html")
     public String edit(@RequestParam("id") final Long id, final Model model){
         model.addAttribute("book",srv.getById(id));
         return "redirect:editbook";
     }
+
+
 
 
 }
