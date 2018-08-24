@@ -8,7 +8,9 @@ public interface BookService extends BaseService<Long, Book>{
 
     Book getBook(Long id);
 
-    List<Book> getBooks(String str);
+    List<Book> getBooks();
+
+    List<Book> getBooksByName();
 
     List<Book> getBooksByAuthor(Long id);
 }
