@@ -10,6 +10,9 @@ import library.service.BookService;
 
 import java.util.List;
 
+/**
+ * @Author  by Azarenka Anton
+ */
 @Controller
 public class BookController {
 
@@ -100,7 +103,7 @@ public class BookController {
     }
 
     /**
-     * This method gets book and put in model and redirect to edit page edit.jsp
+     * This method gets book and put in model and redirect to edit page editbook.jsp
      * @param id
      * @param model
      * @return
