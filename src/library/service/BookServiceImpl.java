@@ -24,7 +24,7 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public Book getBooksByName() {
+    public Book getBooksByTitle(String title) {
         return null;
     }
 
