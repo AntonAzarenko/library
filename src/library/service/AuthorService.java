@@ -4,15 +4,11 @@ import library.entity.Author;
 
 import java.util.List;
 
-public interface AuthorService {
+public interface AuthorService extends BaseService<Long, Author>{
 
     Author getAuthor(Long id);
 
     List<Author> getAllAuthors();
 
-    void save(Author author);
-
     List<Author> getAuthorByName(String name);
-
-    void delete(Long id);
 }
