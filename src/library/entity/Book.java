@@ -1,5 +1,7 @@
 package library.entity;
 
+import java.util.List;
+
 public class Book extends Entity {
 
     private static final long serialVersionUID = 1L;
@@ -11,6 +13,14 @@ public class Book extends Entity {
     private Publisher publisher;
 
     private String description;
+    
+    public Book(Long id, String title, List<String> authorName, String publisherName, String discription) {
+        super();
+    }
+
+    public Book(String title, List<String> authorName, String publisherName, String discription) {
+        super();
+    }
 
     public String getTitle() {
         return title;
