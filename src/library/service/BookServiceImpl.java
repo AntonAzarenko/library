@@ -14,7 +14,7 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public Book getBook(final Long id) {
+    public Book getById(final Long id) {
         return dao.read(id);
     }
 

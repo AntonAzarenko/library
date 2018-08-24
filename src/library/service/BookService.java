@@ -6,9 +6,7 @@ import library.entity.Book;
 
 public interface BookService extends BaseService<Long, Book>{
 
-    Book getBook(Long id);
-
-    List<Book> getBooks();
+	List<Book> getBooks();
 
     Book getBooksByTitle(String title);
 
