@@ -10,7 +10,7 @@ public interface BookService extends BaseService<Long, Book>{
 
     List<Book> getBooks();
 
-    List<Book> getBooksByName();
+    Book getBooksByName();
 
     List<Book> getBooksByAuthor(Long id);
 }
