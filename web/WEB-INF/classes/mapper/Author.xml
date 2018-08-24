@@ -13,12 +13,12 @@
     </resultMap>
 
     <resultMap id="author" type="Author">
-        <id column="author_id" property="id"/>
-        <result column="author_name" property="name"/>
+        <id column="id" property="id"/>
+        <result column="name" property="name"/>
     </resultMap>
 
     <select id="read" resultMap="author" parameterType="Long">
-        SELECT FROM authors WHERE id = #{id}
+        SELECT * FROM authors WHERE id = #{id}
     </select>
 
     <select id="find" resultMap="authormap">
@@ -48,12 +48,12 @@
     </delete>
 
     <select id="findAll" resultMap="author">
-        SELECT * FROM authors
+        SELECT * FROM authors a
     </select>
 
     <select id="findByName"
             resultMap="author"
             parameterType="String">
-        SELECT  * FROM authors WHERE authors.name LIKE (#{name})
+        SELECT * FROM authors WHERE name LIKE (#{name})
     </select>
 </mapper>
