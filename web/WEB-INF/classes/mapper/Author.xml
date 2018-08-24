@@ -46,4 +46,14 @@
             parameterType="Long">
         delete from authors where id = #{id}
     </delete>
+
+    <select id="findAll" resultMap="author">
+        SELECT * FROM authors
+    </select>
+
+    <select id="findByName"
+            resultMap="author"
+            parameterType="String">
+        SELECT  * FROM authors WHERE authors.name LIKE (#{name})
+    </select>
 </mapper>

@@ -6,7 +6,7 @@ import library.entity.Author;
 
 public interface AuthorDao extends CrudDao<Long, Author> {
 
-    List<Author> readAll();
+    List<Author> findAll();
 
-    List<Author> find(String name);
+    List<Author> findByName(String name);
 }
