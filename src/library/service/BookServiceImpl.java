@@ -19,6 +19,16 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
+    public List<Book> getBooks() {
+        return null;
+    }
+
+    @Override
+    public List<Book> getBooksByName() {
+        return null;
+    }
+
+    @Override
     public void save(final Book book) {
         if (book.getId() == null) {
             dao.create(book);
