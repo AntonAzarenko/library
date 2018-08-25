@@ -48,7 +48,7 @@
 		b.author_id = #{id}
 	</select>
 
-	<select id="findBooksByPublisherId" parameterType="long"
+	<select id="findBooksByPublisher" parameterType="string"
 		resultMap="bookmap">
 		SELECT
 		b.id AS book_id,
@@ -60,7 +60,7 @@
 		JOIN publishers p ON
 		p.id = b.publisher_id
 		WHERE
-		b.publisher_id =#{id}
+		p.name =#{name}
 	</select>
 
 	<select id="getBooks" resultMap="bookmap">

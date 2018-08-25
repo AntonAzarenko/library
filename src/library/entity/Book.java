@@ -13,50 +13,48 @@ public class Book extends Entity {
     private Publisher publisher;
 
     private String description;
-    
+
     public Book() {
     }
-    
+
     public Book(Long id, String title, List<String> authorName, String publisherName, String discription) {
-        super();
+	super();
     }
 
     public Book(String title, List<String> authorName, String publisherName, String discription) {
-        super();
+	super();
     }
 
     public String getTitle() {
-        return title;
+	return title;
     }
 
     public void setTitle(final String title) {
-        this.title = title;
+	this.title = title;
     }
 
-   
-
     public Author getAuthor() {
-        return author;
+	return author;
     }
 
     public void setAuthor(final Author author) {
-        this.author = author;
+	this.author = author;
     }
 
     public Publisher getPublisher() {
-        return publisher;
+	return publisher;
     }
 
     public void setPublisher(final Publisher publisher) {
-        this.publisher = publisher;
+	this.publisher = publisher;
     }
 
     public String getDescription() {
-        return description;
+	return description;
     }
 
     public void setDescription(final String description) {
-        this.description = description;
+	this.description = description;
     }
 
 }

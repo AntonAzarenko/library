@@ -13,5 +13,4 @@ public interface BookService extends BaseService<Long, Book> {
     List<Book> getBooksByAuthor(Long id);
 
     List<Book> getBooksByPublisher(String name);
-
 }

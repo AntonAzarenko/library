@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface AuthorService extends BaseService<Long, Author>{
 
-    List<Author> getAllAuthors();
+    List<Author> getAll();
 
-    List<Author> getAuthorByName(String name);
+    List<Author> getByName(String name);
 }

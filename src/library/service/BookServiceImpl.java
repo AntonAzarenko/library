@@ -49,7 +49,7 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public List<Book> getBooksByPublisher(String name) {
+    public List<Book> getBooksByPublisher(final String name) {
 	return dao.findBooksByPublisher(name);
     }
 }
