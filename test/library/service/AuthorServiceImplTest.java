@@ -12,10 +12,6 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 public class AuthorServiceImplTest {
 
     @Test
-    public void setAuthorDao() {
-    }
-
-    @Test
     public void getById() {
     }
 

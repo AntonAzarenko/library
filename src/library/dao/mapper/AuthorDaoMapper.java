@@ -39,4 +39,8 @@ public class AuthorDaoMapper extends SqlSessionDaoSupport implements AuthorDao {
         return getSqlSession().selectList("library.dao.AuthorDao.findByName");
     }
 
+    @Override
+    public List<Author> reedAll() {
+        return null;
+    }
 }
