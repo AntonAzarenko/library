@@ -76,7 +76,7 @@ public class BookController {
                        @RequestParam("name_publisher") final String publisherName) {
 
      //   srv.save(new Book(id, title,, publisherName, discription));
-        return "index";
+        return "redirect:index";
     }
 
     /**
@@ -101,7 +101,7 @@ public class BookController {
     @PostMapping(value = "remove.html")
     public String delete(@RequestParam("id") final Long id) {
         srv.delete(id);
-        return "index";
+        return "redirect:index.html";
     }
 
     /**
@@ -114,6 +114,6 @@ public class BookController {
     @GetMapping(value = "edit.html")
     public String edit(@RequestParam("id") final Long id, final Model model) {
         model.addAttribute("book", srv.getById(id));
-        return "redirect:editbook";
+        return "editbook";
     }
 }

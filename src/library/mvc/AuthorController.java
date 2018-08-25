@@ -40,7 +40,7 @@ public class AuthorController {
     @GetMapping(value = "editauthors.html")
     public String edit(final Model model, @RequestParam("id") final  Long id){
         model.addAttribute("book", service.getById(id));
-        return "redirect:editAuthors";
+        return "editAuthors";
     }
 
     /**
@@ -92,7 +92,7 @@ public class AuthorController {
     public String save(@RequestParam(required = false) @PathVariable("id") final Long id,
                        @RequestParam("name") final String name) {
         service.save(new Author(id, name));
-        return "allauthors";
+        return "redirect:allauthors";
     }
 }
 
