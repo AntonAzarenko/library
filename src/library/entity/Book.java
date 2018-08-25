@@ -8,7 +8,7 @@ public class Book extends Entity {
 
     private String title;
 
-    private Author author;
+    private List<Author> author;
 
     private Publisher publisher;
 
@@ -17,12 +17,13 @@ public class Book extends Entity {
     public Book() {
     }
 
-    public Book(Long id, String title, List<String> authorName, String publisherName, String discription) {
-	super();
-    }
+    public Book(Long id, String title, List<Author> author, Publisher publisher, String discription) {
+	id = super.getId();
+	this.title = title;
+	this.author = author;
+	this.publisher = publisher;
+	this.description = discription;
 
-    public Book(String title, List<String> authorName, String publisherName, String discription) {
-	super();
     }
 
     public String getTitle() {
@@ -33,11 +34,11 @@ public class Book extends Entity {
 	this.title = title;
     }
 
-    public Author getAuthor() {
+    public List<Author> getAuthor() {
 	return author;
     }
 
-    public void setAuthor(final Author author) {
+    public void setAuthor(List<Author> author) {
 	this.author = author;
     }
 

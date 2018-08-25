@@ -15,10 +15,11 @@ public class Application {
     public static void main(final String[] args) {
 
 	final ApplicationContext ctx = new ClassPathXmlApplicationContext("context.xml");
-        final BookService srv = ctx.getBean(BookService.class);
+	final BookService srv = ctx.getBean(BookService.class);
 
-        final Book book = srv.getBooks(1L);
-        log.info("book:{}", book.getId());
+	final Book book = srv.getBooks(1L);
+	log.info("book:{}", book.getId());
 
-        srv.getBooks("zzz").forEach(b -> log.info("id:{}", b.getId()));
+	srv.getBooks("zzz").forEach(b -> log.info("id:{}", b.getId()));
+    }
 }
