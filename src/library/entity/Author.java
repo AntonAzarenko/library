@@ -6,6 +6,10 @@ public class Author extends Entity {
 
     private String name;
 
+    public Author(Long id, String name) {
+        super();
+    }
+
     public String getName() {
         return name;
     }
