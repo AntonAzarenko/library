@@ -16,7 +16,7 @@ public class Application {
         final ApplicationContext ctx = new ClassPathXmlApplicationContext("context.xml");
         final BookService srv = ctx.getBean(BookService.class);
 
-        final Book book = srv.getBook(1L);
+        final Book book = srv.getBooks(1L);
         log.info("book:{}", book.getId());
 
         srv.getBooks("zzz").forEach(b -> log.info("id:{}", b.getId()));

@@ -11,32 +11,37 @@ public class AuthorDaoMapper extends SqlSessionDaoSupport implements AuthorDao {
 
     @Override
     public void create(final Author o) {
-        getSqlSession().insert("library.dao.AuthorDao.insert");
+	getSqlSession().insert("library.dao.AuthorDao.insert");
     }
 
     @Override
     public Author read(final Long id) {
-        return getSqlSession().selectOne("library.dao.AuthorDao.read");
+	return getSqlSession().selectOne("library.dao.AuthorDao.read");
     }
 
     @Override
     public void update(final Author o) {
-        getSqlSession().update("library.dao.AuthorDao.update");
+	getSqlSession().update("library.dao.AuthorDao.update");
     }
 
     @Override
     public void delete(final Long id) {
-        getSqlSession().delete("library.dao.AuthorDao.delete");
+	getSqlSession().delete("library.dao.AuthorDao.delete");
     }
 
     @Override
     public List<Author> findAll() {
-        return getSqlSession().selectList("library.dao.AuthorDao.findAll");
+	return getSqlSession().selectList("library.dao.AuthorDao.findAll");
     }
 
     @Override
     public List<Author> findByName(final String name) {
-        return getSqlSession().selectList("library.dao.AuthorDao.findByName");
+	return getSqlSession().selectList("library.dao.AuthorDao.findByName");
+    }
+
+    @Override
+    public List<Author> readAll() {
+	return null;
     }
 
 }

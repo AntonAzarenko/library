@@ -14,6 +14,9 @@ public class Book extends Entity {
 
     private String description;
     
+    public Book() {
+    }
+    
     public Book(Long id, String title, List<String> authorName, String publisherName, String discription) {
         super();
     }

@@ -7,8 +7,8 @@ public interface CrudDao<ID, T> extends Dao<T> {
 
     T read(ID id);
 
-    List<T> reedAll();
-    
+    List<T> readAll();
+
     void update(T o);
 
     void delete(ID id);
