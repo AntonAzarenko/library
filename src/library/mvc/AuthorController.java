@@ -47,6 +47,7 @@ public class AuthorController {
 
     /**
      * This methos remove author by Id and redirect to allauthos.jsp
+     *
      * @param id
      * @return
      */
@@ -84,6 +85,7 @@ public class AuthorController {
 
     /**
      * This method saves authors  and redirect on allAuthors.jsp
+     *
      * @param id
      * @param name
      * @return
