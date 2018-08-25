@@ -2,9 +2,11 @@ package library.service;
 
 import library.dao.AuthorDao;
 import library.entity.Author;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class AuthorServiceImpl implements AuthorService {
 
     private AuthorDao authorDao;
@@ -24,17 +26,17 @@ public class AuthorServiceImpl implements AuthorService {
     }
 
     @Override
+    public List<Author> getByName(String name) {
+        return authorDao.findByName(name);
+    }
+
+    @Override
     public void save(Author author) {
         if (author.getId() != null) {
             authorDao.create(author);
         } else {
             authorDao.update(author);
         }
-    }
-
-    @Override
-    public List<Author> getAuthorByName(String name) {
-        return authorDao.findByName(name);
     }
 
     @Override
