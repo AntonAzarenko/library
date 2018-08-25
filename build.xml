@@ -9,7 +9,7 @@
 
     <property name="HOST" value="${env.COMPUTERNAME}" />
 
-    <property file="build_${HOST}.properties" />
+    <!--property file="build_${HOST}.properties" /-->
 
     <property file="build.properties" />
 
