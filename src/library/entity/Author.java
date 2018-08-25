@@ -6,8 +6,17 @@ public class Author extends Entity {
 
     private String name;
 
+    public Author(){
+    }
+
     public Author(Long id, String name) {
-        super();
+        super(id);
+        this.name = name;
+    }
+
+    public Author(Author author) {
+        super(author.getId());
+        this.name = author.name;
     }
 
     public String getName() {

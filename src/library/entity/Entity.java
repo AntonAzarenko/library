@@ -8,6 +8,13 @@ public class Entity implements Serializable {
 
     private Long id;
 
+    public Entity() {
+    }
+
+    public Entity(Long id) {
+        this.id = id;
+    }
+
     public Long getId() {
         return id;
     }
