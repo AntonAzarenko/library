@@ -29,7 +29,7 @@ public class AuthorController {
     @GetMapping(value = "authors.html")
     public String getAll(final Model model) {
         model.addAttribute("autors", service.getAll());
-        return "allAuthors";
+        return "allauthors";
     }
 
     /**
