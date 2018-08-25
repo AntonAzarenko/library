@@ -5,7 +5,7 @@
 <body>
 
     <c:choose>
-        <c:when test="${not empty autors}"> // autors? may be: authors
+        <c:when test="${not empty autors}"> 
             <h1>This is all selected authors</h1>
                 <table>
                 <c:forEach items="${autors}" var="author" varStatus="status">
