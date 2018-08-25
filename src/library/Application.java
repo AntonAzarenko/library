@@ -13,12 +13,13 @@ public class Application {
     private static Logger log = LoggerFactory.getLogger(Application.class);
 
     public static void main(final String[] args) {
-//        final ApplicationContext ctx = new ClassPathXmlApplicationContext("context.xml");
-//        final BookService srv = ctx.getBean(BookService.class);
-//
-//        final Book book = srv.getBook(1L);
-//        log.info("book:{}", book.getId());
-//
-//        srv.getBooks("zzz").forEach(b -> log.info("id:{}", b.getId()));
+
+	final ApplicationContext ctx = new ClassPathXmlApplicationContext("context.xml");
+	final BookService srv = ctx.getBean(BookService.class);
+
+	final Book book = srv.getById(1L);
+	log.info("book:{}", book.getId());
+
+	srv.getBooks().forEach(b -> log.info("id:{}", b.getId()));
     }
 }

@@ -29,14 +29,15 @@ public class AuthorDaoMapper extends SqlSessionDaoSupport implements AuthorDao {
         getSqlSession().delete("library.dao.AuthorDao.delete");
     }
 
+    @Override
     public List<Author> findByName(final String name) {
-	return getSqlSession().selectList("library.dao.AuthorDao.findByName");
+        return getSqlSession().selectList("library.dao.AuthorDao.findByName");
     }
 
     @Override
     public List<Author> readAll() {
-	 return getSqlSession().selectList("library.dao.AuthorDao.findAll");
+        return getSqlSession().selectList("library.dao.AuthorDao.findAll");
     }
 }
 
-}
+

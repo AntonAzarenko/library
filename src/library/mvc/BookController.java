@@ -1,5 +1,6 @@
 package library.mvc;
 
+import library.entity.Author;
 import library.entity.Book;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -73,7 +74,8 @@ public class BookController {
                        @RequestParam("discription") final String discription,
                        @RequestParam("name_author") final List<String> authorName,
                        @RequestParam("name_publisher") final String publisherName) {
-        srv.save(new Book(id, title, authorName, publisherName, discription));
+
+     //   srv.save(new Book(id, title,, publisherName, discription));
         return "index";
     }
 
