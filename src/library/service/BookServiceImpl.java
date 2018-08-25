@@ -37,10 +37,7 @@ public class BookServiceImpl implements BookService {
         }
     }
 
-    @Override
-    public List<Book> getBooks(final String str) {
-        return dao.find(str);
-    }
+
 
     @Override
     public List<Book> getBooksByAuthor(final Long id) {
