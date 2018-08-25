@@ -8,7 +8,7 @@ public interface PublisherService extends BaseService<Long, Publisher> {
 	
 	List<Publisher> getByName(String Name);
 	
-	List<Publisher> getByAuthor(String authorName);
+	List<Publisher> getByAuthorId(Long id);
 	
 	List<Publisher> getAll();
 }

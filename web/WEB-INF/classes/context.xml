@@ -58,6 +58,12 @@
     <bean id="bookService" class="library.service.BookServiceImpl">
         <property name="bookDao" ref="bookDao"/>
     </bean>
+    
+     <bean id="publisherDao" class="library.dao.mapper.PublisherDaoMapper" parent="mapper"/>
+
+    <bean id="publisherService" class="library.service.PublisherServiceImpl">
+        <property name="publisherDao" ref="publisherDao"/>
+    </bean>
 
     <bean id="authorDao" class="library.dao.mapper.AuthorDaoMapper" parent="mapper"/>
 
