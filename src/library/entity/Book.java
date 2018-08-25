@@ -13,30 +13,13 @@ public class Book extends Entity {
     private Publisher publisher;
 
     private String description;
-    
-    public Book(Long id, String title, List<String> authorName, String publisherName, String description) {
-        super();
-    }
-    
-    public Book(Long id, String title, Author author, Publisher publisher, String description) {
-        super(id);
-        this.setTitle(title);
-        this.setAuthor(author);
-        this.setPublisher(publisher);
-        this.setDescription(description)
+
+    public Book() {
     }
 
     public Book(String title, List<String> authorName, String publisherName, String discription) {
         super();
     }
-    
-    // This is the default constructors
-    public Book(Long id) {
-        super(id);
-    }   
-   
-    public Book() {
-    }    
 
     public String getTitle() {
         return title;

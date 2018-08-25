@@ -10,27 +10,84 @@
 			<id column="author_id" property="id" />
 			<result column="author_name" property="name" />
 		</association>
+		<association property="publisher" javaType="Publisher">
+			<id column="publishers_id" property="id" />
+			<result column="publishers_name" property="name" />
+		</association>
+	</resultMap>
+
+	<resultMap type="Book" id="BookId">
+		<id column="id" property="id" />
+		<result column="title" property="title" />
 	</resultMap>
 
 	<select id="find" resultMap="bookmap">
 		SELECT
 		b.id AS book_id,
-		b.title AS book_title,
+		b.title AS
+		book_title,
 		a.id AS author_id,
 		a.name AS author_name
 		FROM books b
-		JOIN authors a ON a.id = b.author_id
+		JOIN
+		authors a ON a.id = b.author_id
 	</select>
 
-	<select id="findByAuthorId" parameterType="long" resultMap="bookmap">
+	<select id="findByAuthorId" parameterType="long"
+		resultMap="bookmap">
 		SELECT
 		b.id AS book_id,
 		b.title AS book_title,
-		a.id AS author_id,
+		a.id AS
+		author_id,
 		a.name AS author_name
 		FROM books b
-		JOIN authors a ON a.id = b.author_id 
+		JOIN authors a ON a.id =
+		b.author_id
 		WHERE
 		b.author_id = #{id}
 	</select>
+
+	<select id="findBooksByPublisher" parameterType="string"
+		resultMap="bookmap">
+		SELECT
+		b.id AS book_id,
+		b.title AS book_title,
+		p.id AS
+		publisher_id,
+		p.name AS publishers_name
+		FROM books b
+		JOIN publishers p ON
+		p.id = b.publisher_id
+		WHERE
+		p.name =#{name}
+	</select>
+
+	<select id="getBooks" resultMap="bookmap">
+		SELECT b.title, a.name, p.name
+		FROM authors_books AS ab
+		INNER JOIN books AS b on ab.book_id = b.id
+		INNER JOIN authors AS a on ab.author_id=a.id
+		INNER JOIN publishers AS p
+		on p.id = b.publisher_id;
+	</select>
+
+
+	<insert id="create" parameterType="Book" useGeneratedKeys="true">
+		INSERT INTO books (title) VALUES (#{title})
+	</insert>
+
+	<select id="read" resultMap="BookId" parameterType="long">
+		SELECT * FROM
+		books WHERE id = #{id}
+	</select>
+
+	<update id="update" parameterType="Book">
+		UPDATE books SET title = #{Book.title}, publisher_id =
+		#{Book.publisher.id}, author = #{Book.author} <!-- НЕ УВЕРЕН ЧТО СРАБОТАЕТ -->
+	</update>
+
+	<delete id="delete" parameterType="long">
+		DELETE FROM books WHERE id = #{id}
+	</delete>
 </mapper>

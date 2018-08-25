@@ -38,18 +38,23 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
+    public List<Book> getBooks(final String str) {
+        return dao.find(str);
+    }
+
+    @Override
     public List<Book> getBooksByAuthor(final Long id) {
         return dao.findByAuthorId(id);
     }
 
     @Override
     public void delete(Long id) {
-        // TODO Auto-generated method stub
-        
+	// TODO Auto-generated method stub
+
     }
 
     @Override
-    public List<Book> getBooksByPublisher(String publisher) {
-        return null;
+    public List<Book> getBooksByPublisher(final String name) {
+	return dao.findBooksByPublisher(name);
     }
 }

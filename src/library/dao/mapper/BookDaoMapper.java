@@ -37,7 +37,13 @@ public class BookDaoMapper extends SqlSessionDaoSupport implements BookDao {
     }
 
     @Override
-    public List<Book> reedAll() {
-        return null;
+    public List<Book> readAll() {
+	return getSqlSession().selectList("library.dao.BookDao.getBooks");
     }
+
+    @Override
+    public List<Book> findBooksByPublisher(final String name) {
+	return getSqlSession().selectList("library.dao.BookDao.findBooksByPublisherId", name);
+
+}
 }
