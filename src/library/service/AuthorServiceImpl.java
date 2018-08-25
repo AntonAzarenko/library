@@ -2,11 +2,15 @@ package library.service;
 
 import library.dao.AuthorDao;
 import library.entity.Author;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class AuthorServiceImpl implements AuthorService {
 
+    @Autowired
     private AuthorDao authorDao;
 
     public void setAuthorDao(AuthorDao authorDao) {
@@ -19,8 +23,8 @@ public class AuthorServiceImpl implements AuthorService {
     }
 
     @Override
-    public List<Author> getAllAuthors() {
-        return authorDao.findAll();
+    public List<Author> getAll() {
+        return authorDao.reedAll();
     }
 
     @Override
@@ -33,7 +37,7 @@ public class AuthorServiceImpl implements AuthorService {
     }
 
     @Override
-    public List<Author> getAuthorByName(String name) {
+    public List<Author> getByName(String name) {
         return authorDao.findByName(name);
     }
 

@@ -28,7 +28,7 @@ public class AuthorController {
      */
     @GetMapping(value = "authors.html")
     public String getAll(final Model model) {
-        model.addAttribute("autors", service.getAllAuthors());
+        model.addAttribute("autors", service.getAll());
         return "allAuthors";
     }
 
@@ -66,7 +66,7 @@ public class AuthorController {
      */
     @GetMapping(value = "getAuthorByName.html")
     public String getByName(final Model model, @RequestParam("name") final String name) {
-        model.addAttribute("author", service.getAuthorByName(name));
+        model.addAttribute("author", service.getByName(name));
         return "author";
     }
 
