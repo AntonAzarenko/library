@@ -81,8 +81,20 @@
             <column name="name" value="Maxim Gorky" />
         </insert>
 
+        <insert tableName="authors">
+            <column name="name" value="Ilya Ilf" />
+        </insert>
+
+        <insert tableName="authors">
+            <column name="name" value="Eugeny Petrov" />
+        </insert>
+
         <insert tableName="publishers">
             <column name="name" value="Open Book"/>
+        </insert>
+
+        <insert tableName="publishers">
+            <column name="name" value="Azbuka"/>
         </insert>
 
         <insert tableName="books">
@@ -95,6 +107,11 @@
             <column name="publisher_id" value="1"/>
         </insert>
 
+        <insert tableName="books">
+            <column name="title" value="The Twelve Chairs"/>
+            <column name="publisher_id" value="1"/>
+        </insert>
+
         <insert tableName="authors_books">
             <column name="author_id" value="1"/>
             <column name="book_id" value="1"/>
@@ -103,6 +120,16 @@
         <insert tableName="authors_books">
             <column name="author_id" value="1"/>
             <column name="book_id" value="2"/>
+        </insert>
+
+        <insert tableName="authors_books">
+            <column name="author_id" value="2"/>
+            <column name="book_id" value="3"/>
+        </insert>
+
+        <insert tableName="authors_books">
+            <column name="author_id" value="3"/>
+            <column name="book_id" value="3"/>
         </insert>
     </changeSet>
 
