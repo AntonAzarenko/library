@@ -10,7 +10,8 @@
 	</resultMap>
 
 	<select id="find" resultMap="bookmap" parameterType="string">
-		SELECT * FROM books WHERE title = #{title}
+		SELECT *
+		FROM books WHERE title = #{title}
 	</select>
 
 	<select id="findByAuthorId" parameterType="long"
@@ -22,7 +23,8 @@
 		author_id,
 		a.name AS author_name
 		FROM books b, authors a
-		INNER JOIN authors_books AS ab ON ab.author_id =
+		INNER JOIN
+		authors_books AS ab ON ab.author_id =
 		a.id
 		WHERE
 		a.id = #{id}
@@ -43,18 +45,20 @@
 		p.name = #{name}
 	</select>
 
-	<select id="getBooks" resultMap="bookmap">
-		SELECT b.id, b.name FROM books b
+	<select id="findAll" resultMap="bookmap">
+		SELECT b.id, b.title FROM books b
 	</select>
 
 
 	<insert id="create" parameterType="Book" useGeneratedKeys="true"
 		keyProperty="id">
-		INSERT INTO books (title, publisher_id) VALUES (#{Book.title}, #{Book.publisher.id})
+		INSERT INTO books (title, publisher_id) VALUES
+		(#{Book.title}, #{Book.publisher.id})
 	</insert>
 
 	<select id="read" resultMap="bookmap" parameterType="long">
-		SELECT * FROM
+		SELECT *
+		FROM
 		books WHERE id = #{id}
 	</select>
 

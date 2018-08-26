@@ -31,22 +31,22 @@ public class BookDaoMapper extends SqlSessionDaoSupport implements BookDao {
 
     @Override
     public List<Book> find(final String str) {
-        return getSqlSession().selectList("library.dao.BookDao.find", str);
+	return getSqlSession().selectList("library.dao.BookDao.find", str);
     }
 
     @Override
     public List<Book> findByAuthorId(final Long id) {
-        return getSqlSession().selectList("library.dao.BookDao.findByAuthorId", id);
+	return getSqlSession().selectList("library.dao.BookDao.findByAuthorId", id);
     }
 
     @Override
     public List<Book> readAll() {
-	return getSqlSession().selectList("library.dao.BookDao.getBooks");
+	return getSqlSession().selectList("library.dao.BookDao.findAll");
     }
 
     @Override
     public List<Book> findBooksByPublisher(final String name) {
 	return getSqlSession().selectList("library.dao.BookDao.findBooksByPublisherId", name);
 
-}
+    }
 }
