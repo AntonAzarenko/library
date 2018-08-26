@@ -73,8 +73,9 @@
 	</select>
 
 
-	<insert id="create" parameterType="Book" useGeneratedKeys="true">
-		INSERT INTO books (title) VALUES (#{title})
+	<insert id="create" parameterType="Book" useGeneratedKeys="true"
+		keyProperty="id">
+		INSERT INTO books (title, publisher_id) VALUES (#{Book.title}, #{Book.publisher.id})
 	</insert>
 
 	<select id="read" resultMap="BookId" parameterType="long">
@@ -88,6 +89,7 @@
 	</update>
 
 	<delete id="delete" parameterType="long">
-		DELETE FROM books WHERE id = #{id}
+		DELETE FROM books WHERE id =
+		#{id}
 	</delete>
 </mapper>

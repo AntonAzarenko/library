@@ -11,19 +11,22 @@ public class BookDaoMapper extends SqlSessionDaoSupport implements BookDao {
 
     @Override
     public void create(final Book o) {
+	getSqlSession().insert("library.dao.BookDao.create", o);
     }
 
     @Override
     public Book read(final Long id) {
-        return null;
+	return getSqlSession().selectOne("library.dao.BookDao.read", id);
     }
 
     @Override
     public void update(final Book o) {
+	getSqlSession().update("library.dao.BookDao.update", o);
     }
 
     @Override
     public void delete(final Long id) {
+	getSqlSession().delete("library.dao.BookDao.delete", id);
     }
 
     @Override
