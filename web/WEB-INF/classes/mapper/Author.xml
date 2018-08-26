@@ -8,7 +8,7 @@
         <result column="name" property="name"/>
     </resultMap>
 
-    <select id="read" resultType="Author" parameterType="Long">
+    <select id="read" resultMap="authorMap" parameterType="long">
         SELECT a.id, a.name FROM authors a WHERE id = #{id}
     </select>
 
@@ -25,7 +25,7 @@
     </update>
 
     <delete id="delete"
-            parameterType="Long">
+            parameterType="long">
         delete from authors where id = #{id}
     </delete>
 
@@ -35,7 +35,7 @@
 
     <select id="findByName"
             resultMap="authorMap"
-            parameterType="String">
+            parameterType="java.lang.String">
         SELECT a.id, a.name FROM authors a WHERE name LIKE (#{name})
     </select>
 </mapper>
