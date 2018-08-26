@@ -6,18 +6,20 @@ public class Publisher extends Entity {
 
     private String name;
 
+    public Publisher() {
+    }
+
     public Publisher(Long id, String name) {
-        super(id);
-        this.name = name;
+	super(id);
+	this.name = name;
     }
 
     public String getName() {
-        return name;
+	return name;
     }
 
     public void setName(String name) {
-        this.name = name;
+	this.name = name;
     }
 
-   
 }

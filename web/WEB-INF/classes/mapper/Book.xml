@@ -21,16 +21,8 @@
 		<result column="title" property="title" />
 	</resultMap>
 
-	<select id="find" resultMap="bookmap">
-		SELECT
-		b.id AS book_id,
-		b.title AS
-		book_title,
-		a.id AS author_id,
-		a.name AS author_name
-		FROM books b
-		JOIN
-		authors a ON a.id = b.author_id
+	<select id="find" resultMap="bookmap" parameterType="string">
+		SELECT * FROM books WHERE title = #{title}
 	</select>
 
 	<select id="findByAuthorId" parameterType="long"
