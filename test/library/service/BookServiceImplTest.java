@@ -1,6 +1,7 @@
 package library.service;
 
 import library.entity.Book;
+import org.apache.ibatis.javassist.NotFoundException;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +13,11 @@ import java.util.List;
 import static library.AuthorTestData.AUTHOR1_ID;
 import static library.AuthorTestData.AUTHOR1_NAME;
 import static library.BookTestData.*;
-import static org.junit.Assert.*;
+
+/**
+ * @author Anton
+ */
+
 
 @ContextConfiguration({
         "classpath:context.xml"
@@ -50,8 +55,9 @@ public class BookServiceImplTest {
         assertMatch(books, BOOK1);
     }
 
-    @Test
-    public void delete() {
+    @Test()
+    public void deleteNotFound() {
+        service.delete(-1L);
     }
 
     @Test

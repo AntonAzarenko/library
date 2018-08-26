@@ -12,8 +12,11 @@ import static library.AuthorTestData.AUTHOR1;
 import static library.AuthorTestData.AUTHOR2;
 import static library.AuthorTestData.AUTHOR3;
 import static library.PublisherTestData.PUBLISHER_ONE;
-import static library.PublisherTestData.PUBLISHER_TWO;
 import static org.assertj.core.api.Assertions.assertThat;
+
+/**
+ * @author Anton
+ */
 
 public class BookTestData {
     public static Long BOOK_ONE_ID = 1L;

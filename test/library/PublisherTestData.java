@@ -7,6 +7,9 @@ import java.util.Arrays;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+/**
+ * @author Anton
+ */
 public class PublisherTestData {
 
     public static Long PUBLISHER_ONE_ID = 1L;
