@@ -8,7 +8,7 @@ public class Author extends Entity {
 
     private String name;
 
-    public Author(){
+    public Author() {
     }
 
     public Author(Long id, String name) {
@@ -40,5 +40,13 @@ public class Author extends Entity {
     @Override
     public int hashCode() {
         return Objects.hash(name);
+    }
+
+    @Override
+    public String toString() {
+        return "Author{" +
+                "id= " + getId() +
+                ", name='" + name + '\'' +
+                '}';
     }
 }

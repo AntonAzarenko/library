@@ -22,6 +22,9 @@ public class AuthorServiceImplTest {
 
     @Test
     public void getById() {
+        Author author = service.getById(AUTHOR1_ID);
+        assertMatch(author,AUTHOR1);
+
     }
 
     @Test
@@ -36,9 +39,13 @@ public class AuthorServiceImplTest {
 
     @Test
     public void getAuthorByName() {
+        List<Author> authors = service.getByName(AUTHOR1_NAME);
+        assertMatch(authors,AUTHOR1);
     }
 
     @Test
     public void delete() {
+        service.delete(AUTHOR3_ID);
+        assertMatch(service.getAll(),AUTHOR1,AUTHOR2);
     }
 }

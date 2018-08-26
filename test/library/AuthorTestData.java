@@ -12,7 +12,9 @@ public class AuthorTestData {
     public static Long AUTHOR2_ID = 2L;
     public static Long AUTHOR3_ID = 3L;
 
-    public static Author AUTHOR1 = new Author(AUTHOR1_ID, "Maxim Gorky");
+    public static String AUTHOR1_NAME = "Maxim Gorky";
+
+    public static Author AUTHOR1 = new Author(AUTHOR1_ID, AUTHOR1_NAME);
     public static Author AUTHOR2 = new Author(AUTHOR2_ID, "Ilya Ilf");
     public static Author AUTHOR3 = new Author(AUTHOR3_ID, "Eugeny Petrov");
 
