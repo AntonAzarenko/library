@@ -4,6 +4,12 @@ import java.util.List;
 
 public class Book extends Entity {
 
+    @Override
+    public String toString() {
+	return "Book [title=" + title + ", author=" + author + ", publisher=" + publisher + ", description="
+		+ description + "]";
+    }
+
     private static final long serialVersionUID = 1L;
 
     private String title;
