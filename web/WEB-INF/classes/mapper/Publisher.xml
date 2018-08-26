@@ -39,7 +39,7 @@
     </select>
     
     <select id="findByAuthorId" resultMap="publishermap" parameterType="long">
-        SELECT p.id, p.name  from authors_books as ab
+        SELECT DISTINCT p.id, p.name  from authors_books as ab
         inner join books as b on ab.book_id = b.id
         inner join authors as a on ab.author_id=a.id
         inner join publishers as p on p.id = b.publisher_id

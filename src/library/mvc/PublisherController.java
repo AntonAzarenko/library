@@ -36,8 +36,8 @@ public class PublisherController {
      */
     @GetMapping(value = "publisherByName.html")
     public String getByName(@RequestParam("name") final String name, final Model model) {
-        model.addAttribute("publisher", service.getByName(name));
-        return "publisher";  //publisher.jsp
+        model.addAttribute("publishers", service.getByName(name));
+        return "publishers";  //publisher.jsp
     }
 
     /**
@@ -60,8 +60,8 @@ public class PublisherController {
      */
     @GetMapping(value = "publisherByAuthorId.html")
     public String getByAAuthorId(@RequestParam("id") final Long id, final Model model) {
-        model.addAttribute("publisher", service.getByAuthorId(id));
-        return "publisher";  //publisher.jsp
+        model.addAttribute("publishers", service.getByAuthorId(id));
+        return "publishers";  //publishers.jsp
     }
 
     /**
