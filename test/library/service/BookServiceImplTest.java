@@ -52,7 +52,7 @@ public class BookServiceImplTest {
     @Test
     public void getBooksByAuthor() {
         List<Book> books = service.getBooksByAuthor(AUTHOR1_ID);
-        assertMatch(books, BOOK1);
+        assertMatch(books, BOOK1, BOOK2);
     }
 
     @Test()
@@ -62,7 +62,7 @@ public class BookServiceImplTest {
 
     @Test
     public void getBooksByPublisher() {
-        List<Book> books = service.getBooksByPublisher(AUTHOR1_NAME);
+        List<Book> books = service.getBooksByPublisher("Open Book");
         assertMatch(books, BOOK1);
     }
 }

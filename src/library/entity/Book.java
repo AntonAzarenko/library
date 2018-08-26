@@ -25,6 +25,7 @@ public class Book extends Entity {
 
     public Book(String title, List<Author> author, Publisher publisher, String description) {
         super();
+        this.title = title;
         this.author = author;
         this.publisher=publisher;
         this.description = description;
@@ -32,6 +33,7 @@ public class Book extends Entity {
     
     public Book(Long id,String title, List<Author> author, Publisher publisher, String description) {
         super(id);
+        this.title = title;
         this.author = author;
         this.publisher=publisher;
         this.description = description;
