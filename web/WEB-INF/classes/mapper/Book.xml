@@ -6,19 +6,7 @@
 	<resultMap type="Book" id="bookmap">
 		<id column="book_id" property="id" />
 		<result column="book_title" property="title" />
-		<association property="author" javaType="Author">
-			<id column="author_id" property="id" />
-			<result column="author_name" property="name" />
-		</association>
-		<association property="publisher" javaType="Publisher">
-			<id column="publishers_id" property="id" />
-			<result column="publishers_name" property="name" />
-		</association>
-	</resultMap>
 
-	<resultMap type="Book" id="BookId">
-		<id column="id" property="id" />
-		<result column="title" property="title" />
 	</resultMap>
 
 	<select id="find" resultMap="bookmap" parameterType="string">
@@ -33,11 +21,11 @@
 		a.id AS
 		author_id,
 		a.name AS author_name
-		FROM books b
-		JOIN authors a ON a.id =
-		b.author_id
+		FROM books b, authors a
+		INNER JOIN authors_books AS ab ON ab.author_id =
+		a.id
 		WHERE
-		b.author_id = #{id}
+		a.id = #{id}
 	</select>
 
 	<select id="findBooksByPublisher" parameterType="string"
@@ -52,16 +40,11 @@
 		JOIN publishers p ON
 		p.id = b.publisher_id
 		WHERE
-		p.name =#{name}
+		p.name = #{name}
 	</select>
 
 	<select id="getBooks" resultMap="bookmap">
-		SELECT b.title, a.name, p.name
-		FROM authors_books AS ab
-		INNER JOIN books AS b on ab.book_id = b.id
-		INNER JOIN authors AS a on ab.author_id=a.id
-		INNER JOIN publishers AS p
-		on p.id = b.publisher_id;
+		SELECT b.id, b.name FROM books b
 	</select>
 
 
@@ -70,7 +53,7 @@
 		INSERT INTO books (title, publisher_id) VALUES (#{Book.title}, #{Book.publisher.id})
 	</insert>
 
-	<select id="read" resultMap="BookId" parameterType="long">
+	<select id="read" resultMap="bookmap" parameterType="long">
 		SELECT * FROM
 		books WHERE id = #{id}
 	</select>
