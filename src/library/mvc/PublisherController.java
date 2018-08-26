@@ -70,7 +70,7 @@ public class PublisherController {
      * @param name
      * @return
      */
-    @PostMapping(value = "savePublisher.html")
+    @PostMapping (value = "savePublisher.html")
     public String save(@RequestParam(required = false) @PathVariable("id") final Long id,
                        @RequestParam("name") final String name) {
         service.save(new Publisher(id, name));

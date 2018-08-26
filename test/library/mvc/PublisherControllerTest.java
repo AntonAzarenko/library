@@ -56,7 +56,7 @@ public class PublisherControllerTest extends WebTest {
                 .andExpect(view().name("publisher"))
                 .andExpect(forwardedUrl("/WEB-INF/jsp/publisher.jsp"))
                 .andExpect(model().attribute("publisher", hasProperty("id", is(1L))))
-                .andExpect(model().attribute("publisher",hasProperty("name", is(PUBLISHER_ONE.getName()))));
+                .andExpect(model().attribute("publisher", hasProperty("name", is(PUBLISHER_ONE.getName()))));
 
     }
 
@@ -65,7 +65,7 @@ public class PublisherControllerTest extends WebTest {
     }
 
     @Test
-    public void save() {
+    public void save() throws Exception {
     }
 
     @Test
