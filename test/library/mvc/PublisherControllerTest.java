@@ -4,6 +4,7 @@ import org.junit.Test;
 
 
 import static library.PublisherTestData.PUBLISHER_ONE;
+import static library.PublisherTestData.PUBLISHER_TWO;
 import static org.hamcrest.Matchers.*;
 import static org.hamcrest.Matchers.hasProperty;
 import static org.hamcrest.Matchers.is;
@@ -48,7 +49,15 @@ public class PublisherControllerTest extends WebTest {
     }
 
     @Test
-    public void getById() {
+    public void getById() throws Exception {
+        mockMvc.perform(get("/publisherById.html" + "?id=" + PUBLISHER_ONE.getId()))
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(view().name("publisher"))
+                .andExpect(forwardedUrl("/WEB-INF/jsp/publisher.jsp"))
+                .andExpect(model().attribute("publisher", hasProperty("id", is(1L))))
+                .andExpect(model().attribute("publisher",hasProperty("name", is(PUBLISHER_ONE.getName()))));
+
     }
 
     @Test
