@@ -1,0 +1,48 @@
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="library.dao.PublisherDao">
+    
+    <resultMap type="Publisher" id="publishermap">
+        <id column="id" property="id"/>
+        <result column="name" property="name"/>
+    </resultMap>
+    
+    <insert id="insert"
+            parameterType="Publisher"
+            useGeneratedKeys="true">
+        INSERT INTO publishers (name) VALUES (#{name})
+    </insert>
+
+    <update id="update"
+            parameterType="Publisher">
+        UPDATE INTO publishers name=#{name} WHERE id = #{id}
+    </update>
+
+    <delete id="delete"
+            parameterType="Long">
+        delete from publishers where id = #{id}
+    </delete>
+    
+    <select id="readAll" resultMap="publishermap">
+        SELECT p.id, p.name FROM publishers p
+    </select>
+    
+    <select id="findByName"
+            resultMap="publishermap"
+            parameterType="String">
+        SELECT p.id, p.name FROM publishers p WHERE p.name LIKE (#{name})
+    </select>
+    
+    <select id="read" resultMap="publishermap" parameterType="long">
+        SELECT p.id, p.name FROM publishers p WHERE p.id = #{id}
+    </select>
+    
+    <select id="findByAuthorId" resultMap="publishermap" parameterType="long">
+        SELECT p.id, p.name  from authors_books as ab
+        inner join books as b on ab.book_id = b.id
+        inner join authors as a on ab.author_id=a.id
+        inner join publishers as p on p.id = b.publisher_id
+        where a.id=#{id}
+    </select>
+</mapper>

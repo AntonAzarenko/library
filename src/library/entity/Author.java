@@ -32,9 +32,9 @@ public class Author extends Entity {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Author)) return false;
+        if (o == null || getClass() != o.getClass()) return false;
         Author author = (Author) o;
-        return Objects.equals(name, author.name)&&Objects.equals(getId(), author.getId());
+        return Objects.equals(name, author.name) && Objects.equals(getId(), author.getId());
     }
 
     @Override
