@@ -4,3 +4,6 @@
 .build
 config.properties
 .project
+/bin/
+.settings
+.classpath
