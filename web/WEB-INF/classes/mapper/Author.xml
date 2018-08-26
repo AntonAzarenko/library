@@ -3,19 +3,20 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="library.dao.AuthorDao">
 
-    <resultMap id="authorMap" type="Author">
+    <resultMap type="Author" id="authormap">
         <id column="id" property="id"/>
         <result column="name" property="name"/>
     </resultMap>
 
-    <select id="read" resultMap="authorMap" parameterType="long">
-        SELECT a.id, a.name FROM authors a WHERE id = #{id}
+    <select id="read" resultMap="authormap" parameterType="long">
+        SELECT a.id, a.name FROM authors a WHERE a.id = #{id}
     </select>
 
     <insert id="insert"
             parameterType="Author"
             useGeneratedKeys="true"
-            keyProperty="id">
+            keyProperty="Author.id"
+            keyColumn="id">
         INSERT INTO authors (name) VALUES (#{name})
     </insert>
 
@@ -29,12 +30,12 @@
         delete from authors where id = #{id}
     </delete>
 
-    <select id="findAll" resultMap="authorMap">
+    <select id="findAll" resultMap="authormap">
         SELECT a.id, a.name FROM authors a
     </select>
 
     <select id="findByName"
-            resultMap="authorMap"
+            resultMap="authormap"
             parameterType="java.lang.String">
         SELECT a.id, a.name FROM authors a WHERE name LIKE (#{name})
     </select>

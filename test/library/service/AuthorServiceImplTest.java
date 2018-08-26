@@ -2,6 +2,7 @@ package library.service;
 
 import library.entity.Author;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
@@ -28,6 +29,12 @@ public class AuthorServiceImplTest {
     }
 
     @Test
+    public void getByNotFoundId() throws Exception {
+        Author author = service.getById(-1L);
+        assertMatch(author,null);
+    }
+
+    @Test
     public void getAllAuthors() {
         List<Author> authors = service.getAll();
         assertMatch(authors,AUTHOR1,AUTHOR2,AUTHOR3);
@@ -35,12 +42,21 @@ public class AuthorServiceImplTest {
 
     @Test
     public void save() {
+        Author author = new Author(null,"Mark Twen");
+        service.save(author);
+        assertMatch(service.getAll(),AUTHOR1,AUTHOR2,AUTHOR3,author);
     }
 
     @Test
     public void getAuthorByName() {
         List<Author> authors = service.getByName(AUTHOR1_NAME);
         assertMatch(authors,AUTHOR1);
+    }
+
+    @Test
+    public void getAuthorByNotFoundName() {
+        List<Author> authors = service.getByName("not found name");
+        assert authors.isEmpty();
     }
 
     @Test
