@@ -9,7 +9,10 @@ import java.util.Arrays;
 import java.util.List;
 
 import static library.AuthorTestData.AUTHOR1;
+import static library.AuthorTestData.AUTHOR2;
+import static library.AuthorTestData.AUTHOR3;
 import static library.PublisherTestData.PUBLISHER_ONE;
+import static library.PublisherTestData.PUBLISHER_TWO;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class BookTestData {
@@ -21,17 +24,24 @@ public class BookTestData {
     public static String BOOK_TITLE_TWO = "The Lower Depths";
     public static String BOOK_TITLE_THREE = "The Twelve Chairs";
 
-    public static List<Author> LIST_AUTHOR = new ArrayList<>();
-    public static Publisher PUBLISHER = new Publisher();
+    public static List<Author> LIST_AUTHOR1 = new ArrayList<>();
+    public static List<Author> LIST_AUTHOR2 = new ArrayList<>();
+    public static List<Author> LIST_AUTHOR3 = new ArrayList<>();
+
+    public static Publisher PUBLISHER1= new Publisher();
 
     {
-       LIST_AUTHOR.add(AUTHOR1);
-       PUBLISHER = PUBLISHER_ONE;
+        LIST_AUTHOR1.add(AUTHOR1);
+        LIST_AUTHOR2.add(AUTHOR2);
+        LIST_AUTHOR3.add(AUTHOR3);
+
+        PUBLISHER1 = PUBLISHER_ONE;
+
     }
 
-    public static Book BOOK1 = new Book(BOOK_ONE_ID, BOOK_TITLE_ONE,LIST_AUTHOR, PUBLISHER,"");
-    //   public static Book BOOK2 = new Book(BOOK_TWO_ID, BOOK_TITLE_TWO);
-    //  public static Book BOOK3 = new Book(BOOK_THREE_ID, BOOK_TITLE_THREE);
+    public static Book BOOK1 = new Book(BOOK_ONE_ID, BOOK_TITLE_ONE, LIST_AUTHOR1, PUBLISHER1, "");
+    public static Book BOOK2 = new Book(BOOK_TWO_ID, BOOK_TITLE_TWO, LIST_AUTHOR2, PUBLISHER1, "");
+    public static Book BOOK3 = new Book(BOOK_THREE_ID, BOOK_TITLE_THREE, LIST_AUTHOR3, PUBLISHER1, "");
 
 
     public static void assertMatch(Book actual, Book expected) {
