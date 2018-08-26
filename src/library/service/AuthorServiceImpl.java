@@ -34,7 +34,7 @@ public class AuthorServiceImpl implements AuthorService {
 
     @Override
     public void save(Author author) {
-        if (author.getId() != null) {
+        if (author.getId() == null) {
             authorDao.create(author);
         } else {
             authorDao.update(author);

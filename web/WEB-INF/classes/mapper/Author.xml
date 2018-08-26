@@ -15,8 +15,7 @@
     <insert id="insert"
             parameterType="Author"
             useGeneratedKeys="true"
-            keyProperty="Author.id"
-            keyColumn="id">
+            keyProperty="id">
         INSERT INTO authors (name) VALUES (#{name})
     </insert>
 

@@ -41,10 +41,18 @@ public class AuthorServiceImplTest {
     }
 
     @Test
-    public void save() {
-        Author author = new Author(null,"Mark Twen");
+    public void update() {
+        Author author = new Author(AUTHOR3);
+        author.setName("BBBBBB");
         service.save(author);
-        assertMatch(service.getAll(),AUTHOR1,AUTHOR2,AUTHOR3,author);
+        assertMatch(service.getAll(), AUTHOR1, AUTHOR2, author);
+    }
+
+    @Test
+    public void create() {
+        Author author = new Author(null, "Mark Twen");
+        service.save(author);
+        assertMatch(service.getAll(), AUTHOR1, AUTHOR2,AUTHOR3, author);
     }
 
     @Test
