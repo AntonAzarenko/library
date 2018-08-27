@@ -13,6 +13,9 @@ import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
 
+/**
+ * @author Anton
+ */
 public class PublisherControllerTest extends WebTest {
 
     @Test

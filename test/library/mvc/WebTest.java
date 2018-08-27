@@ -30,13 +30,6 @@ public class WebTest {
     @Autowired
     private WebApplicationContext webApplicationContext;
 
-
-    AuthorService service;
-
-    public void setService(AuthorService service) {
-        this.service = service;
-    }
-
     @PostConstruct
     void postConctruct() {
         mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).build();

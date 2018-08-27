@@ -9,6 +9,9 @@ import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 import static org.hamcrest.Matchers.*;
 
+/**
+ * @author Anton
+ */
 public class AuthorControllerTest extends WebTest {
 
     @Test
@@ -28,13 +31,6 @@ public class AuthorControllerTest extends WebTest {
                 )));
     }
 
-    @Test
-    public void edit() {
-    }
-
-    @Test
-    public void delete() {
-    }
 
     @Test
     public void getByName() throws Exception {
@@ -65,7 +61,4 @@ public class AuthorControllerTest extends WebTest {
 
     }
 
-    @Test
-    public void save() {
-    }
 }

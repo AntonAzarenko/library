@@ -59,7 +59,7 @@ public class PublisherController {
      * @return
      */
     @GetMapping(value = "publisherByAuthorId.html")
-    public String getByAAuthorId(@RequestParam("id") final Long id, final Model model) {
+    public String getByAuthorId(@RequestParam("id") final Long id, final Model model) {
         model.addAttribute("publishers", service.getByAuthorId(id));
         return "publishers";  //publishers.jsp
     }
