@@ -4,12 +4,6 @@ import java.util.List;
 
 public class Book extends Entity {
 
-    @Override
-    public String toString() {
-	return "Book [title=" + title + ", author=" + author + ", publisher=" + publisher + ", description="
-		+ description + "]";
-    }
-
     private static final long serialVersionUID = 1L;
 
     private String title;
@@ -47,8 +41,6 @@ public class Book extends Entity {
         this.title = title;
     }
 
-   
-
     public List<Author> getAuthor() {
         return author;
     }
@@ -73,4 +65,33 @@ public class Book extends Entity {
         this.description = description;
     }
 
+    @Override
+    public String toString() {
+        return "Book [title=" + title + ", author=" + author + ", publisher=" + publisher + ", description="
+                + description + "]";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Book)) return false;
+
+        Book book = (Book) o;
+
+        if (!getId().equals(book.getId())) return false;
+        if (!getTitle().equals(book.getTitle())) return false;
+        if (!getAuthor().equals(book.getAuthor())) return false;
+        if (!getPublisher().equals(book.getPublisher())) return false;
+        return getDescription() != null ? getDescription().equals(book.getDescription()) : book.getDescription() == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = getTitle().hashCode();
+        result = 31 * result + getId().hashCode();
+        result = 31 * result + getAuthor().hashCode();
+        result = 31 * result + getPublisher().hashCode();
+        result = 31 * result + (getDescription() != null ? getDescription().hashCode() : 0);
+        return result;
+    }
 }
