@@ -12,6 +12,7 @@ public class BookDaoMapper extends SqlSessionDaoSupport implements BookDao {
     @Override
     public void create(final Book o) {
 	getSqlSession().insert("library.dao.BookDao.create", o);
+	getSqlSession().insert("library.dao.BookDao.createAuthors_books",o);
     }
 
     @Override
@@ -22,6 +23,7 @@ public class BookDaoMapper extends SqlSessionDaoSupport implements BookDao {
     @Override
     public void update(final Book o) {
 	getSqlSession().update("library.dao.BookDao.update", o);
+	getSqlSession().update("library.dao.BookDao.updateAuthors_books",o);
     }
 
     @Override

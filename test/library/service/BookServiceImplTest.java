@@ -8,8 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import java.util.Arrays;
 import java.util.List;
 
+import static library.AuthorTestData.AUTHOR1;
 import static library.AuthorTestData.AUTHOR1_ID;
 import static library.AuthorTestData.AUTHOR1_NAME;
 import static library.BookTestData.*;
@@ -47,6 +49,9 @@ public class BookServiceImplTest {
 
     @Test
     public void create() {
+        Book actual = new Book(null,"The Childhood", Arrays.asList(AUTHOR1),PUBLISHER2,null);
+        service.save(actual);
+        assertMatch(service.getBooks(),BOOK1,BOOK2,BOOK3,actual);
 
     }
 
@@ -66,14 +71,9 @@ public class BookServiceImplTest {
         assertMatch(books, BOOK1, BOOK2);
     }
 
-    @Test()
-    public void deleteNotFound() {
-        service.delete(-1L);
-    }
-
     @Test
     public void getBooksByPublisher() {
         List<Book> books = service.getBooksByPublisher("Open Book");
-        assertMatch(books, BOOK1);
+        assertMatch(books, BOOK1, BOOK2, BOOK3);
     }
 }

@@ -73,9 +73,16 @@
 
     <insert id="create" parameterType="Book" useGeneratedKeys="true"
             keyProperty="id">
-		INSERT INTO books (title, publisher_id) VALUES
-		(#{Book.title}, #{Book.publisher.id})
+		INSERT INTO books (title, description, publisher_id) VALUES
+		(#{title}, #{description}, #{publisher.id})
 	</insert>
+
+    <insert id="createAuthors_books">
+        insert into authors_books (author_id, book_id) values
+        <foreach collection="author" item="auth" index="index" separator=",">
+            ( #{auth.id}, #{id} )
+        </foreach>
+    </insert>
 
     <select id="read" resultMap="bookmap" parameterType="long">
 		SELECT
@@ -93,7 +100,12 @@
     <update id="update" parameterType="Book">
         UPDATE books SET title = #{title}, description=#{description}, publisher_id =
         #{publisher.id} WHERE id = #{id}
-        /*добавить update автора*/
+    </update>
+
+    <update id="updateAuthors_books">
+        <foreach collection="author" item="auth" index="index" separator=";">
+            update authors_books SET author_id = #{auth.id} where book_id=#{id}
+        </foreach>
     </update>
 
     <delete id="delete" parameterType="long">

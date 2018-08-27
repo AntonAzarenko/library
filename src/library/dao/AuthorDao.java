@@ -6,5 +6,5 @@ import library.entity.Author;
 
 public interface AuthorDao extends CrudDao<Long, Author> {
 
-    List<Author> findByName(String name);
+    Author findByName(String name);
 }

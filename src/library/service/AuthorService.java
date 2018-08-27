@@ -8,5 +8,5 @@ public interface AuthorService extends BaseService<Long, Author>{
 
     List<Author> getAll();
 
-    List<Author> getByName(String name);
+    Author getByName(String name);
 }

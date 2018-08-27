@@ -2,7 +2,6 @@ package library.service;
 
 import library.entity.Author;
 import org.junit.Test;
-import org.junit.rules.ExpectedException;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
@@ -57,14 +56,14 @@ public class AuthorServiceImplTest {
 
     @Test
     public void getAuthorByName() {
-        List<Author> authors = service.getByName(AUTHOR1_NAME);
-        assertMatch(authors,AUTHOR1);
+        Author author = service.getByName(AUTHOR1_NAME);
+        assertMatch(author,AUTHOR1);
     }
 
     @Test
     public void getAuthorByNotFoundName() {
-        List<Author> authors = service.getByName("not found name");
-        assert authors.isEmpty();
+        Author author = service.getByName("not found name");
+        assertMatch(author,null);
     }
 
     @Test
