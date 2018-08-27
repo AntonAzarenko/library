@@ -123,10 +123,12 @@ public class BookController {
                     list.add(author);
                 }else {
                     Author author = (Author) aServise.getByName(authorName.get(i));
+                    list.add(author);
                 }
 
             }else {
                 Author author = aServise.getById(authorId.get(i));
+                list.add(author);
             }
         }
         return list;
