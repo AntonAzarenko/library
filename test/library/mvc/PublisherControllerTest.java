@@ -37,15 +37,11 @@ public class PublisherControllerTest extends WebTest {
         mockMvc.perform(get("/publisherByName.html" + "?name=" + PUBLISHER_ONE.getName()))
                 .andDo(print())
                 .andExpect(status().isOk())
-                .andExpect(view().name("PUBLISHER"))
-                .andExpect(forwardedUrl("/WEB-INF/jsp/PUBLISHER.jsp"))
-                .andExpect(model().attribute("PUBLISHER", hasSize(1)))
-                .andExpect(model().attribute("PUBLISHER", hasItem(
-                        allOf(
-                                hasProperty("id", is(1L)),
-                                hasProperty("name", is(PUBLISHER_ONE.getName()))
-                        )
-                )));
+                .andExpect(view().name("publishers"))
+                .andExpect(forwardedUrl("/WEB-INF/jsp/publishers.jsp"))
+                .andExpect(model().attribute("publisher", hasProperty("id", is(1L))))
+                .andExpect(model().attribute("publisher", hasProperty("name", is(PUBLISHER_ONE.getName()))));
+
     }
 
     @Test
@@ -53,10 +49,10 @@ public class PublisherControllerTest extends WebTest {
         mockMvc.perform(get("/publisherById.html" + "?id=" + PUBLISHER_ONE.getId()))
                 .andDo(print())
                 .andExpect(status().isOk())
-                .andExpect(view().name("PUBLISHER"))
-                .andExpect(forwardedUrl("/WEB-INF/jsp/PUBLISHER.jsp"))
-                .andExpect(model().attribute("PUBLISHER", hasProperty("id", is(1L))))
-                .andExpect(model().attribute("PUBLISHER", hasProperty("name", is(PUBLISHER_ONE.getName()))));
+                .andExpect(view().name("publisher"))
+                .andExpect(forwardedUrl("/WEB-INF/jsp/publisher.jsp"))
+                .andExpect(model().attribute("publisher", hasProperty("id", is(1L))))
+                .andExpect(model().attribute("publisher", hasProperty("name", is(PUBLISHER_ONE.getName()))));
 
     }
 
