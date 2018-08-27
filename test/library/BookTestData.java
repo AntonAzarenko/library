@@ -27,21 +27,11 @@ public class BookTestData {
     public static String BOOK_TITLE_TWO = "The Lower Depths";
     public static String BOOK_TITLE_THREE = "The Twelve Chairs";
 
-    public static List<Author> LIST_AUTHOR1 = new ArrayList<>();
-    public static List<Author> LIST_AUTHOR2 = new ArrayList<>();
-    public static List<Author> LIST_AUTHOR3 = new ArrayList<>();
+    public static List<Author> LIST_AUTHOR1 = Arrays.asList(AUTHOR1);
+    public static List<Author> LIST_AUTHOR2 = Arrays.asList(AUTHOR1);
+    public static List<Author> LIST_AUTHOR3 = Arrays.asList(AUTHOR2,AUTHOR3);
 
-    public static Publisher PUBLISHER1= new Publisher();
-
-    {
-        LIST_AUTHOR1.add(AUTHOR1);
-        LIST_AUTHOR2.add(AUTHOR1);
-        LIST_AUTHOR3.add(AUTHOR2);
-        LIST_AUTHOR3.add(AUTHOR3);
-
-        PUBLISHER1 = PUBLISHER_ONE;
-
-    }
+    public static Publisher PUBLISHER1= PUBLISHER_ONE;
 
     public static Book BOOK1 = new Book(BOOK_ONE_ID, BOOK_TITLE_ONE, LIST_AUTHOR1, PUBLISHER1, null);
     public static Book BOOK2 = new Book(BOOK_TWO_ID, BOOK_TITLE_TWO, LIST_AUTHOR2, PUBLISHER1, null);
