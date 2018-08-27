@@ -75,8 +75,10 @@ public class BookController {
                        @RequestParam("name_author") final List<String> authorName,
                        @RequestParam("name_publisher") final String publisherName) {
         //todo нужно сделать в bookServise дополнительный метод для конвертации List<String> в List<Authors>
+        //todo и поиск по имени автора чтобы возвращал Автора или создавал нового
         //todo - list<Author> list = srv.getListAuthors(List<String>);
-        //todo  srv.save(new Book(id, title, list, publisherName, discription));
+        //todo Publisher publisher = publisherService.findPublisher(String name_publisher)
+        //todo  srv.save(new Book(id, title, list, publisher, discription));
         return "redirect:index";
     }
 
