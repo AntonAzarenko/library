@@ -46,7 +46,17 @@ public class BookServiceImplTest {
     }
 
     @Test
-    public void save() {
+    public void create() {
+    }
+
+    @Test
+    public void update() {
+        Book update = new Book(BOOK1);
+        update.setTitle("The Little Golden Calf");
+        update.setPublisher(PUBLISHER2);
+        update.setAuthor(LIST_AUTHOR3);
+        service.save(update);
+        assertMatch(service.getById(BOOK_ONE_ID), update);
     }
 
     @Test

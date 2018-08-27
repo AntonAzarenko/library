@@ -91,8 +91,9 @@
 	</select>
 
     <update id="update" parameterType="Book">
-        UPDATE books SET title = #{Book.title}, publisher_id =
-        #{Book.publisher.id}, author = #{Book.author} <!-- НЕ УВЕРЕН ЧТО СРАБОТАЕТ -->
+        UPDATE books SET title = #{title}, description=#{description}, publisher_id =
+        #{publisher.id} WHERE id = #{id}
+        /*добавить update автора*/
     </update>
 
     <delete id="delete" parameterType="long">

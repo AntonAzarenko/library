@@ -12,6 +12,7 @@ import static library.AuthorTestData.AUTHOR1;
 import static library.AuthorTestData.AUTHOR2;
 import static library.AuthorTestData.AUTHOR3;
 import static library.PublisherTestData.PUBLISHER_ONE;
+import static library.PublisherTestData.PUBLISHER_TWO;
 import static org.assertj.core.api.Assertions.assertThat;
 
 /**
@@ -32,6 +33,7 @@ public class BookTestData {
     public static List<Author> LIST_AUTHOR3 = Arrays.asList(AUTHOR2,AUTHOR3);
 
     public static Publisher PUBLISHER1= PUBLISHER_ONE;
+    public static Publisher PUBLISHER2= PUBLISHER_TWO;
 
     public static Book BOOK1 = new Book(BOOK_ONE_ID, BOOK_TITLE_ONE, LIST_AUTHOR1, PUBLISHER1, null);
     public static Book BOOK2 = new Book(BOOK_TWO_ID, BOOK_TITLE_TWO, LIST_AUTHOR2, PUBLISHER1, null);

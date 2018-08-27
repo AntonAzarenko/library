@@ -33,6 +33,14 @@ public class Book extends Entity {
         this.description = description;
     }
 
+    public Book(Book book) {
+        super(book.getId());
+        this.title = book.getTitle();
+        this.author = book.getAuthor();
+        this.publisher=book.getPublisher();
+        this.description = book.getDescription();
+    }
+
     public String getTitle() {
         return title;
     }
