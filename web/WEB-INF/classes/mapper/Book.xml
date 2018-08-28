@@ -127,4 +127,24 @@
     <delete id="delete" parameterType="long">
 		DELETE FROM books WHERE id = #{id}
 	</delete>
+
+
+
+
+    <select id="search" resultMap="bookmap" parameterType="map">
+        SELECT
+            b.id,
+            b.title,
+            b.description,
+            b.publisher_id,
+            p.name as publisher_name,
+            a.id AS author_id,
+            a.name as author_name
+        FROM books b
+        JOIN authors_books ab ON ab.book_id = b.id
+        JOIN authors a ON ab.author_id = a.id
+        JOIN publishers p on b.publisher_id = p.id
+        WHERE upper(b.title) LIKE upper(#{book}) OR upper(a.name) LIKE upper(#{author})
+    </select>
+
 </mapper>

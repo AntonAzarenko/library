@@ -1,6 +1,8 @@
 package library.dao.mapper;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.support.SqlSessionDaoSupport;
 
@@ -50,6 +52,13 @@ public class BookDaoMapper extends SqlSessionDaoSupport implements BookDao {
     @Override
     public List<Book> findBooksByPublisher(final String name) {
         return getSqlSession().selectList("library.dao.BookDao.findBooksByPublisher", name);
+    }
 
+    @Override
+    public List<Book> find(final String book, final String author) {
+        final Map<String, String> map = new HashMap<>();
+        map.put("book", "%" + book + "%");
+        map.put("author", "%" + author + "%");
+        return getSqlSession().selectList("library.dao.BookDao.search", map);
     }
 }

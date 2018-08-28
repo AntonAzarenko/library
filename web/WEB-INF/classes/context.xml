@@ -53,19 +53,25 @@
         <property name="sqlSessionFactory" ref="sqlSessionFactory"/>
     </bean>
 
+    <!-- DAO -->
     <bean id="bookDao" class="library.dao.mapper.BookDaoMapper" parent="mapper"/>
 
+    <bean id="publisherDao" class="library.dao.mapper.PublisherDaoMapper" parent="mapper"/>
+
+    <bean id="authorDao" class="library.dao.mapper.AuthorDaoMapper" parent="mapper"/>
+
+    <!-- SERVICE -->
     <bean id="bookService" class="library.service.BookServiceImpl">
         <property name="bookDao" ref="bookDao"/>
     </bean>
-    
-     <bean id="publisherDao" class="library.dao.mapper.PublisherDaoMapper" parent="mapper"/>
 
     <bean id="publisherService" class="library.service.PublisherServiceImpl">
         <property name="publisherDao" ref="publisherDao"/>
     </bean>
 
-    <bean id="authorDao" class="library.dao.mapper.AuthorDaoMapper" parent="mapper"/>
+    <bean id="searchService" class="library.service.SearchServiceImpl">
+        <property name="dao" ref="bookDao"/>
+    </bean>
 
     <!--<bean id="authorService" class="library.service.AuthorServiceImpl">-->
         <!--<property name="authorDao" ref="authorDao"/>-->

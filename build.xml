@@ -9,7 +9,7 @@
 
     <property name="HOST" value="${env.COMPUTERNAME}" />
 
-    <!--property file="build_${HOST}.properties" /-->
+    <property file="build_${HOST}.properties" />
 
     <property file="build.properties" />
 
@@ -45,6 +45,7 @@
         <copy todir=".build">
             <fileset dir="web">
                 <exclude name="**/*.properties" />
+            	<exclude name="**/*.utf-8" />
             </fileset>
         </copy>
         <copy todir=".build" filtering="true">
@@ -57,6 +58,8 @@
                 </propertyset>
             </filterset>
         </copy>
+        <native2ascii includes="**/*.utf-8" dest=".build" src="web" encoding="UTF-8" ext=".properties">
+        </native2ascii>
     </target>
 
     <!-- ============ Clean ============ -->
@@ -72,7 +75,7 @@
     <target name="compile" depends="init">
         <javac srcdir="src"
                destdir=".build/WEB-INF/classes"
-               includeantruntime="false">
+               includeantruntime="false" debug="true">
             <classpath refid="cp" />
         </javac>
     </target>

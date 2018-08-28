@@ -1,20 +1,26 @@
-<%@ page language="java" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<style>
- table{
-    width:500px;
-    padding: 5px;
-    text-align: center;
- }
- td{
-    text-align: center;
-    }
-</style>
-</head>
-<body>
-<h1>Hello!</h1>
+<%@ page language="java" pageEncoding="UTF-8" contentType="text/html; charset=UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="ui" tagdir="/WEB-INF/tags" %>
+<ui:html title="title">
+    <ui:navbar page="asas" />
+
+    <ui:title title="title" />
+
+        <form action="search.html" method="post">
+            <div class="form-group">
+                <spring:message code="book.name" text="Book name" var="text" />
+                <label for="book_name">${text}</label>
+                <input type="text" class="form-control" id="book_name" name="book" placeholder="${text}">
+                <div class="invalid-feedback">Please choose a username.</div>
+            </div>
+            <div class="form-group">
+                <label for="author_name">Имя автора</label>
+                <input type="text" class="form-control" id="author_name" name="author" placeholder="Имя автора">
+            </div>
+            <button type="submit" class="btn btn-primary">Найти</button>
+        </form>
+
 <table>
 <tr>
 <th></th>
@@ -61,5 +67,4 @@
 <button type="submit">Найти</button></form></td>
 <td></td>
 </table>
-</body>
-</html>
+</ui:html>
