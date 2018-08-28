@@ -1,24 +1,18 @@
 <%@ page language="java" pageEncoding="UTF-8" contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
-<html>
-<body>
-
+<%@ taglib prefix="ui" tagdir="/WEB-INF/tags" %>
+<ui:html title="Author">
     <c:choose>
         <c:when test="${not empty authors}">
-            <h1>This is all selected authors</h1>
-                <table>
+            <h1>This is all authors</h1>
                 <c:forEach items="${authors}" var="author" varStatus="status">
-                    <tr>
-                        <td>${author.id}</td>
-                        <td>${author.name}</td>
-                    </tr>
+                    <ul>
+                        <li>id Автора: <b>${author.id}</b></li>
+                        <li>Имя автора: <b>${author.name}</b></li>
+                    </ul>
                 </c:forEach>
-                </table>
         </c:when>
         
     </c:choose>
-    
-
-</body>
-</html>
+</ui:html>

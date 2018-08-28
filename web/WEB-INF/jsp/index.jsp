@@ -5,8 +5,8 @@
     <ui:title title="title" />
     <c:if test="${not empty books}">
     <ul>
-        <c:forEach items="${books}" var="book" varStatus="status">
-        <li>${book.id} ${book.title} <a href="booksByAuthors.html?id=<c:out value = "${book.author.id}"/>" >${book.author.name}</a> </li>
+        <c:forEach items="${books}" var="booke" varStatus="status">
+        <li>${booke.id} ${booke.title} <a href="booksByAuthors.html?id=<c:out value = "${book.author.id}"/>" >${book.author.name}</a> </li>
         </c:forEach>
     </ul>
     </c:if>

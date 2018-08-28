@@ -5,7 +5,8 @@
     <c:if test="${not empty publisher}">
         <h1>Publisher</h1>
         <ul>
-            <li>${publisher.id} ${publisher.name}</li>
+            <li>Номер издательства: <b>${publisher.id}</b></li>
+            <li>Имя издательства: <b>${publisher.name}</b></li>
         </ul>
     </c:if>
 </ui:html>
