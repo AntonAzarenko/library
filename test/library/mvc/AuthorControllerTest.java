@@ -39,13 +39,8 @@ public class AuthorControllerTest extends WebTest {
                 .andExpect(status().isOk())
                 .andExpect(view().name("author"))
                 .andExpect(forwardedUrl("/WEB-INF/jsp/author.jsp"))
-                .andExpect(model().attribute("author", hasSize(1)))
-                .andExpect(model().attribute("author", hasItem(
-                        allOf(
-                                hasProperty("id", is(1L)),
-                                hasProperty("name", is(AUTHOR1.getName()))
-                        )
-                )));
+                .andExpect(model().attribute("author",hasProperty("id",is(1L))))
+                .andExpect(model().attribute("author", hasProperty("name", is(AUTHOR1.getName()))));
     }
 
     @Test

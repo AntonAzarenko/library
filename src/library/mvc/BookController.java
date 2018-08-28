@@ -126,11 +126,13 @@ public class BookController {
         List<Author> list = new ArrayList<>();
         for (int i = 0; i < authorId.size(); i++) {
             if (authorId.get(i) == null) {
-                Author author = new Author(null, authorName.get(i));
-                aServise.save(author);
-                list.add(author);
-
-
+                if (aServise.getByName(authorName.get(i))==null) {
+                    Author author = new Author(null, authorName.get(i));
+                    aServise.save(author);
+                    list.add(author);
+                } else {
+                    list.add(aServise.getByName(authorName.get(i)));
+                }
             } else {
                 Author author = aServise.getById(authorId.get(i));
                 list.add(author);
