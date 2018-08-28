@@ -31,7 +31,8 @@
     <select id="findByName"
             resultMap="publishermap"
             parameterType="String">
-        SELECT p.id, p.name FROM publishers p WHERE p.name LIKE (#{name})
+        <bind name="pattern" value="'%' + _parameter.toString() + '%'" />
+        SELECT p.id, p.name FROM publishers p WHERE LOWER(p.name) LIKE Lower(#{pattern}) LIMIT 1
     </select>
     
     <select id="read" resultMap="publishermap" parameterType="long">

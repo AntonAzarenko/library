@@ -36,8 +36,8 @@ public class PublisherController {
      */
     @GetMapping(value = "publisherByName.html")
     public String getByName(@RequestParam("name") final String name, final Model model) {
-        model.addAttribute("publishers", service.getByName(name));
-        return "publishers";  //publisher.jsp
+        model.addAttribute("publisher", service.getByName(name));
+        return "publisher";  //publisher.jsp
     }
 
     /**

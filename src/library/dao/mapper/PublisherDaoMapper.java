@@ -35,8 +35,8 @@ public class PublisherDaoMapper extends SqlSessionDaoSupport implements Publishe
     }
 
     @Override
-    public List<Publisher> findByName(String name) {
-        return getSqlSession().selectList("library.dao.PublisherDao.findByName", name);
+    public Publisher findByName(String name) {
+        return getSqlSession().selectOne("library.dao.PublisherDao.findByName", name);
     }
 
     @Override

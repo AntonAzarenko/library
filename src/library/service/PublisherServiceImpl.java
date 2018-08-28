@@ -33,7 +33,7 @@ public class PublisherServiceImpl implements PublisherService {
     }
 
     @Override
-    public List<Publisher> getByName(String name) {
+    public Publisher getByName(String name) {
         return dao.findByName(name);
     }
 

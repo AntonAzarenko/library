@@ -6,7 +6,7 @@ import library.entity.Publisher;
 
 public interface PublisherDao extends CrudDao<Long, Publisher> {
 	
-	List<Publisher> findByName(String name);
+	Publisher findByName(String name);
 	
 	List<Publisher> findByAuthorId(Long id);
 }

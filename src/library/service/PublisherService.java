@@ -6,7 +6,7 @@ import library.entity.Publisher;
 
 public interface PublisherService extends BaseService<Long, Publisher> {
 	
-	List<Publisher> getByName(String Name);
+	Publisher getByName(String Name);
 	
 	List<Publisher> getByAuthorId(Long id);
 	
