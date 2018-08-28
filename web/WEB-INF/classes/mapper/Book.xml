@@ -9,9 +9,11 @@
         <result column="description" property="description"/>
         <association property="publisher" javaType="Publisher">
             <id property="id" column="publisher_id"/>
+            <result property="name" column="publisher_name"/>
         </association>
         <collection property="author" ofType="author" javaType="ArrayList">
             <id property="id" column="author_id"/>
+            <result property="name" column="author_name"/>
         </collection>
     </resultMap>
 
@@ -21,10 +23,13 @@
 		b.title,
 		b.description,
 		b.publisher_id,
-		a.id AS author_id
+		p.name as publisher_name,
+		a.id AS author_id,
+		a.name as author_name
 		from authors_books as ab
 		inner join books as b on ab.book_id = b.id
 		inner join authors as a on ab.author_id=a.id
+		inner join publishers p on b.publisher_id = p.id
 		WHERE title = #{title}
 	</select>
 
@@ -35,10 +40,13 @@
 		b.title,
 		b.description,
 		b.publisher_id,
-		a.id AS author_id
+		p.name as publisher_name,
+		a.id AS author_id,
+		a.name as author_name
 		from authors_books as ab
 		inner join books as b on ab.book_id = b.id
 		inner join authors as a on ab.author_id=a.id
+		inner join publishers p on b.publisher_id = p.id
 		WHERE
 		a.id = #{id}
 	</select>
@@ -50,7 +58,9 @@
 		b.title,
 		b.description,
 		b.publisher_id,
-		a.id AS author_id
+		p.name as publisher_name,
+		a.id AS author_id,
+		a.name as author_name
 		from authors_books as ab
 		inner join books as b on ab.book_id = b.id
 		inner join authors as a on ab.author_id=a.id
@@ -64,10 +74,13 @@
 		b.title,
 		b.description,
 		b.publisher_id,
-		a.id AS author_id
+		p.name as publisher_name,
+		a.id AS author_id,
+		a.name as author_name
 		from authors_books as ab
 		inner join books as b on ab.book_id = b.id
 		inner join authors as a on ab.author_id=a.id
+		inner join publishers p on b.publisher_id = p.id
 	</select>
 
 
@@ -90,10 +103,13 @@
 		b.title,
 		b.description,
 		b.publisher_id,
-		a.id AS author_id
+		p.name as publisher_name,
+		a.id AS author_id,
+		a.name as author_name
 		from authors_books as ab
 		inner join books as b on ab.book_id = b.id
 		inner join authors as a on ab.author_id=a.id
+		inner join publishers p on b.publisher_id = p.id
 		WHERE b.id = #{id}
 	</select>
 
@@ -102,14 +118,13 @@
         #{publisher.id} WHERE id = #{id}
     </update>
 
-    <update id="updateAuthors_books">
+    <delete id="deleteAuthors_books">
         <foreach collection="author" item="auth" index="index" separator=";">
-            update authors_books SET author_id = #{auth.id} where book_id=#{id}
+            DELETE from authors_books where book_id=#{id}
         </foreach>
-    </update>
+    </delete>
 
     <delete id="delete" parameterType="long">
-		DELETE FROM books WHERE id =
-		#{id}
+		DELETE FROM books WHERE id = #{id}
 	</delete>
 </mapper>

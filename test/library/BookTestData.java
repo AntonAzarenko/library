@@ -32,13 +32,12 @@ public class BookTestData {
     public static Book BOOK2 = new Book(BOOK_TWO_ID, BOOK_TITLE_TWO, LIST_AUTHOR2, PUBLISHER1, null);
     public static Book BOOK3 = new Book(BOOK_THREE_ID, BOOK_TITLE_THREE, LIST_AUTHOR3, PUBLISHER1, null);
 
-    //Сверяем игнорируя поля автор и издатель т.к. у нас lazy
     public static void assertMatch(Book actual, Book expected) {
-        assertThat(actual).isEqualToIgnoringGivenFields(expected,"author","publisher");
+        assertThat(actual).isEqualTo(expected);
     }
 
     public static void assertMatch(Iterable<Book> actual, Iterable<Book> expected) {
-        assertThat(actual).usingElementComparatorIgnoringFields("author","publisher").isEqualTo(expected);
+        assertThat(actual).isEqualTo(expected);
     }
 
     public static void assertMatch(Iterable<Book> actual, Book... expected) {
