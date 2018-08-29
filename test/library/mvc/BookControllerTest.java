@@ -76,7 +76,7 @@ public class BookControllerTest extends WebTest {
         mockMvc.perform(get("/booksave.html?title=How learn Spring&discription=&author1_id=1&author2_id=&author3_id=&name_author1=" + AUTHOR1_NAME +
                 "&name_author2=&name_author3=&name_publisher=" + PUBLISHER1.getName()))
                 .andDo(print())
-                .andExpect(status().isOk());
+                .andExpect(status().is3xxRedirection());
     }
 
     @Test
