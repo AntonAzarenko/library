@@ -70,77 +70,17 @@ public class BookController {
     }
 
 
-
     /**
      * This method save new book, or update book and redirect to index.jsp
-     * @param id
-     * @param title
-     * @param discription
-     * @param author1Id maybe plurals if book has got a few authors
-     * @param authorName1
-     * @param author2Id maybe plurals if book has got a few authors
-     * @param authorName2
-     * @param author3Id maybe plurals if book has got a few authors
-     * @param authorName3
-     * @param publisherId
-     * @param publisherName
+     *
+     * @param book
      * @return
      */
     @GetMapping(value = "booksave.html")
-    public String save(@RequestParam(required = false) @PathVariable("id") final Long id,
-                       @RequestParam("title") final String title,
-                       @RequestParam("discription") final String discription,
-                       @RequestParam(required = false) @PathVariable("author1_id") final Long author1Id,
-                       @RequestParam("name_author1") final String authorName1,
-                       @RequestParam(required = false) @PathVariable("author2_id") final Long author2Id,
-                       @RequestParam("name_author2") final String authorName2,
-                       @RequestParam(required = false) @PathVariable("author3_id") final Long author3Id,
-                       @RequestParam("name_author3") final String authorName3,
-                       @RequestParam(required = false) @PathVariable("publisher_id") final Long publisherId,
-                       @RequestParam("name_publisher") final String publisherName) {
-
-        List<Long> authorId = Arrays.asList(author1Id, author2Id, author3Id);
-        List<String> authorName = Arrays.asList(authorName1, authorName2, authorName3);
-        List<Author> author = checkAuthor(authorId, authorName);//проверка на наличие автора и  получение
-        Publisher publisher = checkPublisher(publisherId, publisherName);
-        srv.save(new Book(id, title, author, publisher, discription));
+    public String save(Book book) {
+        srv.save(book);
         return "redirect:index";
     }
-
-    private Publisher checkPublisher(Long publisherId, String publisherName) {
-        Publisher publisher = null; //Создаем ссылкку на обьект
-        if (publisherId == null) {// проверяем пришедший с UI id на NUll
-            if (pService.getByName(publisherName) == null) {//если в базе нету издателя с таким именем то создаем нового и добовляем в базу
-                publisher = new Publisher(null, publisherName);
-                pService.save(publisher);
-            } else { // иначе берем из базы по имени
-                // publisher = pService.getByName(publisherName);
-            }
-        } else {
-            publisher = pService.getById(publisherId);//иначе берем из базы по id
-        }
-        return publisher;
-    }
-
-    private List<Author> checkAuthor(List<Long> authorId, List<String> authorName) {
-        List<Author> list = new ArrayList<>();
-        for (int i = 0; i < authorId.size(); i++) {
-            if (authorId.get(i) == null) {
-                if (aServise.getByName(authorName.get(i))==null) {
-                    Author author = new Author(null, authorName.get(i));
-                    aServise.save(author);
-                    list.add(author);
-                } else {
-                    list.add(aServise.getByName(authorName.get(i)));
-                }
-            } else {
-                Author author = aServise.getById(authorId.get(i));
-                list.add(author);
-            }
-        }
-        return list;
-    }
-
 
     /**
      * This method gets all books, put him to model and redirect to books.jsp
