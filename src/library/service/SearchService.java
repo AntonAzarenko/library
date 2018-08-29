@@ -6,5 +6,5 @@ import library.entity.Book;
 
 public interface SearchService {
 
-    List<Book> search(String book, String author);
+    List<Book> search(String book, String author, String publisher);
 }

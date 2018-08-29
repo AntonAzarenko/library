@@ -14,7 +14,7 @@ public class SearchServiceImpl implements SearchService {
     }
 
     @Override
-    public List<Book> search(final String book, final String author) {
-        return dao.find(book, author);
+    public List<Book> search(final String book, final String author, final String publisher) {
+        return dao.find(book, author, publisher);
     }
 }

@@ -11,11 +11,17 @@
                 <spring:message code="book.name" text="Book name" var="text" />
                 <label for="book_name">${text}</label>
                 <input type="text" class="form-control" id="book_name" name="book" placeholder="${text}">
-                <div class="invalid-feedback">Please choose a username.</div>
+                <div class="invalid-feedback">Please choose a bookname.</div>
             </div>
             <div class="form-group">
                 <label for="author_name">Имя автора</label>
                 <input type="text" class="form-control" id="author_name" name="author" placeholder="Имя автора">
+                <div class="invalid-feedback">Please choose a author.</div>
+            </div>
+            <div class="form-group">
+                <label for="publisher_name">Имя издательства</label>
+                <input type="text" class="form-control" id="publisher_name" name="publisher" placeholder="Имя издательства">
+                <div class="invalid-feedback">Please choose a publisher.</div>
             </div>
             <button type="submit" class="btn btn-primary">Найти</button>
         </form>

@@ -144,7 +144,9 @@
         JOIN authors_books ab ON ab.book_id = b.id
         JOIN authors a ON ab.author_id = a.id
         JOIN publishers p on b.publisher_id = p.id
-        WHERE upper(b.title) LIKE upper(#{book}) OR upper(a.name) LIKE upper(#{author})
+        WHERE upper(b.title) LIKE upper(#{book})
+        	AND upper(a.name) LIKE upper(#{author})
+        	AND upper(a.name) LIKE upper(#{publisher})
     </select>
 
 </mapper>

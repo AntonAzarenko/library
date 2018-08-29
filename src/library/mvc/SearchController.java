@@ -22,15 +22,16 @@ public class SearchController {
     private Form form;
 
     @PostMapping("search.html")
-    public String search(@RequestParam("book") String book, @RequestParam("author") String author) {
+    public String search(@RequestParam("book") String book, @RequestParam("author") String author, @RequestParam("publisher") String publisher) {
         form.setBook(book);
         form.setAuthor(author);
+        form.setPublisher(publisher);
         return "redirect:search.html";
     }
 
     @GetMapping("search.html")
     public String search(Model model) {
-        model.addAttribute("books", srv.search(form.getBook(), form.getAuthor()));
+        model.addAttribute("books", srv.search(form.getBook(), form.getAuthor(), form.getPublisher()));
         return "books";
     }
 
@@ -40,6 +41,8 @@ public class SearchController {
         private String book;
 
         private String author;
+
+        private String publisher;
 
         public String getBook() {
             return book;
@@ -55,6 +58,14 @@ public class SearchController {
 
         public void setAuthor(String author) {
             this.author = author;
+        }
+
+        public String getPublisher() {
+            return publisher;
+        }
+
+        public void setPublisher(String publisher) {
+            this.publisher = publisher;
         }
     }
 }

@@ -13,5 +13,5 @@ public interface BookDao extends CrudDao<Long, Book> {
     
     List<Book> findBooksByPublisher(String name);
 
-    List<Book> find(String book, String author);
+    List<Book> find(String book, String author, String publisher);
 }
