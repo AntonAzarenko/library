@@ -37,7 +37,7 @@
                     <div class="input-group-prepend">
                         <button class="btn btn-outline-secondary" type="button">Добавить</button>
                     </div>
-                    <select class="custom-select" id="inputSelectAuthor" aria-label="Example select with button addon">
+                    <select class="custom-select" id="inputSelectAuthor" multiple size="3">
                         <option selected>Выберите автора</option>
                         <c:forEach items="${authors}" var="author">
                         <option value="${author.id}">${author.name}</option>
