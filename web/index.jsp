@@ -3,8 +3,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="ui" tagdir="/WEB-INF/tags" %>
 <ui:html title="title">
-    <ui:navbar page="asas" />
-
+<ui:navbar active="library"/>
     <ui:title title="title" />
 
         <form action="search.html" method="post">

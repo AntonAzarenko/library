@@ -3,6 +3,7 @@
 <!DOCTYPE html>
 <%@ taglib prefix="ui" tagdir="/WEB-INF/tags" %>
 <ui:html title="Author">
+    <ui:navbar active="author"/>
     <c:choose>
         <c:when test="${not empty authors}">
             <h1>This is all authors</h1>

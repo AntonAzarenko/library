@@ -2,6 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="ui" tagdir="/WEB-INF/tags" %>
 <ui:html title="title">
+    <ui:navbar active="book"/>
     <ui:title title="title" />
     <c:if test="${not empty books}">
     <ul>

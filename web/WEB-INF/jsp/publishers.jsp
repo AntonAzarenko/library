@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="ui" tagdir="/WEB-INF/tags"%>
 <ui:html title="Publishers">
+<ui:navbar active="publisher"/>
 <c:if test="${not empty publishers}">
 	<h1>Publishers</h1>
 	<c:forEach items="${publishers}" var="publisher" varStatus="status">
