@@ -1,7 +1,12 @@
 title=Начало
 library=Библиотека
+index.button.find=Найти
 book=Книги
 book.name=Имя книги
 author=Авторы
 author.name=Имя автора
 publisher=Издательства
+author.edit.title=Редактирование автора
+author.name.placeholder=Введите имя автора
+author.edit.authorinvalidefeedback=Введите имя автора
+author.edit.buttonsave=Сохранить

@@ -22,6 +22,7 @@ public class AuthorController {
 
     /**
      * This method gets all authors, puts them to model and view on allAuthors.jsp
+     *
      * @param model
      * @return
      */
@@ -33,12 +34,13 @@ public class AuthorController {
 
     /**
      * This method gets authors by ID, put them to model and view on editAuthors.jsp
+     *
      * @param model
      * @param id
      * @return
      */
     @GetMapping(value = "editauthors.html")
-    public String edit(final Model model, @RequestParam("id") final  Long id){
+    public String edit(final Model model, @RequestParam("id") final Long id) {
         model.addAttribute("book", service.getById(id));
         return "editAuthors";
     }
@@ -93,6 +95,11 @@ public class AuthorController {
                        @RequestParam("name") final String name) {
         service.save(new Author(id, name));
         return "redirect:allauthors";
+    }
+
+    @GetMapping(value = "authoredit.html")
+    public String edit(final Model model) {
+        return "authoraddedit";
     }
 }
 

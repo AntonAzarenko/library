@@ -7,23 +7,15 @@
     <ui:title title="title" />
 
         <form action="search.html" method="post">
-            <div class="form-group">
-                <spring:message code="book.name" text="Book name" var="text" />
-                <label for="book_name">${text}</label>
-                <input type="text" class="form-control" id="book_name" name="book" placeholder="${text}">
-                <div class="invalid-feedback">Please choose a bookname.</div>
-            </div>
-            <div class="form-group">
-                <label for="author_name">Имя автора</label>
-                <input type="text" class="form-control" id="author_name" name="author" placeholder="Имя автора">
-                <div class="invalid-feedback">Please choose a author.</div>
-            </div>
-            <div class="form-group">
-                <label for="publisher_name">Имя издательства</label>
-                <input type="text" class="form-control" id="publisher_name" name="publisher" placeholder="Имя издательства">
-                <div class="invalid-feedback">Please choose a publisher.</div>
-            </div>
-            <button type="submit" class="btn btn-primary">Найти</button>
+            <ui:formGroup id="book_name" label="book.name" name="book"
+                          placeholder="book.name" invFeedback="Please choose a bookname."/>
+            <ui:formGroup id="author_name" label="author.name" name="author"
+                          placeholder="author.name" invFeedback="Please choose a author."/>
+            <ui:formGroup id="publisher_name" label="publisher" name="publisher"
+                          placeholder="publisher" invFeedback="Please choose a publisher."/>
+            <button type="submit" class="btn btn-primary">
+                <ui:i19n message="index.button.find"/>
+            </button>
         </form>
 
 <table>
