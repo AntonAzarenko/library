@@ -110,13 +110,13 @@ public class BookController {
     /**
      * This method gets book and put in model and redirect to edit page editbook.jsp
      *
-     * @param id
      * @param model
      * @return
      */
     @GetMapping(value = "edit.html")
-    public String edit(@RequestParam("id") final Long id, final Model model) {
-        model.addAttribute("book", srv.getById(id));
-        return "editbook";
+    public String edit(final Model model) {
+        model.addAttribute("publishers",pService.getAll());
+        model.addAttribute("authors",aServise.getAll() );
+        return "addedit";
     }
 }
