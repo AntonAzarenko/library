@@ -10,37 +10,37 @@
         <div>
             <h3>Add/Edit</h3>
         </div>
-        <div class="jumbotron col">
+        <div class="jumbotron">
             <form action="booksave.html" method="post">
+                <input type="hidden" name="id" value="
+                        <c:out value="${book.id}"/>">
                 <div class="form-group">
                     <spring:message code="book.name" text="Book name" var="text" />
                     <label for="book_name">${text}</label>
-                    <input type="text" class="form-control" id="book_name" name="title" placeholder="${text}">
+                    <input type="text"  class="form-control" id="book_name" name="title" placeholder="${text}"
+                           value="<c:out value="${book.title}"/>">
                     <div class="invalid-feedback">Please choose a book title.</div>
                 </div>
                 <div class="form-group">
                     <label for="discription">Описание</label>
-                    <input type="text" class="form-control" id="discription" name="discription" placeholder="описание">
+                    <input type="text" class="form-control" id="discription" name="discription" placeholder="описание"
+                           value="<c:out value="${book.description}"/>">
                 </div>
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                        <button class="btn btn-outline-secondary" type="button">Добавить</button>
-                    </div>
+                <div class="form-group">
+                    <label for="inputSelectPublisher">Выберите издателя</label>
                     <select class="custom-select" name="publisherId" id="inputSelectPublisher">
-                        <option selected>Выберите издателя</option>
                         <c:forEach items="${publishers}" var="publisher">
-                            <option value="${publisher.id}">${publisher.name}</option>
+                            <option value="${publisher.id}" ${publisher.id == book.publisher.id?'selected' :''}>${publisher.name}</option>
+                            <%--<option value="${publisher.id}">${publisher.name}</option>--%>
                         </c:forEach>
                     </select>
                 </div>
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                        <button class="btn btn-outline-secondary" type="button">Добавить</button>
-                    </div>
+                <div class="form-group">
+                    <label for="inputSelectPublisher">Выберите автора или нескольких</label>
                     <select class="custom-select" name="authors" id="inputSelectAuthor" multiple size="3" data-live-search-normalize="true" data-live-search="true" data-container="body" data-header="Ocupaciones" data-max-options="2" max-options-text="Solo dos opciones" title="Seleccionar ocupaciones" multiple>
-                        <option selected>Выберите автора</option>
                         <c:forEach items="${authors}" var="author">
-                        <option value="${author.id}">${author.name}</option>
+                            <option value="${author.id}" ${author.id == book.author.id?'selected' :''}>${author.name}</option>
+                        <%--<option value="${author.id}">${author.name}</option>--%>
                         </c:forEach>
                     </select>
                 </div>
