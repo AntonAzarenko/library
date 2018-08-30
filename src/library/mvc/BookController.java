@@ -65,22 +65,6 @@ public class BookController {
         return "books";
     }
 
-
-    /**
-     * This method save new book, or update book and redirect to index.jsp
-     *
-     * @param bookTo
-     * @return
-     */
-    @PostMapping(value = "booksave.html")
-    public String save(BookTo bookTo) {
-        Book book = bookTo.asBook();
-        book.setAuthor(aServise.getListAuthorsById(bookTo.getAuthors()));
-        book.setPublisher(pService.getById(bookTo.getPublisherId()));
-        srv.save(book);
-        return "redirect:index.html";
-    }
-
     /**
      * This method gets all books, put him to model and redirect to books.jsp
      *
@@ -92,44 +76,5 @@ public class BookController {
     public String getBooksByPublisher(@RequestParam("publisher_name") final String name, final Model model) {
         model.addAttribute("books", srv.getBooksByPublisher(name));
         return "books";
-    }
-
-    /**
-     * This method removes book by id and redirect to index
-     *
-     * @param id
-     * @return
-     */
-    @PostMapping(value = "remove.html")
-    public String delete(@RequestParam("id") final Long id) {
-        srv.delete(id);
-        return "redirect:index.html";
-    }
-
-    /**
-     * This method gets book and put in model and redirect to edit page editbook.jsp
-     *
-     * @param model
-     * @return
-     */
-    @GetMapping(value = "edit.html")
-    public String edit(@RequestParam(required = false) @PathVariable("id") final Long id, final Model model) {
-        if (id == null) {
-            model.addAttribute("publishers", pService.getAll());
-            model.addAttribute("authors", aServise.getAll());
-        } else {
-            model.addAttribute("book", srv.getById(id));
-            model.addAttribute("publishers", pService.getAll());
-            model.addAttribute("authors", aServise.getAll());
-        }
-        return "addedit";
-    }
-
-    @GetMapping(value = "addAuthor.html")
-    public String addAuthor(@RequestParam("name") String name, final Model model) {
-        model.addAttribute("addAuthors", aServise.getByName(name));
-        model.addAttribute("publishers", pService.getAll());
-        model.addAttribute("authors", aServise.getAll());
-        return "addedit";
     }
 }
