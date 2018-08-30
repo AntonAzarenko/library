@@ -11,11 +11,11 @@
             <h3>Add/Edit</h3>
         </div>
         <div class="jumbotron col">
-            <form action="/booksave.html" method="post">
+            <form action="booksave.html" method="post">
                 <div class="form-group">
                     <spring:message code="book.name" text="Book name" var="text" />
                     <label for="book_name">${text}</label>
-                    <input type="text" class="form-control" id="book_name" name="book" placeholder="${text}">
+                    <input type="text" class="form-control" id="book_name" name="title" placeholder="${text}">
                     <div class="invalid-feedback">Please choose a book title.</div>
                 </div>
                 <div class="form-group">
@@ -26,7 +26,7 @@
                     <div class="input-group-prepend">
                         <button class="btn btn-outline-secondary" type="button">Добавить</button>
                     </div>
-                    <select class="custom-select" id="inputSelectPublisher" aria-label="Example select with button addon">
+                    <select class="custom-select" name="publisherId" id="inputSelectPublisher">
                         <option selected>Выберите издателя</option>
                         <c:forEach items="${publishers}" var="publisher">
                             <option value="${publisher.id}">${publisher.name}</option>
@@ -37,7 +37,7 @@
                     <div class="input-group-prepend">
                         <button class="btn btn-outline-secondary" type="button">Добавить</button>
                     </div>
-                    <select class="custom-select" id="inputSelectAuthor" multiple size="3">
+                    <select class="custom-select" name="authors" id="inputSelectAuthor" multiple size="3" data-live-search-normalize="true" data-live-search="true" data-container="body" data-header="Ocupaciones" data-max-options="2" max-options-text="Solo dos opciones" title="Seleccionar ocupaciones" multiple>
                         <option selected>Выберите автора</option>
                         <c:forEach items="${authors}" var="author">
                         <option value="${author.id}">${author.name}</option>
