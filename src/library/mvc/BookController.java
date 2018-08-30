@@ -1,10 +1,9 @@
 package library.mvc;
 
-import library.entity.Author;
 import library.entity.Book;
-import library.entity.Publisher;
 import library.service.AuthorService;
 import library.service.PublisherService;
+import library.to.BookTo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,9 +11,6 @@ import org.springframework.web.bind.annotation.*;
 
 import library.service.BookService;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 /**
  * @Author by Azarenka Anton
@@ -73,11 +69,14 @@ public class BookController {
     /**
      * This method save new book, or update book and redirect to index.jsp
      *
-     * @param book
+     * @param bookTo
      * @return
      */
-    @GetMapping(value = "booksave.html")
-    public String save(Book book) {
+    @PostMapping(value = "booksave.html")
+    public String save(BookTo bookTo) {
+        Book book = bookTo.asBook();
+        book.setAuthor(aServise.getListAuthorsById(bookTo.getAuthors()));
+        book.setPublisher(pService.getById(bookTo.getPublisherId()));
         srv.save(book);
         return "redirect:index";
     }
@@ -115,6 +114,14 @@ public class BookController {
      */
     @GetMapping(value = "edit.html")
     public String edit(final Model model) {
+        model.addAttribute("publishers",pService.getAll());
+        model.addAttribute("authors",aServise.getAll() );
+        return "addedit";
+    }
+
+    @GetMapping(value = "addAuthor.html")
+    public String addAuthor(@RequestParam("name") String name, final Model model) {
+        model.addAttribute("addAuthors", aServise.getByName(name));
         model.addAttribute("publishers",pService.getAll());
         model.addAttribute("authors",aServise.getAll() );
         return "addedit";

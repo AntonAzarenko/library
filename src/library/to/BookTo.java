@@ -7,13 +7,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 
+/**
+ * @author Anton
+ */
+
 public class BookTo {
-
-    @Autowired
-    private PublisherService service;
-
-    @Autowired
-    private AuthorService authorService;
 
     private Long id;
 
@@ -21,7 +19,7 @@ public class BookTo {
 
     private String discription;
 
-    private List<Long> authorId;
+    private List<Long> authors;
 
     private Long publisherId;
 
@@ -30,7 +28,6 @@ public class BookTo {
         book.setId(this.id);
         book.setTitle(this.title);
         book.setDescription(this.discription);
-        book.setPublisher(service.getById(this.publisherId));
         return book;
     }
 
@@ -58,12 +55,12 @@ public class BookTo {
         this.discription = discription;
     }
 
-    public List<Long> getAuthorId() {
-        return authorId;
+    public List<Long> getAuthors() {
+        return authors;
     }
 
-    public void setAuthorId(List<Long> authorId) {
-        this.authorId = authorId;
+    public void setAuthors(List<Long> authors) {
+        this.authors = authors;
     }
 
     public Long getPublisherId() {
