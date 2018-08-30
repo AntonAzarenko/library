@@ -10,6 +10,7 @@ import org.springframework.test.context.jdbc.SqlConfig;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.Arrays;
 import java.util.List;
 
 import static library.AuthorTestData.*;
@@ -74,5 +75,11 @@ public class AuthorServiceImplTest {
     public void delete() {
         service.delete(AUTHOR3_ID);
         assertMatch(service.getAll(),AUTHOR1,AUTHOR2);
+    }
+
+    @Test
+    public void getListAuthorsById() {
+        List<Author> authors = service.getListAuthorsById(Arrays.asList(AUTHOR1_ID, AUTHOR2_ID));
+        assertMatch(authors,AUTHOR1,AUTHOR2);
     }
 }

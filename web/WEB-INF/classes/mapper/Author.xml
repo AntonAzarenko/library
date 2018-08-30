@@ -38,4 +38,13 @@
             parameterType="java.lang.String">
         SELECT a.id, a.name FROM authors a WHERE name LIKE (#{name})
     </select>
+
+    <select id="findListById"
+            resultMap="authormap"
+            parameterType="java.util.ArrayList">
+        SELECT a.id, a.name FROM authors a WHERE id IN
+        <foreach item="item" index="index" collection="list" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </select>
 </mapper>

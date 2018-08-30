@@ -45,4 +45,9 @@ public class AuthorServiceImpl implements AuthorService {
     public void delete(Long id) {
         authorDao.delete(id);
     }
+
+    @Override
+    public List<Author> getListAuthorsById(List<Long> ids) {
+        return authorDao.getListAuthorsById(ids);
+    }
 }

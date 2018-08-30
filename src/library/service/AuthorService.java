@@ -9,4 +9,6 @@ public interface AuthorService extends BaseService<Long, Author>{
     List<Author> getAll();
 
     Author getByName(String name);
+
+    List<Author> getListAuthorsById(List<Long> ids);
 }
