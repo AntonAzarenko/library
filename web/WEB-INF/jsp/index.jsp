@@ -6,7 +6,7 @@
     
 <h1><ui:i19n message="book"/></h1>
 <div class="col-md-12">
-<a href="#" class="btn btn-primary mb-3"><ui:i19n message="add"/></a>
+<a href="edit.html" class="btn btn-primary mb-3"><ui:i19n message="add"/></a>
 <c:if test="${not empty books}">
     <table class="table table-striped">
        <thead class="thead-dark">
@@ -28,8 +28,8 @@
                     <span>${a.name}</span></br>
                 </c:forEach>
             </td>
-            <td><a href="#" class="btn btn-secondary float-right"><ui:i19n message="edit"/></a></td>
-            <td><a href="#" class="btn btn-danger float-right"><ui:i19n message="delete"/></a></td>
+            <td><a href="edit.html?id=${book.id}" class="btn btn-secondary float-right"><ui:i19n message="edit"/></a></td>
+            <td><a href="remove.html?id=${book.id}" class="btn btn-danger float-right"><ui:i19n message="delete"/></a></td>
         </tr>
         </c:forEach>
         </tbody>

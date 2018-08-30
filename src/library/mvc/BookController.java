@@ -78,7 +78,7 @@ public class BookController {
         book.setAuthor(aServise.getListAuthorsById(bookTo.getAuthors()));
         book.setPublisher(pService.getById(bookTo.getPublisherId()));
         srv.save(book);
-        return "redirect:index.html";
+        return "redirect:index";
     }
 
     /**
@@ -113,23 +113,17 @@ public class BookController {
      * @return
      */
     @GetMapping(value = "edit.html")
-    public String edit(@RequestParam(required = false) @PathVariable("id") final Long id, final Model model) {
-        if (id == null) {
-            model.addAttribute("publishers", pService.getAll());
-            model.addAttribute("authors", aServise.getAll());
-        } else {
-            model.addAttribute("book", srv.getById(id));
-            model.addAttribute("publishers", pService.getAll());
-            model.addAttribute("authors", aServise.getAll());
-        }
+    public String edit(final Model model) {
+        model.addAttribute("publishers",pService.getAll());
+        model.addAttribute("authors",aServise.getAll() );
         return "addedit";
     }
 
     @GetMapping(value = "addAuthor.html")
     public String addAuthor(@RequestParam("name") String name, final Model model) {
         model.addAttribute("addAuthors", aServise.getByName(name));
-        model.addAttribute("publishers", pService.getAll());
-        model.addAttribute("authors", aServise.getAll());
+        model.addAttribute("publishers",pService.getAll());
+        model.addAttribute("authors",aServise.getAll() );
         return "addedit";
     }
 }
