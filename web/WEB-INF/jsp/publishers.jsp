@@ -4,13 +4,30 @@
 <%@ taglib prefix="ui" tagdir="/WEB-INF/tags"%>
 <ui:html title="Publishers">
 <ui:navbar active="publisher"/>
+<h1><ui:i19n message="publisher"/></h1>
+<div class="d-flex justify-content-sm-center">
+<div class="col-md-7">
+<a href="#" class="btn btn-primary mb-3"><ui:i19n message="add"/></a>
 <c:if test="${not empty publishers}">
-	<h1>Publishers</h1>
-	<c:forEach items="${publishers}" var="publisher" varStatus="status">
-		<ul>
-			<li>Номер издательства: <b>${publisher.id}</b></li>
-			<li>Имя издательства: <b>${publisher.name}</b></li>
-		</ul>
-	</c:forEach>
+	<table class="table table-striped">
+       <thead class="thead-dark">
+       <tr>
+          <th class="col-md-8"><ui:i19n message="publisher.name"/></th>
+          <th class="col-md-2"></th>
+          <th class="col-md-2"></th>
+       </tr>
+       </thead>
+       <tbody>
+        <c:forEach items="${publishers}" var="publisher" varStatus="status">
+        <tr>
+            <td>${publisher.name}</td>
+            <td><a href="#" class="btn btn-secondary float-right"><ui:i19n message="edit"/></a></td>
+            <td><a href="#" class="btn btn-danger float-right"><ui:i19n message="delete"/></a></td>
+        </tr>
+        </c:forEach>
+        </tbody>
+    </table>
 </c:if>
+</div>
+</div>
 </ui:html>
