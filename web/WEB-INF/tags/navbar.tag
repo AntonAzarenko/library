@@ -15,7 +15,7 @@
         <a class="nav-link" href="/library/"><ui:i19n message="home"/></a>
       </li>
       <li ${'book' eq active ?'class="nav-item active"': 'class="nav-item"'}>
-        <a class="nav-link" href="index.html"><ui:i19n message="book"/></a>
+        <a class="nav-link" href="books.html"><ui:i19n message="book"/></a>
       </li>
       <li ${'author' eq active ?'class="nav-item active"': 'class="nav-item"'}>
         <a class="nav-link" href="authors.html"><ui:i19n message="author"/></a>

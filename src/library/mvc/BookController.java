@@ -33,10 +33,10 @@ public class BookController {
      * @param model
      * @return
      */
-    @RequestMapping(value = "index.html", method = RequestMethod.GET)
+    @RequestMapping(value = "books.html", method = RequestMethod.GET)
     public String getAll(final Model model) {
         model.addAttribute("books", srv.getBooks());
-        return "index";
+        return "books";
     }
 
     /**
@@ -49,7 +49,7 @@ public class BookController {
     @GetMapping(value = "booksByName.html")
     public String getBooksByName(@RequestParam("title") final String title, final Model model) {
         model.addAttribute("book", srv.getBooksByTitle(title));
-        return "index";
+        return "books";
     }
 
     /**
@@ -62,7 +62,7 @@ public class BookController {
     @RequestMapping(value = "booksByAuthors.html", method = RequestMethod.GET)
     public String getBooksByAuthor(@RequestParam("id") final Long id, final Model model) {
         model.addAttribute("books", srv.getBooksByAuthor(id));
-        return "index";
+        return "books";
     }
 
 
@@ -91,7 +91,7 @@ public class BookController {
     @GetMapping(value = "booksByPublisher.html")
     public String getBooksByPublisher(@RequestParam("publisher_name") final String name, final Model model) {
         model.addAttribute("books", srv.getBooksByPublisher(name));
-        return "index";
+        return "books";
     }
 
     /**

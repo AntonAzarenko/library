@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="ui" tagdir="/WEB-INF/tags" %>
 <ui:html title="books">
+<ui:navbar active="library"/>
     <c:if test="${not empty books}">
         <h1><ui:i19n message="book.find"/></h1>
        <table class="table table-striped">
