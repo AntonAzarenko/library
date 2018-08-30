@@ -21,7 +21,7 @@
        <tbody>
         <c:forEach items="${authors}" var="author" varStatus="status">
         <tr>
-            <td>${author.name}</td>
+            <td><a href="booksByAuthors.html?id=${author.id}" >${author.name}</a></td>
             <td><a href="#" class="btn btn-secondary float-right"><ui:i19n message="edit"/></a></td>
             <td><a href="#" class="btn btn-danger float-right"><ui:i19n message="delete"/></a></td>
         </tr>

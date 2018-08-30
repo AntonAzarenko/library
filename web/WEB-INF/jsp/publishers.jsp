@@ -20,7 +20,7 @@
        <tbody>
         <c:forEach items="${publishers}" var="publisher" varStatus="status">
         <tr>
-            <td>${publisher.name}</td>
+            <td><a href="booksByPublisher.html?publisher_name=${publisher.name}" >${publisher.name}</a></td>
             <td><a href="#" class="btn btn-secondary float-right"><ui:i19n message="edit"/></a></td>
             <td><a href="#" class="btn btn-danger float-right"><ui:i19n message="delete"/></a></td>
         </tr>
