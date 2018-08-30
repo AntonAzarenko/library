@@ -25,12 +25,12 @@ public class BookTo {
 
     private Long publisherId;
 
-    public Book asBook(Long id, String title, String discription, List<Long> authorId, Long publisherId) {
+    public Book asBook() {
         Book book = new Book();
-        book.setId(id);
-        book.setTitle(title);
-        book.setDescription(discription);
-        book.setPublisher(service.getById(publisherId));
+        book.setId(this.id);
+        book.setTitle(this.title);
+        book.setDescription(this.discription);
+        book.setPublisher(service.getById(this.publisherId));
         return book;
     }
 
