@@ -8,6 +8,8 @@
 <head>
     <c:if test="${not empty title}"><title><ui:i19n message="${title}"/></title></c:if>
     <c:url value="/css/bootstrap.min.css" var="href" /><link href="${href}" rel="stylesheet">
+    <c:url value="/css/style.css" var="shref"/><link href="${shref}" rel="stylesheet">
+    <c:url value="/css/font-awesome.css" var="fhref"/><link href="${fhref}" rel="stylesheet">
 </head>
 <body>
 <div class="container">

@@ -21,12 +21,6 @@ public class BookController {
     @Autowired
     private BookService srv;
 
-    @Autowired
-    private PublisherService pService;
-
-    @Autowired
-    private AuthorService aServise;
-
     /**
      * This method gets all books and show their on the index.jsp
      *

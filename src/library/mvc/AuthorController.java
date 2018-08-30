@@ -98,7 +98,7 @@ public class AuthorController {
     }
 
     @GetMapping(value = "authoredit.html")
-    public String edit(final Model model) {
+    public String edit() {
         return "authoraddedit";
     }
 }

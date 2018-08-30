@@ -83,7 +83,7 @@ public class PublisherController {
      * @param model
      * @return
      */
-    @PostMapping(value = "edit.html")
+    @PostMapping(value = "editPublisher.html")
     public String edit(@RequestParam("id") final Long id, final Model model) {
         model.addAttribute("publisher", service.getById(id));
         return "editpublisher";
