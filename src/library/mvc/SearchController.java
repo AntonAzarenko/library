@@ -32,7 +32,7 @@ public class SearchController {
     @GetMapping("search.html")
     public String search(Model model) {
         model.addAttribute("books", srv.search(form.getBook(), form.getAuthor(), form.getPublisher()));
-        return "books";
+        return "bookSearch";
     }
 
     @Component
