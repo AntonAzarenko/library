@@ -1,7 +1,7 @@
 <%@ tag  pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
-<%@ taglib prefix="ui" tagdir="/WEB-INF/tags" %>
+<%@ taglib prefix="ui" tagdir="/WEB-INF/tags/" %>
 <%@ attribute name="active" required="true"%>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <a class="navbar-brand" href="/library/"><ui:i19n message="library"/></a>
@@ -10,9 +10,13 @@
   </button>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+   
+
     <ul class="navbar-nav mr-auto">
       <li ${'library' eq active ?'class="nav-item active"': 'class="nav-item"'}>
         <a class="nav-link" href="/library/"><ui:i19n message="home"/></a>
+        <!-- >ui:link href="/library" text="home" css="nav-link" /-->
       </li>
       <li ${'book' eq active ?'class="nav-item active"': 'class="nav-item"'}>
         <a class="nav-link" href="books.html"><ui:i19n message="book"/></a>
@@ -24,5 +28,6 @@
         <a class="nav-link" href="publishers.html"><ui:i19n message="publisher"/></a>
       </li>
     </ul>
+
   </div>
 </nav>

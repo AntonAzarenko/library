@@ -43,7 +43,7 @@ public class EditController {
         book.setAuthor(aServise.getListAuthorsById(bookTo.getAuthors()));
         book.setPublisher(pService.getById(bookTo.getPublisherId()));
         srv.save(book);
-        return "redirect:index.html";
+        return "redirect:books.html";
     }
 
     /**
@@ -55,7 +55,7 @@ public class EditController {
     @PostMapping(value = "remove.html")
     public String delete(@RequestParam("id") final Long id) {
         srv.delete(id);
-        return "redirect:index.html";
+        return "redirect:books.html";
     }
 
     /**

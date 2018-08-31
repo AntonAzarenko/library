@@ -11,6 +11,7 @@
             <h3>Add/Edit</h3>
         </div>
         <div class="jumbotron">
+        <ui:i19n message=""></ui:i19n>
             <form action="booksave.html" method="post">
                 <input type="hidden" name="id" value="
                         <c:out value="${book.id}"/>">
@@ -49,23 +50,8 @@
                                     data-header="Ocupaciones" data-max-options="2" max-options-text="Solo dos opciones"
                                     title="Seleccionar ocupaciones" multiple>
                                 <c:forEach items="${authors}" var="author">
-                                    <option value="${author.id}">${author.name}</option>
-
-                                    <%-- <option value="${author.id}" <c:forEach items="${book.author.id}" var="bai">
-                                         ${bai.contains(author.id)?'selected' :''}
-                                     </c:forEach> >${author.name}</option>--%>
-
-
-                                    <%-- <c:if test="${book.author.id == author.id}">
-                                         <option selected value="${author.id}">${author.name}</option>>
-                                     </c:if>--%>
-
-                                    <%--<option value="${author.id}" ${book.author.id.contains(current)?'selected' :''}>${author.name}</option>
-        --%>
-                                    <%-- <option value="${author.id}" ${author.id == book.author.id?'selected' :''}>${author.name}</option>
-                                --%>
-                                    <%--<option value="${author.id}">${author.name}</option>--%>
-                                </c:forEach>
+                                    <option value="${author.id}" ${book.author.contains(author)?'selected' :''}>${author.name}</option>
+                              </c:forEach>
                             </select>
                         </div>
 
