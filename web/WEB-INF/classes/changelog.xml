@@ -57,14 +57,14 @@
 
         <createTable tableName="authors_books">
             <column name="author_id" type="bigint">
-                <constraints
+                <constraints nullable="false"
                         foreignKeyName="authors_books_author_id_fk"
                         referencedTableName="authors"
                         referencedColumnNames="id"
                 />
             </column>
             <column name="book_id" type="bigint">
-                <constraints
+                <constraints nullable="false"
                         foreignKeyName="authors_books_book_id_fk"
                         referencedTableName="books"
                         referencedColumnNames="id"
@@ -98,37 +98,37 @@
 
         <insert tableName="books">
             <column name="title" value="Mother"/>
-            <column name="publisher_id" value="1"/>
+            <column name="publisher_id" valueNumeric="1"/>
         </insert>
 
         <insert tableName="books">
             <column name="title" value="The Lower Depths"/>
-            <column name="publisher_id" value="1"/>
+            <column name="publisher_id" valueNumeric="1"/>
         </insert>
 
         <insert tableName="books">
             <column name="title" value="The Twelve Chairs"/>
-            <column name="publisher_id" value="1"/>
+            <column name="publisher_id" valueNumeric="1"/>
         </insert>
 
         <insert tableName="authors_books">
-            <column name="author_id" value="1"/>
-            <column name="book_id" value="1"/>
+            <column name="author_id" valueNumeric="1"/>
+            <column name="book_id" valueNumeric="1"/>
         </insert>
 
         <insert tableName="authors_books">
-            <column name="author_id" value="1"/>
-            <column name="book_id" value="2"/>
+            <column name="author_id" valueNumeric="1"/>
+            <column name="book_id" valueNumeric="2"/>
         </insert>
 
         <insert tableName="authors_books">
-            <column name="author_id" value="2"/>
-            <column name="book_id" value="3"/>
+            <column name="author_id" valueNumeric="2"/>
+            <column name="book_id" valueNumeric="3"/>
         </insert>
 
         <insert tableName="authors_books">
-            <column name="author_id" value="3"/>
-            <column name="book_id" value="3"/>
+            <column name="author_id" valueNumeric="3"/>
+            <column name="book_id" valueNumeric="3"/>
         </insert>
     </changeSet>
 
