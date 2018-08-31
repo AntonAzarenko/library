@@ -11,10 +11,10 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <m:menu css="navbar-nav mr-auto">
-        <m:menu-item url="/library" name="home" active="${active}"/>
-        <m:menu-item url="books.html" name="book" active="${active}"/>
-        <m:menu-item url="authors.html" name="author" active="${active}"/>
-        <m:menu-item url="publishers.html" name="publisher" active="${active}"/>
+        <m:item url="/library" name="home" active="${active}"/>
+        <m:item url="books.html" name="book" active="${active}"/>
+        <m:item url="authors.html" name="author" active="${active}"/>
+        <m:item url="publishers.html" name="publisher" active="${active}"/>
     </m:menu>
   </div>
 </nav>
