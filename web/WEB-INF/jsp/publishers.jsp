@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="ui" tagdir="/WEB-INF/tags"%>
 <ui:html title="Publishers">
-<ui:navbar active="publisher"/>
+<ui:navbar active="publishers.html"/>
 <h1><ui:i19n message="publisher"/></h1>
 <div class="d-flex justify-content-sm-center">
 <div class="col-md-7">

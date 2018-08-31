@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <%@ taglib prefix="ui" tagdir="/WEB-INF/tags" %>
 <ui:html title="Author">
-    <ui:navbar active="author"/>
+    <ui:navbar active="authors.html"/>
 
 <h1><ui:i19n message="author"/></h1>
 <div class="d-flex justify-content-sm-center">
