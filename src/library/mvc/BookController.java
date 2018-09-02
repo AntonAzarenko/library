@@ -71,4 +71,10 @@ public class BookController {
         model.addAttribute("books", srv.getBooksByPublisher(name));
         return "books";
     }
+
+    @GetMapping(value = "book.html")
+    public String getBookById(@RequestParam("id") final Long id, final Model model) {
+        model.addAttribute("book", srv.getById(id));
+        return "book";
+    }
 }

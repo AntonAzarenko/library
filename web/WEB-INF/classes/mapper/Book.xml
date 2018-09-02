@@ -15,6 +15,11 @@
             <id property="id" column="author_id"/>
             <result property="name" column="author_name"/>
         </collection>
+        <collection property="metadata" ofType="metadata" javaType="Metadata">
+            <id property="id" column="metadata_id"/>
+            <result property="url" column="url"/>
+            <result property="picture" column="picture"/>
+        </collection>
     </resultMap>
 
     <select id="find" resultMap="bookmap" parameterType="string">
@@ -24,12 +29,16 @@
 		b.description,
 		b.publisher_id,
 		p.name as publisher_name,
+		m.id as metadata_id,
+		m.url as url,
+		m.picture as picture,
 		a.id AS author_id,
 		a.name as author_name
 		from authors_books as ab
 		inner join books as b on ab.book_id = b.id
 		inner join authors as a on ab.author_id=a.id
 		inner join publishers p on b.publisher_id = p.id
+		left join metadata m on b.id = m.book_id
 		WHERE title = #{title}
 	</select>
 
@@ -75,12 +84,16 @@
 		b.description,
 		b.publisher_id,
 		p.name as publisher_name,
+		m.id as metadata_id,
+		m.url as url,
+		m.picture as picture,
 		a.id AS author_id,
 		a.name as author_name
 		from authors_books as ab
 		inner join books as b on ab.book_id = b.id
 		inner join authors as a on ab.author_id=a.id
 		inner join publishers p on b.publisher_id = p.id
+		left join metadata m on b.id = m.book_id
 	</select>
 
 
@@ -104,12 +117,16 @@
 		b.description,
 		b.publisher_id,
 		p.name as publisher_name,
+		m.id as metadata_id,
+		m.url as url,
+		m.picture as picture,
 		a.id AS author_id,
 		a.name as author_name
 		from authors_books as ab
 		inner join books as b on ab.book_id = b.id
 		inner join authors as a on ab.author_id=a.id
 		inner join publishers p on b.publisher_id = p.id
+		left join metadata m on b.id = m.book_id
 		WHERE b.id = #{id}
 	</select>
 

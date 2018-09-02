@@ -45,7 +45,10 @@
                 <constraints primaryKey="true" nullable="false" primaryKeyName="metadata_pk"/>
             </column>
             <column name="url" type="varchar(256)">
-                <constraints nullable="false"/>
+                <constraints nullable="true"/>
+            </column>
+            <column name="picture" type="varchar(256)">
+                <constraints nullable="true"/>
             </column>
             <column name="book_id" type="bigint">
                 <constraints
@@ -128,6 +131,11 @@
 
         <insert tableName="authors_books">
             <column name="author_id" valueNumeric="3"/>
+            <column name="book_id" valueNumeric="3"/>
+        </insert>
+
+        <insert tableName="metadata">
+            <column name="picture" value="docs/booksPicture/TheTwelveChairs.jpg"/>
             <column name="book_id" valueNumeric="3"/>
         </insert>
     </changeSet>
