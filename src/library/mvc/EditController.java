@@ -1,6 +1,7 @@
 package library.mvc;
 
 import library.entity.Book;
+import library.entity.Publisher;
 import library.service.AuthorService;
 import library.service.BookService;
 import library.service.PublisherService;
@@ -83,27 +84,42 @@ public class EditController {
         return "redirect:authorsave.html";
     }
 
-    @GetMapping(value = "authorsave.html")
-    public String addPublisher(final Model model) {
-        model.addAttribute("addAuthors", aServise.getByName(state.getAuthorName()));
-        model.addAttribute("publishers", pService.getAll());
-        model.addAttribute("authors", aServise.getAll());
-        return "addedit";
-    }
+//    @GetMapping(value = "authorsave.html")
+//    public String addPublisher(final Model model) {
+//        model.addAttribute("addAuthors", aServise.getByName(state.getAuthorName()));
+//        model.addAttribute("publishers", pService.getAll());
+//        model.addAttribute("authors", aServise.getAll());
+//        return "addedit";
+//    }
 
-    @PostMapping(value = "addPublisher.html")
+    @PostMapping(value = "addpublisher.html")
     public String addPublisher(@RequestParam("name") String name) {
-        state.setPublisherName(name);
-        return "redirect:addPublisher.html";
+        Publisher publisher = new Publisher();
+        if(state.getPublisherId() != null) {
+            publisher.setId(state.getPublisherId());
+            state.setPublisherId(null);
+        }
+        publisher.setName(name);
+        pService.save(publisher);
+        return "redirect:publishers.html";
+    }
+    
+    @GetMapping(value = {"addpublisher.html","editpublisher.html"})
+    public String addPublisher(@RequestParam(required = false) @PathVariable("id") final Long id, final Model model) {
+        if(id != null) {
+            model.addAttribute("publisher", pService.getById(id));
+            state.setPublisherId(id);
+        }
+        return "editPublisher";
     }
 
-    @GetMapping(value = "addPublisher.html")
-    public String addAuthor(final Model model) {
-        model.addAttribute("addAuthors", aServise.getByName(state.getPublisherName()));
-        model.addAttribute("publishers", pService.getAll());
-        model.addAttribute("authors", aServise.getAll());
-        return "addedit";
-    }
+//    @GetMapping(value = "addPublisher.html")
+//    public String addAuthor(final Model model) {
+//        model.addAttribute("addAuthors", aServise.getByName(state.getPublisherName()));
+//        model.addAttribute("publishers", pService.getAll());
+//        model.addAttribute("authors", aServise.getAll());
+//        return "addedit";
+//    }
 
     @Component
     @Scope(scopeName = "session", proxyMode = ScopedProxyMode.TARGET_CLASS)
