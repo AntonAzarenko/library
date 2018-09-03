@@ -94,10 +94,10 @@ public class PublisherController {
      * @param id
      * @return
      */
-    @PostMapping(value = "removePublisher.html")
+    @GetMapping(value = "removePublisher.html")
     public String delete(@RequestParam("id")final Long id){
         service.delete(id);
-        return "redirect:publishers";
+        return "redirect:publishers.html";
     }
 
 

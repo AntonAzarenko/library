@@ -22,7 +22,7 @@
         <tr>
             <td><a href="booksByPublisher.html?publisher_name=${publisher.name}" >${publisher.name}</a></td>
             <td><a href="addpublisher.html?id=${publisher.id }" class="btn btn-secondary float-right"><ui:i19n message="edit"/></a></td>
-            <td><a href="#" class="btn btn-danger float-right"><ui:i19n message="delete"/></a></td>
+            <td><a href="removePublisher.html?id=${publisher.id }" class="btn btn-danger float-right"><ui:i19n message="delete"/></a></td>
         </tr>
         </c:forEach>
         </tbody>

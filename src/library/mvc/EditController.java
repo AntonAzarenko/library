@@ -94,7 +94,6 @@ public class EditController {
 
     @PostMapping(value = "addpublisher.html")
     public String addPublisher(@RequestParam("name") String name) {
-        //state.setPublisherName(name);
         Publisher publisher = new Publisher();
         if(state.getPublisherId() != null) {
             publisher.setId(state.getPublisherId());
