@@ -7,7 +7,7 @@
 <h1><ui:i19n message="publisher"/></h1>
 <div class="d-flex justify-content-sm-center">
 <div class="col-md-7">
-<a href="#" class="btn btn-primary mb-3"><ui:i19n message="add"/></a>
+<a href="addpublisher.html" class="btn btn-primary mb-3"><ui:i19n message="add"/></a>
 <c:if test="${not empty publishers}">
 	<table class="table table-striped">
        <thead class="thead-dark">
@@ -21,7 +21,7 @@
         <c:forEach items="${publishers}" var="publisher" varStatus="status">
         <tr>
             <td><a href="booksByPublisher.html?publisher_name=${publisher.name}" >${publisher.name}</a></td>
-            <td><a href="#" class="btn btn-secondary float-right"><ui:i19n message="edit"/></a></td>
+            <td><a href="addpublisher.html?id=${publisher.id }" class="btn btn-secondary float-right"><ui:i19n message="edit"/></a></td>
             <td><a href="#" class="btn btn-danger float-right"><ui:i19n message="delete"/></a></td>
         </tr>
         </c:forEach>
