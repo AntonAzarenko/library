@@ -52,7 +52,7 @@ public class EditController {
      * @param id
      * @return
      */
-    @PostMapping(value = "remove.html")
+    @GetMapping(value = "remove.html")
     public String delete(@RequestParam("id") final Long id) {
         srv.delete(id);
         return "redirect:books.html";

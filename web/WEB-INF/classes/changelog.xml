@@ -64,6 +64,7 @@
                         foreignKeyName="authors_books_author_id_fk"
                         referencedTableName="authors"
                         referencedColumnNames="id"
+                        deleteCascade="true"
                 />
             </column>
             <column name="book_id" type="bigint">
@@ -71,7 +72,7 @@
                         foreignKeyName="authors_books_book_id_fk"
                         referencedTableName="books"
                         referencedColumnNames="id"
-                />
+                        deleteCascade="true"/>
             </column>
         </createTable>
 
