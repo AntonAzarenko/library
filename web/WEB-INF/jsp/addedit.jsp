@@ -2,6 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="ui" tagdir="/WEB-INF/tags" %>
+
 <ui:html title="title">
     <ui:navbar active="library"/>
     <ui:title title="title"/>
@@ -11,21 +12,13 @@
             <h3>Add/Edit</h3>
         </div>
         <div class="jumbotron">
-        <ui:i19n message=""></ui:i19n>
             <form action="booksave.html" method="post">
-                <input type="hidden" name="id" value="
-                        <c:out value="${book.id}"/>">
-                <div class="form-group">
-                    <spring:message code="book.name" text="Book name" var="text"/>
-                    <label for="book_name">${text}</label>
-                    <input type="text" class="form-control" id="book_name" name="title" placeholder="${text}"
-                           value="<c:out value="${book.title}"/>">
-                </div>
-                <div class="form-group">
-                    <label for="discription">Описание</label>
-                    <input type="text" class="form-control" id="discription" name="discription" placeholder="описание"
-                           value="<c:out value="${book.description}"/>">
-                </div>
+                <input type="hidden" name="id" value="id"/>
+                <ui:formGroup id="book_name" label="book.name" name="book" placeholder="book.name.placeholder"
+                              invFeedback="book.edit.invalidFeedback" value="${book.title}"/>
+                <ui:formGroup id="book_description" label="book.description" name="book"
+                              placeholder="book.description.placeholder" invFeedback="book.edit.invalidFeedback"
+                              value="${book.description}"/>
                 <div class="row">
                     <div class="col-8">
                         <div class="form-group">
@@ -51,15 +44,15 @@
                                     title="Seleccionar ocupaciones" multiple>
                                 <c:forEach items="${authors}" var="author">
                                     <option value="${author.id}" ${book.author.contains(author)?'selected' :''}>${author.name}</option>
-                              </c:forEach>
+                                </c:forEach>
                             </select>
                         </div>
-
                     </div>
                     <div class="col-sm pt-2 mt-5">
                         <a href="authoredit.html" class="btn btn-info"><i class="fa fa-plus"></i></a>
                     </div>
                 </div>
+
                 <button type="submit" class="btn btn-primary">Добавить</button>
             </form>
         </div>

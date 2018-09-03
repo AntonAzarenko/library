@@ -32,18 +32,8 @@ public class AuthorController {
         return "allauthors";
     }
 
-    /**
-     * This method gets authors by ID, put them to model and view on editAuthors.jsp
-     *
-     * @param model
-     * @param id
-     * @return
-     */
-    @GetMapping(value = "editauthors.html")
-    public String edit(final Model model, @RequestParam("id") final Long id) {
-        model.addAttribute("book", service.getById(id));
-        return "editAuthors";
-    }
+
+
 
     /**
      * This methos remove author by Id and redirect to allauthos.jsp

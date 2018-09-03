@@ -4,6 +4,7 @@
 <%@ attribute name="id" required="true"%>
 <%@ attribute name="label" required="true"%>
 <%@ attribute name="name" required="true"%>
+<%@ attribute name="value" required="false" %>
 <%@ attribute name="placeholder" required="true"%>
 <%@ attribute name="invFeedback" required="true"%>
 <%@ attribute name="required"%>
@@ -14,6 +15,7 @@
            class="form-control"
            id="${id}"
            name="${name}"
+           value="<c:out value="${value}"/>"
            placeholder='<ui:i19n message="${placeholder}"/>'
     ${not empty required ? ' aria-describedby="inputGroupPrepend" required' :' '}>
     <div class="invalid-feedback"><ui:i19n message="${invFeedback}"/></div>

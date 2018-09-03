@@ -7,7 +7,7 @@
     <ui:title title="author.edit.title" />
     <form action="authorsave.html" method="post">
         <ui:formGroup id="author_name" label="author.name" name="author" placeholder="author.name.placeholder"
-                      invFeedback="author.edit.authorinvalidefeedback" required="1"/>
+                      invFeedback="author.edit.authorinvalidefeedback" value="${author.name}" required="1"/>
         <button type="submit" class="btn btn-primary">
             <ui:i19n message="author.edit.buttonsave"/>
         </button>
