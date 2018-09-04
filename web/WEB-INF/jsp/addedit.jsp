@@ -61,12 +61,15 @@
                             <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
                         </div>
                         <div class="custom-file">
-                            <input type="file" name="picture" class="custom-file-input" id="inputGroupFile01"
-                                   aria-describedby="inputGroupFileAddon01">
+                            <input type="file" name="file" class="custom-file-input" id="inputGroupFile01"
+                                   aria-describedby="inputGroupFileAddon01" >
                             <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
                         </div>
                     </div>
                 </div>
+
+
+
                 <div class="form-group">
                     <div>
                         <label for="inputGroupFile02">Выберите файл</label>
@@ -84,6 +87,13 @@
                 </div>
 
                 <button type="submit" class="btn btn-primary">Добавить</button>
+            </form>
+
+            <form method="POST" action="upload.html" enctype="multipart/form-data">
+                File to upload: <input type="file" name="file"><br />
+
+                <input type="submit" value="Upload">
+                Press here to upload the file!
             </form>
         </div>
     </div>
