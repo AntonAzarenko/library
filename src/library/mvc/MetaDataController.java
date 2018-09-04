@@ -20,9 +20,10 @@ public class MetaDataController {
             try {
                 byte[] bytes = file.getBytes();
                 name = file.getOriginalFilename();
-                File dir = new File("" + File.separator + "zip");
+                String root = "";
+                File dir = new File(root + File.separator + "zip");
                 if (dir.exists()) {
-                    dir.mkdir();
+                    dir.mkdirs();
                 }
                 File uploadedFile = new File(dir.getAbsolutePath() + File.separator + name);
                 BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(uploadedFile));

@@ -89,7 +89,7 @@
                 <button type="submit" class="btn btn-primary">Добавить</button>
             </form>
 
-            <form method="POST" action="upload.html" enctype="multipart/form-data">
+            <form method="POST"  action="upload.html" enctype="multipart/form-data">
                 File to upload: <input type="file" name="file"><br />
 
                 <input type="submit" value="Upload">
