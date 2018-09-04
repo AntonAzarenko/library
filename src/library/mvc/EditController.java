@@ -113,7 +113,7 @@ public class EditController {
         return "editPublisher";
     }
 
-    @PostMapping(value = "authoredit.html")
+    @GetMapping(value = "authoredit.html")
     public String addAuthor(@RequestParam(required = false) @PathVariable("id") final Long id, final Model model) {
         model.addAttribute("author", aServise.getById(id));
         return "authoraddedit";
