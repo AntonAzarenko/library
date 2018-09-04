@@ -87,10 +87,6 @@ public class AuthorController {
         return "redirect:allauthors";
     }
 
-    @GetMapping(value = "authoredit.html")
-    public String edit() {
-        return "authoraddedit";
-    }
 }
 
 

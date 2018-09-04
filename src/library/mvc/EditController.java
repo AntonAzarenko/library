@@ -1,5 +1,6 @@
 package library.mvc;
 
+import library.entity.Author;
 import library.entity.Book;
 import library.entity.Publisher;
 import library.service.AuthorService;
@@ -79,14 +80,15 @@ public class EditController {
     }
 
     @PostMapping(value = "authorsave.html")
-    public String addAuthor(@RequestParam("name") String name) {
+    public String addAuthor(@RequestParam("name") String name, @RequestParam(required = false)@PathVariable("id") final Long id) {
+        state.setAuthorId(id);
         state.setAuthorName(name);
         return "redirect:authorsave.html";
     }
 
     @GetMapping(value = "authorsave.html")
     public String addPublisher(final Model model) {
-        model.addAttribute("addAuthors", aServise.getByName(state.getAuthorName()));
+        aServise.save(new Author(state.getAuthorId(),state.getAuthorName()));
         model.addAttribute("publishers", pService.getAll());
         model.addAttribute("authors", aServise.getAll());
         return "addedit";
@@ -106,10 +108,8 @@ public class EditController {
 
     @GetMapping(value = {"addpublisher.html", "editpublisher.html"})
     public String addPublisher(@RequestParam(required = false) @PathVariable("id") final Long id, final Model model) {
-        if (id != null) {
-            model.addAttribute("publisher", pService.getById(id));
-            state.setPublisherId(id);
-        }
+        model.addAttribute("publisher", pService.getById(id));
+        state.setPublisherId(id);
         return "editPublisher";
     }
 
