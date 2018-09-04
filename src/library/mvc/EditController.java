@@ -65,7 +65,7 @@ public class EditController {
      * @param model
      * @return
      */
-    @GetMapping (value = "edit.html")
+    @GetMapping(value = "edit.html")
     public String edit(@RequestParam(required = false) @PathVariable("id") final Long id, final Model model) {
         if (id == null) {
             model.addAttribute("publishers", pService.getAll());
@@ -84,18 +84,18 @@ public class EditController {
         return "redirect:authorsave.html";
     }
 
-//    @GetMapping(value = "authorsave.html")
-//    public String addPublisher(final Model model) {
-//        model.addAttribute("addAuthors", aServise.getByName(state.getAuthorName()));
-//        model.addAttribute("publishers", pService.getAll());
-//        model.addAttribute("authors", aServise.getAll());
-//        return "addedit";
-//    }
+    @GetMapping(value = "authorsave.html")
+    public String addPublisher(final Model model) {
+        model.addAttribute("addAuthors", aServise.getByName(state.getAuthorName()));
+        model.addAttribute("publishers", pService.getAll());
+        model.addAttribute("authors", aServise.getAll());
+        return "addedit";
+    }
 
     @PostMapping(value = "addpublisher.html")
     public String addPublisher(@RequestParam("name") String name) {
         Publisher publisher = new Publisher();
-        if(state.getPublisherId() != null) {
+        if (state.getPublisherId() != null) {
             publisher.setId(state.getPublisherId());
             state.setPublisherId(null);
         }
@@ -103,23 +103,21 @@ public class EditController {
         pService.save(publisher);
         return "redirect:publishers.html";
     }
-    
-    @GetMapping(value = {"addpublisher.html","editpublisher.html"})
+
+    @GetMapping(value = {"addpublisher.html", "editpublisher.html"})
     public String addPublisher(@RequestParam(required = false) @PathVariable("id") final Long id, final Model model) {
-        if(id != null) {
+        if (id != null) {
             model.addAttribute("publisher", pService.getById(id));
             state.setPublisherId(id);
         }
         return "editPublisher";
     }
 
-//    @GetMapping(value = "addPublisher.html")
-//    public String addAuthor(final Model model) {
-//        model.addAttribute("addAuthors", aServise.getByName(state.getPublisherName()));
-//        model.addAttribute("publishers", pService.getAll());
-//        model.addAttribute("authors", aServise.getAll());
-//        return "addedit";
-//    }
+    @PostMapping(value = "authoredit.html")
+    public String addAuthor(@RequestParam(required = false) @PathVariable("id") final Long id, final Model model) {
+        model.addAttribute("author", aServise.getById(id));
+        return "authoraddedit";
+    }
 
     @Component
     @Scope(scopeName = "session", proxyMode = ScopedProxyMode.TARGET_CLASS)
