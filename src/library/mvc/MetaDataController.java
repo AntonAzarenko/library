@@ -8,6 +8,9 @@ import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.net.URL;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 @Controller
 public class MetaDataController {
@@ -20,12 +23,12 @@ public class MetaDataController {
             try {
                 byte[] bytes = file.getBytes();
                 name = file.getOriginalFilename();
-                String path = "c:\\zip\\";
-                File dir = new File(path + File.separator + "zip");
-                if (!dir.exists()){
+                Path resourceDirectory = Paths.get("../library", "data", "zip");
+                File dir = new File(resourceDirectory + File.separator);
+                if (!dir.exists()) {
                     dir.mkdirs();
                 }
-                    File uploadedFile = new File(dir.getAbsolutePath() + File.separator + name);
+                File uploadedFile = new File(dir.getAbsolutePath() + File.separator + name);
                 BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(uploadedFile));
                 stream.write(bytes);
                 stream.flush();
