@@ -39,14 +39,14 @@ public class EditController {
      * @param bookTo
      * @return
      */
-    @PostMapping(value = "booksave.html")
+  /*  @PostMapping(value = "booksave.html")
     public String save(BookTo bookTo) {
         Book book = bookTo.asBook();
         book.setAuthor(aServise.getListAuthorsById(bookTo.getAuthors()));
         book.setPublisher(pService.getById(bookTo.getPublisherId()));
         srv.save(book);
         return "redirect:books.html";
-    }
+    }*/
 
     /**
      * This method removes book by id and redirect to index

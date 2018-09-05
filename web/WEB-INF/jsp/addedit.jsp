@@ -52,45 +52,19 @@
                         <a href="authoredit.html" class="btn btn-info"><i class="fa fa-plus"></i></a>
                     </div>
                 </div>
-                <div class="form-group">
-                    <div>
-                        <label for="inputGroupFile01">Выберите обложку</label>
-                    </div>
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
-                        </div>
-                        <div class="custom-file">
-                            <input type="file" name="file" class="custom-file-input" id="inputGroupFile01"
-                                   aria-describedby="inputGroupFileAddon01" >
-                            <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
-                        </div>
-                    </div>
-                </div>
-
-
-
-                <div class="form-group">
-                    <div>
-                        <label for="inputGroupFile02">Выберите файл</label>
-                    </div>
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="inputGroupFileAddon02">Upload</span>
-                        </div>
-                        <div class="custom-file">
-                            <input type="file" name="zip" class="custom-file-input" id="inputGroupFile02"
-                                   aria-describedby="inputGroupFileAddon01">
-                            <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
-                        </div>
-                    </div>
-                </div>
 
                 <button type="submit" class="btn btn-primary">Добавить</button>
             </form>
 
-            <form method="POST"  action="upload.html" enctype="multipart/form-data">
-                File to upload: <input type="file" name="file"><br />
+            <form method="POST"  action="upload.html" modelAttribute="uploadedFile"  enctype="multipart/form-data">
+                File to upload: <input type="file" name="file" accept="image/*"><br />
+
+                <input type="submit" value="Upload">
+                Press here to upload the file!
+            </form>
+
+            <form method="POST"  action="upload.html" modelAttribute="uploadedFile"  enctype="multipart/form-data">
+                File to upload: <input type="file" name="file" accept="application/zip"><br />
 
                 <input type="submit" value="Upload">
                 Press here to upload the file!
