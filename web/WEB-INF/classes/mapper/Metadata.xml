@@ -2,15 +2,36 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="library.dao.MetadataDao">
-	
+
 	<resultMap type="Metadata" id="metadatamap">
-	
+		<id column="id" property="id" />
+		<result column="url" property="uri" />
+		<result column="picture" property="picture" />
 	</resultMap>
-	
-	
+
+
 	<insert id="create" parameterType="Metadata"
 		useGeneratedKeys="true" keyProperty="id">
-		INSERT INTO metadata (url, picture, book_id) VALUES (#{url}, #{picture},
+		INSERT INTO metadata (url,
+		picture, book_id) VALUES (#{url}, #{picture},
 		#{book_id})
 	</insert>
+
+	<select id="read" resultMap="metadatamap" parameterType="long">
+		SELECT
+		m.url, m.picture, m.book_id FROM metadata m WHERE m.id=#{id}
+	</select>
+
+
+	<update id="update" parameterType="Metadata">
+		UPDATE metadata SET url =
+		#{uri}, picture=#{picture}, book_id =
+		#{book_id} WHERE id = #{id}
+	</update>
+
+	<delete id="delete" parameterType="long">
+		DELETE FROM metadata WHERE id
+		= #{id}
+	</delete>
+
 </mapper>
