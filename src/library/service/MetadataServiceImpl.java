@@ -18,9 +18,9 @@ public class MetadataServiceImpl implements MetadataService {
 
     @Override
     public void save(Metadata o) {
-	if(o.getId() == null) {
+	if (o.getId() == null) {
 	    mdao.create(o);
-	}else {
+	} else {
 	    mdao.update(o);
 	}
 
@@ -29,11 +29,6 @@ public class MetadataServiceImpl implements MetadataService {
     @Override
     public void delete(Long id) {
 	mdao.delete(id);
-    }
-
-    @Override
-    public Metadata getByBookId(Long id) {
-	return mdao.findByBookId(id);
     }
 
 }
