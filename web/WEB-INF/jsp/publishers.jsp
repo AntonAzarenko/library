@@ -21,8 +21,10 @@
         <c:forEach items="${publishers}" var="publisher" varStatus="status">
         <tr>
             <td><a href="booksByPublisher.html?publisher_name=${publisher.name}" >${publisher.name}</a></td>
-            <td><a href="addpublisher.html?id=${publisher.id }" class="btn btn-secondary float-right"><ui:i19n message="edit"/></a></td>
-            <td><a href="removePublisher.html?id=${publisher.id }" class="btn btn-danger float-right"><ui:i19n message="delete"/></a></td>
+            <td><a href="editpublisher.html?id=${publisher.id }" class="btn btn-secondary float-right"><ui:i19n message="edit"/></a></td>
+            <td>
+                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#confirDialog" data-id="${publisher.id }" data-text="${publisher.name }"><ui:i19n message="delete"/></button>
+             </td>
         </tr>
         </c:forEach>
         </tbody>
@@ -30,4 +32,7 @@
 </c:if>
 </div>
 </div>
+
+<ui:deleteDialog message="Вы точно хотите удалить" action="removePublisher.html" title="Подтверждение удаления"/>
+
 </ui:html>
