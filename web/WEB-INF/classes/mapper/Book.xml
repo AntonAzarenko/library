@@ -40,6 +40,7 @@
 		inner join publishers p on b.publisher_id = p.id
 		left join metadata m on b.id = m.book_id
 		WHERE title = #{title}
+		order by b.title
 	</select>
 
     <select id="findByAuthorId" parameterType="long"
@@ -58,6 +59,7 @@
 		inner join publishers p on b.publisher_id = p.id
 		WHERE
 		a.id = #{id}
+		order by b.title
 	</select>
 
     <select id="findBooksByPublisher" parameterType="string"
@@ -75,6 +77,7 @@
 		inner join authors as a on ab.author_id=a.id
 		inner join publishers p on b.publisher_id = p.id
 		where p.name like #{name}
+		order by b.title
 	</select>
 
     <select id="findAll" resultMap="bookmap">
@@ -94,6 +97,7 @@
 		inner join authors as a on ab.author_id=a.id
 		inner join publishers p on b.publisher_id = p.id
 		left join metadata m on b.id = m.book_id
+		order by b.title
 	</select>
 
 
@@ -164,6 +168,7 @@
         WHERE upper(b.title) LIKE upper(#{book})
         	AND upper(a.name) LIKE upper(#{author})
         	AND upper(a.name) LIKE upper(#{publisher})
+        order by b.title
     </select>
 
 </mapper>

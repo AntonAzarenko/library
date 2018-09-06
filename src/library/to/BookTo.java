@@ -25,7 +25,7 @@ public class BookTo {
         Book book = new Book();
         book.setId(this.id);
         book.setTitle(this.title);
-        book.setDescription(this.description);
+        book.setDescription(this.description.isEmpty()?null:this.description);
         return book;
     }
 
