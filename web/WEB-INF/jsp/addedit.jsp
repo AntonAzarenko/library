@@ -16,7 +16,7 @@
 
                 <input type="hidden" name="id" value="
                         <c:out value="${book.id}"/>">
-                <div class="form-group">
+<%--                <div class="form-group">
                     <spring:message code="book.name" text="Book name" var="text"/>
                     <label for="book_name">${text}</label>
                     <input type="text" class="form-control" id="book_name" name="title" placeholder="${text}"
@@ -26,12 +26,12 @@
                     <label for="discription">Описание</label>
                     <input type="text" class="form-control" id="discription" name="discription" placeholder="описание"
                            value="<c:out value="${book.description}"/>">
-                </div>
-               <%-- <ui:formGroup id="book_name" label="book.name" name="title" placeholder="book.name.placeholder"
-                              invFeedback="book.edit.invalidFeedback" value="${book.title}"/>
-                <ui:formGroup id="book_description" label="book.description" name="description"
-                              placeholder="book.description.placeholder" invFeedback="book.edit.invalidFeedback"
-                              value="${book.description}"/>--%>
+                </div>--%>
+                <ui:formGroup id="book_name" label="${text}" name="title" placeholder="book.name.placeholder"
+                              invFeedback="Write book name" value="${book.title}" required="true"/>
+                <ui:formGroup id="description" label="Описание" name="description"
+                              placeholder="book.description.placeholder" invFeedback="Write description"
+                              value="${book.description}"/>
                 <div class="row">
                     <div class="col-8">
                         <div class="form-group">
