@@ -4,6 +4,7 @@ import library.entity.Book;
 import library.entity.Metadata;
 import library.service.AuthorService;
 import library.service.BookService;
+import library.service.MetadataService;
 import library.service.PublisherService;
 import library.to.BookTo;
 import library.util.FileValidator;
@@ -26,6 +27,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.List;
+import java.util.Objects;
 
 @Controller
 public class MetaDataController {
@@ -34,6 +37,9 @@ public class MetaDataController {
 
     @Autowired
     private BookService srv;
+
+    @Autowired
+    private MetadataService mService;
 
     @Autowired
     private PublisherService pService;
@@ -45,16 +51,30 @@ public class MetaDataController {
     private FileValidator fileValidator;
 
     @PostMapping(value = "booksave.html")
-    public String save(BookTo bookTo) {
+    @ResponseBody
+    public ModelAndView saveBook(BookTo bookTo, @RequestParam(required = false) @PathVariable("image") MultipartFile imageFile,
+                       @RequestParam(required = false) @PathVariable("zipFile") MultipartFile zipFile, BindingResult result) {
+        ModelAndView modelAndView = new ModelAndView();
         Book book = bookTo.asBook();
         book.setAuthor(aServise.getListAuthorsById(bookTo.getAuthors()));
         book.setPublisher(pService.getById(bookTo.getPublisherId()));
-        book.setMetadata(new Metadata(state.getPictureName(), state.getZipName()));
+        if(Objects.nonNull(imageFile)){
+            upload(imageFile, "image");
+        }
+        if(Objects.nonNull(zipFile)){
+            upload(zipFile, "new");
+        }
+
+        //mService.save(new Metadata(imageFile.getOriginalFilename(), zipFile.getOriginalFilename()));
+       // book.setMetadata(new Metadata(state.getPictureName(), state.getZipName()));
         srv.save(book);
-        return "redirect:books.html";
+        RedirectView redirectView = new RedirectView("books.html");
+        redirectView.setStatusCode(HttpStatus.FOUND);
+        modelAndView.setView(redirectView);
+        return modelAndView;
     }
 
-    @PostMapping(value = "upload.html")
+  /*  @PostMapping(value = "upload.html")
     @ResponseBody
     public ModelAndView uploadZip(@ModelAttribute("uploadedFile") UploadedFile uploadedFile, BindingResult result) {
         ModelAndView modelAndView = new ModelAndView();
@@ -72,10 +92,10 @@ public class MetaDataController {
             state.setPictureName(file.getOriginalFilename());
         }
         return modelAndView;
-    }
+    }*/
 
 
-    private String upload(UploadedFile uploadedFile, BindingResult result, String path) {
+   /* private String upload(UploadedFile uploadedFile, BindingResult result, String path) {
         MultipartFile file = uploadedFile.getFile();
         String name = null;
         fileValidator.validate(uploadedFile, result);
@@ -100,8 +120,35 @@ public class MetaDataController {
             }
         }
         return "edit.html";
-    }
+    }*/
 
+    private String upload(MultipartFile file, String path) {
+        String name = null;
+
+
+       /* fileValidator.validate(uploadedFile, result);
+        if (result.hasErrors()) {
+            return ("errorUpload");
+        } else {*/
+        try {
+            byte[]  bytes = file.getBytes();
+            name = file.getOriginalFilename();
+            Path resourceDirectory = Paths.get("../library", "data", path);
+            File dir = new File(resourceDirectory + File.separator);
+            if (!dir.exists()) {
+                dir.mkdirs();
+            }
+            File loadFile = new File(dir.getAbsolutePath() + File.separator + name);
+            BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(loadFile));
+            stream.write(bytes);
+            stream.flush();
+            stream.close();
+        } catch (IOException e) {
+
+        }
+
+        return "edit.html";
+    }
 
     @Component
     @Scope(scopeName = "session", proxyMode = ScopedProxyMode.TARGET_CLASS)

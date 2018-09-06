@@ -2,6 +2,7 @@ package library.mvc;
 
 import library.entity.Author;
 import library.entity.Book;
+import library.entity.Metadata;
 import library.entity.Publisher;
 import library.service.AuthorService;
 import library.service.BookService;
@@ -13,10 +14,8 @@ import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 @Controller
 public class EditController {
@@ -33,20 +32,6 @@ public class EditController {
     @Autowired
     private AuthorService aServise;
 
-    /**
-     * This method save new book, or update book and redirect to index.jsp
-     *
-     * @param bookTo
-     * @return
-     */
-  /*  @PostMapping(value = "booksave.html")
-    public String save(BookTo bookTo) {
-        Book book = bookTo.asBook();
-        book.setAuthor(aServise.getListAuthorsById(bookTo.getAuthors()));
-        book.setPublisher(pService.getById(bookTo.getPublisherId()));
-        srv.save(book);
-        return "redirect:books.html";
-    }*/
 
     /**
      * This method removes book by id and redirect to index

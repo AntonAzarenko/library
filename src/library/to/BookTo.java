@@ -1,9 +1,7 @@
 package library.to;
 
 import library.entity.Book;
-import library.service.AuthorService;
-import library.service.PublisherService;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
@@ -17,7 +15,7 @@ public class BookTo {
 
     private String title;
 
-    private String discription;
+    private String description;
 
     private List<Long> authors;
 
@@ -27,8 +25,11 @@ public class BookTo {
         Book book = new Book();
         book.setId(this.id);
         book.setTitle(this.title);
-        book.setDescription(this.discription);
+        book.setDescription(this.description);
         return book;
+    }
+
+    public BookTo() {
     }
 
     public Long getId() {
@@ -47,12 +48,12 @@ public class BookTo {
         this.title = title;
     }
 
-    public String getDiscription() {
-        return discription;
+    public String getDescription() {
+        return description;
     }
 
-    public void setDiscription(String discription) {
-        this.discription = discription;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public List<Long> getAuthors() {

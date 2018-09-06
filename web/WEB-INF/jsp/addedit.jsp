@@ -12,13 +12,26 @@
             <h3>Add/Edit</h3>
         </div>
         <div class="jumbotron">
-            <form action="booksave.html" method="post">
-                <input type="hidden" name="id" value="id"/>
-                <ui:formGroup id="book_name" label="book.name" name="book" placeholder="book.name.placeholder"
+            <form action="booksave.html" method="post" enctype="multipart/form-data" multiple="true">
+
+                <input type="hidden" name="id" value="
+                        <c:out value="${book.id}"/>">
+                <div class="form-group">
+                    <spring:message code="book.name" text="Book name" var="text"/>
+                    <label for="book_name">${text}</label>
+                    <input type="text" class="form-control" id="book_name" name="title" placeholder="${text}"
+                           value="<c:out value="${book.title}"/>">
+                </div>
+                <div class="form-group">
+                    <label for="discription">Описание</label>
+                    <input type="text" class="form-control" id="discription" name="discription" placeholder="описание"
+                           value="<c:out value="${book.description}"/>">
+                </div>
+               <%-- <ui:formGroup id="book_name" label="book.name" name="title" placeholder="book.name.placeholder"
                               invFeedback="book.edit.invalidFeedback" value="${book.title}"/>
-                <ui:formGroup id="book_description" label="book.description" name="book"
+                <ui:formGroup id="book_description" label="book.description" name="description"
                               placeholder="book.description.placeholder" invFeedback="book.edit.invalidFeedback"
-                              value="${book.description}"/>
+                              value="${book.description}"/>--%>
                 <div class="row">
                     <div class="col-8">
                         <div class="form-group">
@@ -52,22 +65,34 @@
                         <a href="authoredit.html" class="btn btn-info"><i class="fa fa-plus"></i></a>
                     </div>
                 </div>
+                <div class="form-group">
+                    <div>
+                        <label for="inputGroupFile01">Выберите обложку</label>
+                    </div>
+                    <div class="input-group mb-3">
+                        <div class="custom-file">
+                            <input type="file" name="image" accept="image/*" class="custom-file-input" id="inputGroupFile01"
+                                   aria-describedby="inputGroupFileAddon01" >
+                            <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div>
+                        <label for="inputGroupFile02">Выберите файл</label>
+                    </div>
+                    <div class="input-group mb-3">
+                        <div class="custom-file">
+                            <input type="file" name="zipFile" accept="application/zip" class="custom-file-input" id="inputGroupFile02"
+                                   aria-describedby="inputGroupFileAddon01">
+                            <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                        </div>
+                    </div>
+                </div>
+
 
                 <button type="submit" class="btn btn-primary">Добавить</button>
-            </form>
-
-            <form method="POST"  action="upload.html" modelAttribute="uploadedFile"  enctype="multipart/form-data">
-                File to upload: <input type="file" name="file" accept="image/*"><br />
-
-                <input type="submit" value="Upload">
-                Press here to upload the file!
-            </form>
-
-            <form method="POST"  action="upload.html" modelAttribute="uploadedFile"  enctype="multipart/form-data">
-                File to upload: <input type="file" name="file" accept="application/zip"><br />
-
-                <input type="submit" value="Upload">
-                Press here to upload the file!
             </form>
         </div>
     </div>

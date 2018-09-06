@@ -2,7 +2,9 @@ package library.service;
 
 import library.dao.MetadataDao;
 import library.entity.Metadata;
+import org.springframework.stereotype.Service;
 
+@Service
 public class MetadataServiceImpl implements MetadataService {
 
     private MetadataDao mdao;
