@@ -6,6 +6,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Calendar;
 import java.util.List;
 
 import javax.servlet.ServletContext;
@@ -69,14 +70,19 @@ public class BookServiceImpl implements BookService {
     @Override
     public String upload(MultipartFile file, String path) {
         String name = null;
+        String filePath = null;
+        String fileUrl = null;
+        Calendar calendar = Calendar.getInstance();
+        int year = calendar.get(Calendar.YEAR);
+        int month = calendar.get(Calendar.MONTH) + 1;
         try {
             byte[]  bytes = file.getBytes();
             name = file.getOriginalFilename();
             
-            String filePath = context.getRealPath("") + "files" + File.separator + path;
+            filePath = context.getRealPath("") + "uploads" + File.separator + 
+                    year + File.separator + month + File.separator + path;
             Path resourceDirectory = Paths.get(filePath);
             
-            //Path resourceDirectory = Paths.get("../library", "data", path);
             File dir = new File(resourceDirectory + File.separator);
             if (!dir.exists()) {
                 dir.mkdirs();
@@ -86,9 +92,10 @@ public class BookServiceImpl implements BookService {
             stream.write(bytes);
             stream.flush();
             stream.close();
+            fileUrl = "uploads/"+ year + "/" + month + "/" + path + "/" + name;
         } catch (IOException e) {
 
         }
-        return path;
+        return fileUrl;
     }
 }

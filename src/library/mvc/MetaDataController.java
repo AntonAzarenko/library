@@ -60,17 +60,16 @@ public class MetaDataController {
         book.setAuthor(aServise.getListAuthorsById(bookTo.getAuthors()));
         book.setPublisher(pService.getById(bookTo.getPublisherId()));
 
-        String path = pService.getById(bookTo.getPublisherId()).getName() + File.separator + bookTo.getTitle() + File.separator;
-        String resourcePath;
-        String previewPath;
+        String resourcePath = null;
+        String previewPath = null;
         if(Objects.nonNull(files)){
             if(files[0] != null)
-                srv.upload(files[0], path + "images");
+                previewPath = srv.upload(files[0], "images");
             if(files[1] != null)
-                srv.upload(files[1], path + "resources");
+                resourcePath = srv.upload(files[1], "resources");
         }
         
-        //mService.save(new Metadata(imageFile.getOriginalFilename(), zipFile.getOriginalFilename()));
+       //mService.save(new Metadata(previewPath, resourcePath));
        // book.setMetadata(new Metadata(state.getPictureName(), state.getZipName()));
         
         srv.save(book);

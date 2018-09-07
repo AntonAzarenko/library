@@ -4,7 +4,7 @@ import java.util.Objects;
 
 public class Metadata extends Entity {
 
-    private String uresource;
+    private String resource;
 
     private String preview;
 
@@ -13,27 +13,27 @@ public class Metadata extends Entity {
 
     public Metadata(Long id, String uri, String picture) {
         super(id);
-        this.uresource = uri;
+        this.resource = uri;
         this.preview = picture;
     }
 
     public Metadata(String uri, String picture) {
-        this.uresource = uri;
+        this.resource = uri;
         this.preview = picture;
     }
 
     public Metadata(Metadata metadata) {
         super(metadata.getId());
-        uresource = metadata.getUri();
+        resource = metadata.getUri();
         preview = metadata.getPicture();
     }
 
     public String getUri() {
-        return uresource;
+        return resource;
     }
 
     public void setUri(String uri) {
-        this.uresource = uri;
+        this.resource = uri;
     }
 
     public String getPicture() {
@@ -49,19 +49,19 @@ public class Metadata extends Entity {
         if (this == o) return true;
         if (!(o instanceof Metadata)) return false;
         Metadata metadata = (Metadata) o;
-        return Objects.equals(uresource, metadata.uresource) &&
+        return Objects.equals(resource, metadata.resource) &&
                 Objects.equals(preview, metadata.preview);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(uresource, preview);
+        return Objects.hash(resource, preview);
     }
 
     @Override
     public String toString() {
         return "Metadata{" +
-                "uri='" + uresource + '\'' +
+                "uri='" + resource + '\'' +
                 ", picture='" + preview + '\'' +
                 '}';
     }
