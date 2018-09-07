@@ -1,11 +1,25 @@
 package library.service;
 
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
+
+import javax.servlet.ServletContext;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.multipart.MultipartFile;
 
 import library.dao.BookDao;
 import library.entity.Book;
 
 public class BookServiceImpl implements BookService {
+    
+    @Autowired
+    private ServletContext context;
 
     private BookDao dao;
 
@@ -50,5 +64,31 @@ public class BookServiceImpl implements BookService {
     @Override
     public List<Book> getBooksByPublisher(final String name) {
 	return dao.findBooksByPublisher(name);
+    }
+    
+    @Override
+    public String upload(MultipartFile file, String path) {
+        String name = null;
+        try {
+            byte[]  bytes = file.getBytes();
+            name = file.getOriginalFilename();
+            
+            String filePath = context.getRealPath("") + "files" + File.separator + path;
+            Path resourceDirectory = Paths.get(filePath);
+            
+            //Path resourceDirectory = Paths.get("../library", "data", path);
+            File dir = new File(resourceDirectory + File.separator);
+            if (!dir.exists()) {
+                dir.mkdirs();
+            }
+            File loadFile = new File(dir.getAbsolutePath() + File.separator + name);
+            BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(loadFile));
+            stream.write(bytes);
+            stream.flush();
+            stream.close();
+        } catch (IOException e) {
+
+        }
+        return path;
     }
 }

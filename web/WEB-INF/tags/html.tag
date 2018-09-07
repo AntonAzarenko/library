@@ -13,9 +13,7 @@
 </head>
 <body>
 <c:url value="/js/jquery-3.3.1.min.js" var="jqhref" /><script src="${jqhref}" type="text/javascript"></script>
-<c:url value="/js/popper.js" var="popperhref" /><script src="${popperhref}" type="text/javascript"></script>
 <c:url value="/js/bootstrap.min.js" var="bjshref" /><script src="${bjshref}" type="text/javascript"></script>
-<c:url value="/js/bootstrap-confirmation.min.js" var="confirmhref" /><script src="${confirmhref}" type="text/javascript"></script>
 <div class="container">
 <jsp:doBody />
 </div>

@@ -52,21 +52,27 @@ public class MetaDataController {
 
     @PostMapping(value = "booksave.html")
     @ResponseBody
-    public ModelAndView saveBook(BookTo bookTo, @RequestParam(required = false) @PathVariable("image") MultipartFile imageFile,
-                       @RequestParam(required = false) @PathVariable("zipFile") MultipartFile zipFile, BindingResult result) {
+    public ModelAndView saveBook(BookTo bookTo, 
+                        @RequestParam(required = false) @PathVariable("files") MultipartFile[] files,BindingResult result) {
+                        //@RequestParam(required = false) @PathVariable("zipFile") MultipartFile zipFile, 
         ModelAndView modelAndView = new ModelAndView();
         Book book = bookTo.asBook();
         book.setAuthor(aServise.getListAuthorsById(bookTo.getAuthors()));
         book.setPublisher(pService.getById(bookTo.getPublisherId()));
-        if(Objects.nonNull(imageFile)){
-            upload(imageFile, "image");
-        }
-        if(Objects.nonNull(zipFile)){
-            upload(zipFile, "new");
-        }
 
+        String path = pService.getById(bookTo.getPublisherId()).getName() + File.separator + bookTo.getTitle() + File.separator;
+        String resourcePath;
+        String previewPath;
+        if(Objects.nonNull(files)){
+            if(files[0] != null)
+                srv.upload(files[0], path + "images");
+            if(files[1] != null)
+                srv.upload(files[1], path + "resources");
+        }
+        
         //mService.save(new Metadata(imageFile.getOriginalFilename(), zipFile.getOriginalFilename()));
        // book.setMetadata(new Metadata(state.getPictureName(), state.getZipName()));
+        
         srv.save(book);
         RedirectView redirectView = new RedirectView("books.html");
         redirectView.setStatusCode(HttpStatus.FOUND);

@@ -71,9 +71,10 @@
                     </div>
                     <div class="input-group mb-3">
                         <div class="custom-file">
-                            <input type="file" name="image" accept="image/*" class="custom-file-input" id="inputGroupFile01"
-                                   aria-describedby="inputGroupFileAddon01" >
-                            <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                            <input type="file" name="files" accept="image/*" class="custom-file-input" id="inputGroupFile01"
+                                   aria-describedby="inputGroupFileAddon01">
+                            <label class="custom-file-label" for="bookimg">Choose file</label>
+                            <!-- input id="bookimg" type="file" name="files" accept="image/*"-->
                         </div>
                     </div>
                 </div>
@@ -84,9 +85,10 @@
                     </div>
                     <div class="input-group mb-3">
                         <div class="custom-file">
-                            <input type="file" name="zipFile" accept="application/zip" class="custom-file-input" id="inputGroupFile02"
-                                   aria-describedby="inputGroupFileAddon01">
-                            <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                            <input type="file" name="files" accept="application/zip" class="custom-file-input" id="inputGroupFile02"
+                                   aria-describedby="inputGroupFileAddon02">
+                            <label class="custom-file-label" for="bookzip">Choose file</label>
+                            <!-- input id="bookzip" type="file" name="files" accept="application/zip"-->
                         </div>
                     </div>
                 </div>
@@ -96,5 +98,11 @@
             </form>
         </div>
     </div>
+        <script>
+            $('#inputGroupFile01,#inputGroupFile02').on('change',function(){
+                var fileName = $(this).val();
+                $(this).next('.custom-file-label').html(fileName);
+            });
+        </script>
     </body>
 </ui:html>

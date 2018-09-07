@@ -4,44 +4,44 @@ import java.util.Objects;
 
 public class Metadata extends Entity {
 
-    private String uri;
+    private String uresource;
 
-    private String picture;
+    private String preview;
 
     public Metadata() {
     }
 
     public Metadata(Long id, String uri, String picture) {
         super(id);
-        this.uri = uri;
-        this.picture = picture;
+        this.uresource = uri;
+        this.preview = picture;
     }
 
     public Metadata(String uri, String picture) {
-        this.uri = uri;
-        this.picture = picture;
+        this.uresource = uri;
+        this.preview = picture;
     }
 
     public Metadata(Metadata metadata) {
         super(metadata.getId());
-        uri = metadata.getUri();
-        picture = metadata.getPicture();
+        uresource = metadata.getUri();
+        preview = metadata.getPicture();
     }
 
     public String getUri() {
-        return uri;
+        return uresource;
     }
 
     public void setUri(String uri) {
-        this.uri = uri;
+        this.uresource = uri;
     }
 
     public String getPicture() {
-        return picture;
+        return preview;
     }
 
     public void setPicture(String picture) {
-        this.picture = picture;
+        this.preview = picture;
     }
 
     @Override
@@ -49,20 +49,20 @@ public class Metadata extends Entity {
         if (this == o) return true;
         if (!(o instanceof Metadata)) return false;
         Metadata metadata = (Metadata) o;
-        return Objects.equals(uri, metadata.uri) &&
-                Objects.equals(picture, metadata.picture);
+        return Objects.equals(uresource, metadata.uresource) &&
+                Objects.equals(preview, metadata.preview);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(uri, picture);
+        return Objects.hash(uresource, preview);
     }
 
     @Override
     public String toString() {
         return "Metadata{" +
-                "uri='" + uri + '\'' +
-                ", picture='" + picture + '\'' +
+                "uri='" + uresource + '\'' +
+                ", picture='" + preview + '\'' +
                 '}';
     }
 }
