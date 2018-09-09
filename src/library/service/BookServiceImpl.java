@@ -18,55 +18,55 @@ import library.dao.BookDao;
 import library.entity.Book;
 
 public class BookServiceImpl implements BookService {
-    
+
     @Autowired
     private ServletContext context;
 
     private BookDao dao;
 
     public void setBookDao(final BookDao dao) {
-	this.dao = dao;
+        this.dao = dao;
     }
 
     @Override
     public Book getById(final Long id) {
-	return dao.read(id);
+        return dao.read(id);
     }
 
     @Override
     public List<Book> getBooks() {
-	return dao.readAll();
+        return dao.readAll();
     }
 
     @Override
     public List<Book> getBooksByTitle(String title) {
-	return dao.find(title);
+        return dao.find(title);
     }
 
     @Override
     public void save(final Book book) {
-	if (book.getId() == null) {
-	    dao.create(book);
-	} else {
-	    dao.update(book);
-	}
+        if (book.getId() == null) {
+            dao.create(book);
+        } else {
+            dao.update(book);
+        }
     }
 
     @Override
     public List<Book> getBooksByAuthor(final Long id) {
-	return dao.findByAuthorId(id);
+        return dao.findByAuthorId(id);
     }
 
     @Override
     public void delete(Long id) {
-	dao.delete(id);
+        dao.delete(id);
     }
 
     @Override
     public List<Book> getBooksByPublisher(final String name) {
-	return dao.findBooksByPublisher(name);
+        return dao.findBooksByPublisher(name);
     }
-    
+
     @Override
     public String upload(MultipartFile file, String path) {
         String name = null;
@@ -76,13 +76,13 @@ public class BookServiceImpl implements BookService {
         int year = calendar.get(Calendar.YEAR);
         int month = calendar.get(Calendar.MONTH) + 1;
         try {
-            byte[]  bytes = file.getBytes();
+            byte[] bytes = file.getBytes();
             name = file.getOriginalFilename();
-            
-            filePath = context.getRealPath("") + "uploads" + File.separator + 
+
+            filePath = context.getRealPath("") + "uploads" + File.separator +
                     year + File.separator + month + File.separator + path;
             Path resourceDirectory = Paths.get(filePath);
-            
+
             File dir = new File(resourceDirectory + File.separator);
             if (!dir.exists()) {
                 dir.mkdirs();
@@ -92,7 +92,7 @@ public class BookServiceImpl implements BookService {
             stream.write(bytes);
             stream.flush();
             stream.close();
-            fileUrl = "uploads/"+ year + "/" + month + "/" + path + "/" + name;
+            fileUrl = "uploads/" + year + "/" + month + "/" + path + "/" + name;
         } catch (IOException e) {
 
         }
