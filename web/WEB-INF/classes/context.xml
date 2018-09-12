@@ -85,6 +85,8 @@
 
     <bean id="authorDao" class="library.dao.mapper.AuthorDaoMapper" parent="mapper"/>
 
+    <bean id="metadataDao" class="library.dao.mapper.MetadataDaoMapper" parent="mapper"/>
+
     <!-- SERVICE -->
     <bean id="bookService" class="library.service.BookServiceImpl">
         <property name="bookDao" ref="bookDao"/>
@@ -98,6 +100,10 @@
         <property name="dao" ref="bookDao"/>
     </bean>
 
+    <bean id="metadataService" class="library.service.MetadataServiceImpl">
+        <property name="metadataDao" ref="metadataDao"/>
+    </bean>
+    
     <!--<bean id="authorService" class="library.service.AuthorServiceImpl">-->
         <!--<property name="authorDao" ref="authorDao"/>-->
     <!--</bean>-->

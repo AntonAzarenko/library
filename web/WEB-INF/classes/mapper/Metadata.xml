@@ -5,8 +5,8 @@
 
 	<resultMap type="Metadata" id="metadatamap">
 		<id column="id" property="id" />
-		<result column="url" property="uri" />
-		<result column="picture" property="picture" />
+		<result column="resource" property="resource" />
+		<result column="preview" property="preview" />
 	</resultMap>
 
 
@@ -15,20 +15,20 @@
 		<selectKey keyProperty="id" resultType="long" order="BEFORE">
             SELECT nextVal('metadata_id_seq')
         </selectKey>
-		INSERT INTO metadata (id,url,
-		picture, book_id) VALUES (#{id},#{url}, #{picture},
-		#{book_id})
+		INSERT INTO metadata (id,resource,
+		preview, book_id) VALUES (#{id},#{resource}, #{preview},
+		#{book.id})
 	</insert>
 
 	<select id="read" resultMap="metadatamap" parameterType="long">
 		SELECT
-		m.url, m.picture, m.book_id FROM metadata m WHERE m.id=#{id}
+		m.resource, m.preview, m.book_id FROM metadata m WHERE m.id=#{id}
 	</select>
 
 
 	<update id="update" parameterType="Metadata">
-		UPDATE metadata SET url =
-		#{uri}, picture=#{picture}, book_id =
+		UPDATE metadata SET resource =
+		#{resource}, preview=#{preview}, book_id =
 		#{book_id} WHERE id = #{id}
 	</update>
 

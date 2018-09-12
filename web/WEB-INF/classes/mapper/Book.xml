@@ -17,8 +17,8 @@
         </collection>
         <collection property="metadata" ofType="metadata" javaType="Metadata">
             <id property="id" column="metadata_id"/>
-            <result property="url" column="url"/>
-            <result property="picture" column="picture"/>
+            <result property="resource" column="resource"/>
+            <result property="preview" column="preview"/>
         </collection>
     </resultMap>
 
@@ -30,8 +30,8 @@
 		b.publisher_id,
 		p.name as publisher_name,
 		m.id as metadata_id,
-		m.url as url,
-		m.picture as picture,
+		m.resource as resource,
+		m.preview as preview,
 		a.id AS author_id,
 		a.name as author_name
 		from authors_books as ab
@@ -88,8 +88,8 @@
 		b.publisher_id,
 		p.name as publisher_name,
 		m.id as metadata_id,
-		m.url as url,
-		m.picture as picture,
+		m.resource as resource,
+		m.preview as preview,
 		a.id AS author_id,
 		a.name as author_name
 		from authors_books as ab
@@ -125,8 +125,8 @@
 		b.publisher_id,
 		p.name as publisher_name,
 		m.id as metadata_id,
-		m.url as url,
-		m.picture as picture,
+		m.resource as resource,
+		m.preview as preview,
 		a.id AS author_id,
 		a.name as author_name
 		from authors_books as ab

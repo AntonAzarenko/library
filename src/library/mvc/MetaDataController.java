@@ -24,7 +24,7 @@ public class MetaDataController {
     private BookService srv;
 
     @Autowired
-    private MetadataService mService;
+    private MetadataService metadataService;
 
     @Autowired
     private PublisherService pService;
@@ -52,7 +52,16 @@ public class MetaDataController {
         //mService.save(new Metadata(previewPath, resourcePath));
         // book.setMetadata(new Metadata(state.getPictureName(), state.getZipName()));
 
-        srv.save(book);
+        Long id = srv.save(book);
+        book.setId(id);
+        
+        Metadata metadata = new Metadata();
+        metadata.setPreview(previewPath);
+        metadata.setResource(resourcePath);
+        metadata.setBook(book);
+        
+        metadataService.save(metadata);
+        
         RedirectView redirectView = new RedirectView("books.html");
         redirectView.setStatusCode(HttpStatus.FOUND);
         modelAndView.setView(redirectView);

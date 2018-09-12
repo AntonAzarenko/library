@@ -44,10 +44,10 @@
             <column name="id" autoIncrement="true" type="bigint">
                 <constraints primaryKey="true" nullable="false" primaryKeyName="metadata_pk"/>
             </column>
-            <column name="url" type="varchar(256)">
+            <column name="resource" type="varchar(256)">
                 <constraints nullable="true"/>
             </column>
-            <column name="picture" type="varchar(256)">
+            <column name="preview" type="varchar(256)">
                 <constraints nullable="true"/>
             </column>
             <column name="book_id" type="bigint">
@@ -135,10 +135,10 @@
             <column name="book_id" valueNumeric="3"/>
         </insert>
 
-        <insert tableName="metadata">
+        <!-- insert tableName="metadata">
             <column name="picture" value="docs/booksPicture/TheTwelveChairs.jpg"/>
             <column name="book_id" valueNumeric="3"/>
-        </insert>
+        </insert-->
     </changeSet>
 
 </databaseChangeLog>

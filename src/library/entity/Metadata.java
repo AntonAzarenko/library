@@ -8,40 +8,50 @@ public class Metadata extends Entity {
 
     private String preview;
 
+    private Book book;
+
     public Metadata() {
     }
 
-    public Metadata(Long id, String uri, String picture) {
+    public Metadata(Long id, String resource, String preview) {
         super(id);
-        this.resource = uri;
-        this.preview = picture;
+        this.resource = resource;
+        this.preview = preview;
     }
 
-    public Metadata(String uri, String picture) {
-        this.resource = uri;
-        this.preview = picture;
+    public Metadata(String resource, String preview) {
+        this.resource = resource;
+        this.preview = preview;
     }
 
     public Metadata(Metadata metadata) {
         super(metadata.getId());
-        resource = metadata.getUri();
-        preview = metadata.getPicture();
+        resource = metadata.getResource();
+        preview = metadata.getPreview();
     }
 
-    public String getUri() {
+    public String getResource() {
         return resource;
     }
 
-    public void setUri(String uri) {
-        this.resource = uri;
+    public void setResource(String resource) {
+        this.resource = resource;
     }
 
-    public String getPicture() {
+    public String getPreview() {
         return preview;
     }
 
-    public void setPicture(String picture) {
-        this.preview = picture;
+    public void setPreview(String preview) {
+        this.preview = preview;
+    }
+
+    public Book getBook() {
+        return book;
+    }
+
+    public void setBook(Book book) {
+        this.book = book;
     }
 
     @Override

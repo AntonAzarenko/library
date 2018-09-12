@@ -4,27 +4,26 @@ import library.dao.MetadataDao;
 import library.entity.Metadata;
 import org.springframework.stereotype.Service;
 
-@Service
 public class MetadataServiceImpl implements MetadataService {
 
-    private MetadataDao mdao;
+    private MetadataDao metadataDao;
 
-    public void setMdao(MetadataDao mdao) {
-        this.mdao = mdao;
+    public void setMetadataDao(MetadataDao metadataDao) {
+        this.metadataDao = metadataDao;
     }
 
     @Override
     public Metadata getById(Long id) {
-        return mdao.read(id);
+        return metadataDao.read(id);
     }
 
     @Override
     public Long save(Metadata o) {
         Long id = null;
         if (o.getId() == null) {
-            id = mdao.create(o);
+            id = metadataDao.create(o);
         } else {
-            mdao.update(o);
+            metadataDao.update(o);
             id = o.getId();
         }
         return id;
@@ -32,7 +31,7 @@ public class MetadataServiceImpl implements MetadataService {
 
     @Override
     public void delete(Long id) {
-        mdao.delete(id);
+        metadataDao.delete(id);
     }
 
 }
