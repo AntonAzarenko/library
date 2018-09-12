@@ -10,8 +10,9 @@ import library.entity.Author;
 public class AuthorDaoMapper extends SqlSessionDaoSupport implements AuthorDao {
 
     @Override
-    public void create(final Author o) {
+    public Long create(final Author o) {
         getSqlSession().insert("library.dao.AuthorDao.insert", o);
+        return o.getId();
     }
 
     @Override

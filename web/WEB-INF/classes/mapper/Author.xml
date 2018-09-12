@@ -16,7 +16,10 @@
             parameterType="Author"
             useGeneratedKeys="true"
             keyProperty="id">
-        INSERT INTO authors (name) VALUES (#{name})
+        <selectKey keyProperty="id" resultType="long" order="BEFORE">
+            SELECT nextVal('authors_id_seq')
+        </selectKey>
+        INSERT INTO authors (id,name) VALUES (#{id},#{name})
     </insert>
 
     <update id="update"

@@ -6,9 +6,9 @@ import library.dao.PublisherDao;
 import library.entity.Publisher;
 
 public class PublisherServiceImpl implements PublisherService {
-    
+
     private PublisherDao dao;
-    
+
     public void setPublisherDao(final PublisherDao dao) {
         this.dao = dao;
     }
@@ -19,12 +19,15 @@ public class PublisherServiceImpl implements PublisherService {
     }
 
     @Override
-    public void save(Publisher o) {
+    public Long save(Publisher o) {
+        Long id = null;
         if (o.getId() == null) {
-            dao.create(o);
+            id = dao.create(o);
         } else {
             dao.update(o);
+            id = o.getId();
         }
+        return id;
     }
 
     @Override

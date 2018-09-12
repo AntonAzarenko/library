@@ -11,7 +11,10 @@
     <insert id="insert"
             parameterType="Publisher"
             useGeneratedKeys="true">
-        INSERT INTO publishers (name) VALUES (#{name})
+        <selectKey keyProperty="id" resultType="long" order="BEFORE">
+            SELECT nextVal('publishers_id_seq')
+        </selectKey>
+        INSERT INTO publishers (id,name) VALUES (#{id},#{name})
     </insert>
 
     <update id="update"

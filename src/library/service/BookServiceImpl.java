@@ -44,12 +44,15 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public void save(final Book book) {
+    public Long save(final Book book) {
+        Long id = null;
         if (book.getId() == null) {
-            dao.create(book);
+            id = dao.create(book);
         } else {
             dao.update(book);
+            id = book.getId();
         }
+        return id;
     }
 
     @Override

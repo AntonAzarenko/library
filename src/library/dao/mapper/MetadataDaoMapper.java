@@ -10,34 +10,35 @@ import library.entity.Metadata;
 public class MetadataDaoMapper extends SqlSessionDaoSupport implements MetadataDao {
 
     @Override
-    public void create(Metadata o) {
-	getSqlSession().insert("library.dao.MetadataDao.create", o);
+    public Long create(Metadata o) {
+        getSqlSession().insert("library.dao.MetadataDao.create", o);
+        return o.getId();
     }
 
     @Override
     public Metadata read(Long id) {
-	return getSqlSession().selectOne("library.dao.MetadataDao.read", id);
+        return getSqlSession().selectOne("library.dao.MetadataDao.read", id);
     }
 
     @Override
     public List<Metadata> readAll() {
-	return getSqlSession().selectList("library.dao.MetadataDao.findAll");
+        return getSqlSession().selectList("library.dao.MetadataDao.findAll");
     }
 
     @Override
     public void update(Metadata o) {
-	getSqlSession().update("library.dao.MetadataDao.update", o);
+        getSqlSession().update("library.dao.MetadataDao.update", o);
     }
 
     @Override
     public void delete(Long id) {
-	getSqlSession().delete("library.dao.MetadataDao.delete", id);
+        getSqlSession().delete("library.dao.MetadataDao.delete", id);
 
     }
 
     @Override
     public Metadata findByBookId(Long id) {
-	return getSqlSession().selectOne("library.dao.MetadataDao.findByBookId", id);
+        return getSqlSession().selectOne("library.dao.MetadataDao.findByBookId", id);
     }
 
 }

@@ -12,8 +12,11 @@
 
 	<insert id="create" parameterType="Metadata"
 		useGeneratedKeys="true" keyProperty="id">
-		INSERT INTO metadata (url,
-		picture, book_id) VALUES (#{url}, #{picture},
+		<selectKey keyProperty="id" resultType="long" order="BEFORE">
+            SELECT nextVal('metadata_id_seq')
+        </selectKey>
+		INSERT INTO metadata (id,url,
+		picture, book_id) VALUES (#{id},#{url}, #{picture},
 		#{book_id})
 	</insert>
 

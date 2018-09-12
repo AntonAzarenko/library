@@ -103,8 +103,11 @@
 
     <insert id="create" parameterType="Book" useGeneratedKeys="true"
             keyProperty="id">
-		INSERT INTO books (title, description, publisher_id) VALUES
-		(#{title}, #{description}, #{publisher.id})
+        <selectKey keyProperty="id" resultType="long" order="BEFORE">
+            SELECT nextVal('books_id_seq')
+        </selectKey>
+		INSERT INTO books (id,title, description, publisher_id) VALUES
+		(#{id},#{title}, #{description}, #{publisher.id})
 	</insert>
 
     <insert id="createAuthors_books">

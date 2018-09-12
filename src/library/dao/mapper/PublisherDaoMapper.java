@@ -10,8 +10,9 @@ import library.entity.Publisher;
 public class PublisherDaoMapper extends SqlSessionDaoSupport implements PublisherDao {
 
     @Override
-    public void create(Publisher o) {
-        getSqlSession().insert("library.dao.PublisherDao.insert", o);
+    public Long create(Publisher o) {
+       getSqlSession().insert("library.dao.PublisherDao.insert", o);
+       return o.getId();
     }
 
     @Override
